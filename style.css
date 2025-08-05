@@ -3,8 +3,14 @@
 * {
     font-family: "Inter", sans-serif;
 }
-
-
+/* body {
+    margin: 0;
+    padding: 0;
+} */
+.row {
+    /* margin: 0; */
+    /* padding: 0; */
+}
 
 .logimg {
     width: 100%;
@@ -26,3 +32,44 @@
     border-bottom: 1px solid #E8ECEF;
     width: 456px;
 }
+
+::placeholder {
+    color: #7C797A !important;
+    font-family: "Inter", sans-serif !important;
+    
+}
+
+.Eyelogo {
+    border: none !important;
+    background-color: transparent; 
+    cursor: pointer;
+    /* margin-left: -30px; */
+}
+
+@media screen and (max-width: 600px) {
+    .logimg {
+        width: 460px;;
+    }
+
+    .contaN {
+        width: 100%;  
+        margin-top: -50px; 
+    } 
+
+    .newinput{
+    width: 410px
+    }
+
+    .newinput1 {
+        width: 100% !important;
+    }
+
+    .SBtn {
+       width: 410px !important;
+        margin-bottom: 30px;
+    }
+}
+    
+    
+
+
