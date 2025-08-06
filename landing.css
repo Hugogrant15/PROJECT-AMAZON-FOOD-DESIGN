@@ -13,6 +13,8 @@
     font-weight: 500;
 }
 
+/* hero section 2 styling */
+
 .CustomP-14-400 {
     font-family: "Inter", sans-serif;
     font-size: 14px;
@@ -47,7 +49,7 @@
 }
 
 .cardtitle-Black {
-    font-family: "MD Nichrome Test", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 700;
     color: #0F0B0B;
     font-size: 20px;
@@ -55,10 +57,59 @@
 }
 
 .cardHeader-black {
-    font-family: "MD Nichrome Test", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 700;
     color:#0F0B0B;
     font-size: 64px;
     line-height: 100%;
 }
+
+/* hero section 3 styling */
+
+.CustomGreenH1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color: #07AA07;
+    font-size: 60px;
+    line-height: 100%;
+}
+.Customorange {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color: #F58634;
+    font-size: 65px;
+    line-height: 100%;
+}
+
+/* hero section 3 styling ends here */
+
+/* hero section 4 styling starts here  */
+.hero4background {
+    background-color: #EFFFE5;
+}
+
+.Hero4Btn {
+    border: 2px solid #fff;
+    border-radius: px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 100%;
+    font-family: "Inter", sans-serif;
+    color: #fff;
+    width: 156px;
+    height: 48px;
+}
+
+/* hero 4 styling ends here  */
+
+/* hero 6 styling starts here  */
+.hero6Image {
+    width: 730px;
+    height: 502px;
+}
+
+
+
+
+
 
