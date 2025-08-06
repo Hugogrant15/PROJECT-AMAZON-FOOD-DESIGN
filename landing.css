@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Inter", sans-serif;
+}
+
+.navbar-nav {
+   font-family: "Inter", sans-serif;
+}
+
+.NavClr {
+    color: #000;
+    font-weight: 500;
+}
+
+.CustomP-14-400 {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #4D4D4D;
+
+}
+
+.CustomP-16-400 {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #4D4D4D;
+}
+
+.customBtn {
+    font-family: "Inter", sans-serif;
+    border: 1px solid #00A859;
+    background-color: transparent;
+    color: #00A859;
+    width: 360px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600px;
+    line-height: 30px;
+}
+.customBtn:hover {
+    background-color: #00A859;
+    color: #fff;
+}
+
+.cardtitle-Black {
+    font-family: "MD Nichrome Test", sans-serif;
+    font-weight: 700;
+    color: #0F0B0B;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.cardHeader-black {
+    font-family: "MD Nichrome Test", sans-serif;
+    font-weight: 700;
+    color:#0F0B0B;
+    font-size: 64px;
+    line-height: 100%;
+}
+
