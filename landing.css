@@ -15,6 +15,23 @@
 
 /* first hero section styling  */
 
+.starRelative {
+    position: relative;
+}
+
+/* .starAbsolute {
+    position: absolute;
+    bottom: -90px;
+    right: -270px;
+    width: 100% !important;
+} */
+
+.hero1absolute {
+    position: absolute;
+    right: 250px;
+    top: 610px;
+}
+
 #interBlack {
     font-size: 18px;
     color: #000;
@@ -210,6 +227,10 @@
     color:#0F0B0B;
     font-size: 64px;
     line-height: 100%;
+}
+
+#imgWidth {
+    width: 360px;
 }
 
 /* hero section 3 styling */
@@ -420,6 +441,15 @@
     width: 100% !important;
 }
 
+.zflex {
+    flex-direction: column;
+    /* flex: 0 0 100%;
+    max-width: 50%; */
+} 
+
+/* .Mainsection {
+max-width: 80%;
+} */
 
 
 
@@ -444,30 +474,93 @@
         display: none;
     }
 
-    .imghero1 {
-        width: 391px;
+    .hero1absolute {
+        display: none;
+        /* right: 70px;
+        /* top: 717px;  */
+    } 
+   
+
+    #imgWidth {
+        width: 100%;
+    }
+
+    .hero2head {
+        flex-direction: column;
+    }
+
+    .btnhero2 {
+        width: 100%;
+    }
+
+    .liquid-morph-element {
+        width: 100%;
+    }
+
+    #liquid-morph-element {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .hover-underline {
+        width: 100%;
+    }
+
+    #Green1 {
+        font-size: 48px;
+    }
+
+    #Orange1 {
+        font-size: 48px;
+    }
+
+    .cardHeader-black {
+        font-size: 36px;
+    }
+
+    .CustomGreenH1 {
+        font-size: 52px;
+    }
+
+    .Customorange {
+        font-size: 41px;
     }
 
 
+    .hero4background {
+        display: none;
+    }
 
-
-
-
+    .inptTBtn {
+        width: 100%;
+    }
 
     .hero6Image {
-        width: 366px;
+        width: 100%;
+    }
+    .Image6Card1 {
+        width: 100% !important;
     }
 
     .hero7Image {
-        width: 407px;
-        height: 457px;
+         width: 100%;
+        height: 457px; 
+        
     }
-
 
     .footerBackgroundIMG {
-        width: 412px;
+        width: 100%;
     }
 
+    @media screen and  (max-width : 900px) {
+        .hero1absolute {
+            
+        }
+    
+    }
+
+    
+    
 
 
 
