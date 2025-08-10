@@ -9,14 +9,74 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <div class="row">
-        <div class="col-xm-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-            <div class="image-fluid">
-                <img src="./images/Login/Left.png" alt="" class="logimg">
+    <main>
+        <!-- login page starts -->
+     <div class="row ">
+        <!-- image on login page  -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 gx-0 position-relative">
+            <div class="">
+            <img src="../images/Left.png" alt="" class="logimg">
+            </div>
+            <div class="position-absolute top-0 start-50 translate-middle-x mt-5">
+                <img src="../images/foodies.png" alt="" class="logo">
+            <img src="../images/Foodies logo.png" alt="">
             </div>
         </div>
 
-        <div class="col-xm-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 pt-5 mt-5">
+        <!-- form section  -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 px-lg-5 mt-5 pt-lg-5">
+            <div >
+                <!-- login text  -->
+                <p class="fs-1 fw-bold login-text">Login</p>
+                <div>
+                    <span class="fs-5" style="color: #7C797A;">Don’t have an account yet?</span> 
+                    <button class="sign-btn fs-5 fw-bold">Sign Up</button>
+                </div>
+                <!-- form starts  -->
+                <form action="">
+                    <div class="mt-5">
+                        <input type="email" class="form-control input-area fs-5 pb-3" id="email" placeholder="Email Address">
+                    </div>
+                    <div class="mt-5">
+                        <input type="password" class="form-control input-area fs-5 pb-3" id="password" placeholder="Password" >
+                    </div>
+                    <!-- check box and forget password section  -->
+                    <div class="row mt-5">
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <div class="form-check">
+                                <input class="form-check-input checkbox" type="checkbox" value="" id="checkDefault">
+                                <label class="form-check-label fs-5 ms-3" for="checkDefault" style="color: #7C797A;">
+                                    Remember me
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-lg-end">
+                            <button class="forget-btn fs-5">Forgot Password?</button>
+                        </div>
+                    </div>
+                     <button class="btn btn-success mt-4 py-2" style="width: 456px;" onclick="Loginbutton()">
+                            <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                            </div>LogIn
+                        </button>
+                </form>
+            </div>
+        </div>
+     </div>
+
+
+
+    </main>
+
+
+     <!-- <div class="row">
+        <div class="col-xm-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="logimg">
+                <img src="./images/Left.png" alt="" class="logimg image-fluid">
+            </div>
+        </div> -->
+
+        <!-- <div class="col-xm-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 pt-5 mt-5">
             <div class="container">
                 <h2 class="fs1 fw-bold signC">Login</h2>
                 <div>
@@ -40,7 +100,6 @@
                                 <div class="mt-4 form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                    <button>pass</button>
                                 </div>
                             </div>
                         </div>
@@ -52,10 +111,9 @@
                         </button>
                     <form>       
                 </div>
-                <input type="password">
             </div>
         </div>
-    </div> 
+    </div>  -->
  
     
     

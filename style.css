@@ -3,13 +3,14 @@
 * {
     font-family: "Inter", sans-serif;
 }
-/* body {
+
+.row {
     margin: 0;
     padding: 0;
-} */
-.row {
-    /* margin: 0; */
-    /* padding: 0; */
+}
+
+.form-pg{
+    padding-right: 200px !important;
 }
 
 .logimg {
@@ -17,38 +18,52 @@
     height: 100vh;
 }
 
-.signC {
+.login-text{
     font-family: "Roboto", sans-serif;
-    color: #00A859;
+    color: #00A859 !important;
 }
-.signBtn {
+
+.sign-btn, .forget-btn {
+    background: none;
+    outline: none;
     border: none;
-    background: transparent;
     color: #F58634;
+    cursor: pointer;
 }
-.newinput{
+
+.input-area{
     border-radius: none;
     border: none;
     border-bottom: 1px solid #E8ECEF;
-    width: 456px;
 }
 
 ::placeholder {
     color: #7C797A !important;
     font-family: "Inter", sans-serif !important;
-    
 }
 
-.Eyelogo {
-    border: none !important;
-    background-color: transparent; 
-    cursor: pointer;
-    /* margin-left: -30px; */
+.checkbox {
+    width: 24px;
+    height: 24px;
 }
 
-@media screen and (max-width: 600px) {
+.forget-btn{
+    color: #00A859;
+}
+
+.submit-btn {
+    background: #00A859;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    height: 48px;
+}
+
+
+
+/* @media screen and (max-width: 600px) {
     .logimg {
-        width: 460px;;
+        width: 100%;
     }
 
     .contaN {
@@ -68,7 +83,7 @@
        width: 410px !important;
         margin-bottom: 30px;
     }
-}
+} */
     
     
 
