@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Inter", sans-serif;
+}
+
+.signC {
+    font-family: "Roboto", sans-serif;
+    color: #00A859;
+}
+.signBtn {
+    border: none;
+    background: transparent;
+    color: #F58634;
+}
+.newinput {
+    border-radius: none !important;
+    border: none !important;
+    border-bottom: 1px solid #E8ECEF !important;
+    width: 456px !important;
+}
