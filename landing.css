@@ -736,13 +736,36 @@
     .browseBTN {
         width: 100%;
     }
+
+    .cardWidth {
+        width: 100% !important;
+    }
+
+    .LightGbtn2 {
+        width: 100%;
+    }
 }
 
 @media (min-width: 601px) and  (max-width : 900px) {
     .productImage1 {
         width: 100%;
     }
+
+    #imgWidth {
+        width: 100% !important;
+    }
 }
+
+@media (min-width: 901px) and  (max-width : 1200px) {
+    .productImage1 {
+        width: 100%;
+    }
+
+     #imgWidth {
+        width: 100% !important;
+    }
+}
+
 
 
 
