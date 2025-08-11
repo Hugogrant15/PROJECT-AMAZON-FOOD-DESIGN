@@ -15,6 +15,15 @@
 
 /* first hero section styling  */
 
+.section1Relative {
+    position: relative;
+}
+
+.section1Absolute {
+    position: absolute;
+    bottom:-220px;
+    z-index: -100;
+}
 .starRelative {
     position: relative;
 }
@@ -28,8 +37,8 @@
 
 .hero1absolute {
     position: absolute;
-    right: 250px;
-    top: 610px;
+    right: 177px;
+    top: 500px;
 }
 
 #interBlack {
@@ -437,6 +446,19 @@
         display: none;
     }
 
+    .section1Absolute {
+        position: absolute;
+        bottom: -106px;
+        z-index: -100;
+        width: 100% !important;
+    }
+
+    .sectionAbsolute2 {
+        position: absolute;
+        bottom: -174px;
+        z-index: -100;
+    }
+
     .hero1absolute {
         display: none;
         /* right: 70px;
@@ -458,6 +480,7 @@
 
     .zflex {
     flex-direction: column;
+    margin-top: 73px;
     /* flex: 0 0 100%;
     max-width: 50%; */
 } 
@@ -766,9 +789,97 @@
     }
 }
 
+/* poduct page media queery ends here  */
 
 
+/* checkout styling starts here  */
 
+.width21 {
+    width: 570px;
+    height: 60px;
+}
+.width212 {
+    width: 270px;
+    height: 60px;
+}
+.width213 {
+    width: 175px;
+    height: 60px;
+}
+.width214 {
+    width: 570px;
+    height: 180px;
+}
+
+.width215 {
+    width: 225px;
+    height: 60px;
+    border: 1px solid #C4D1D0;
+    color: #566363;
+    font-size: 18px;
+    font-weight: 400px;
+    line-height: 30px;
+}
+
+.placeOrderBtn {
+    font-family: "Inter", sans-serif;
+    width: 470px;
+    height: 60px;
+    background: #F58634;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+.placeOrderBtn:hover {
+    color: #fff;
+    background-color: #F58634;
+}
+
+@media screen and (max-Width: 600px) {
+    .width21 {
+    width: 100%;
+    /* height: 60px; */
+}
+.width212 {
+   width: 100%;
+    /* height: 60px; */
+}
+.width213 {
+    width: 100%;
+    /* height: 60px; */
+}
+.width214 {
+    width: 100%;
+    /* height: 180px; */
+}
+
+.width215 {
+    width: 100%;
+    /* height: 60px;
+    border: 1px solid #C4D1D0;
+    color: #566363;
+    font-size: 18px;
+    font-weight: 400px;
+    line-height: 30px; */
+}
+
+.placeOrderBtn {
+    font-family: "Inter", sans-serif;
+    width: 100%;
+    /* height: 60px; */
+    /* background: #F58634;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px; */
+}
+
+.width213::placeholder {
+    font-size: 14px;
+}
+}
 
 
 
