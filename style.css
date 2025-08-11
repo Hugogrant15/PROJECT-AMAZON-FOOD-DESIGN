@@ -75,11 +75,7 @@
     width: 456px !important;
 }
 
-
-
-
-
-/* @media screen and (max-width: 600px) {
+ /* @media screen and (max-width: 600px) {
     .logimg {
         width: 100%;
     }
@@ -101,8 +97,608 @@
        width: 410px !important;
         margin-bottom: 30px;
     }
+}  */
+    
+    
+/* first landing page styling  and media query  */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Inter", sans-serif;
+}
+
+.navbar-nav {
+   font-family: "Inter", sans-serif;
+}
+
+.NavClr {
+    color: #000;
+    font-weight: 500;
+}
+
+/* first hero section styling  */
+
+.starRelative {
+    position: relative;
+}
+
+/* .starAbsolute {
+    position: absolute;
+    bottom: -90px;
+    right: -270px;
+    width: 100% !important;
 } */
+
+.hero1absolute {
+    position: absolute;
+    right: 250px;
+    top: 610px;
+}
+
+#interBlack {
+    font-size: 18px;
+    color: #000;
+    line-height: 100%;
+    font-family: "Inter", sans-serif;
+}
+
+#Green1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 100%;
+    color: #00A859;
+}
+
+#Orange1 {
+    color: #F58634;
+    font-family: "Roboto", sans-serif;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+.liquid-morph-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #001;
+}
+
+.liquid-morph-element {
+ font-family: "Inter", sans-serif;
+  width: 145px;
+  padding: 10px 15px;
+  height: 48px;
+  background: #F58634;
+  color: #fff;
+  font-size: 16px;
+    font-weight: 600;
+    line-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.liquid-morph-element span {
+  color: #fff;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.liquid-morph-element::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    #0ff 0deg, 
+    #0a2342 120deg, 
+    #0ff 240deg
+  );
+  transition: all 0.6s ease;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.liquid-morph-element:hover {
+  border-radius: 10px;
+  transform: rotate(15deg);
+}
+
+.liquid-morph-element:hover::before {
+  opacity: 0.5;
+  transform: scale(2);
+}
+
+/* .hero1Btn {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 100%;
+    background: #F58634;
+    color: #fff;
+    border: 2px solid #f58634;
+    border-radius: 10px;
+    width: 145px;
+    height: 48px;
+    padding: 10px;
+} */
+.hero1Btn:hover {
+    /* background: #F58634;
+    color: #fff;
+    border-radius: 20px; */
+  background-color: #F58634;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+/* hero section 2 styling */
+
+.CustomP-14-400 {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #4D4D4D;
+
+}
+
+.CustomP-16-400 {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #4D4D4D;
+}
+
+.hover-underline {
+  font-family: "Inter", sans-serif;
+    border: 1px solid #00A859;
+    background-color: transparent;
+    color: #00A859;
+    width: 360px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600px;
+    line-height: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.hover-underline::after,
+.hover-underline::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  color: #00A859;
+  background: linear-gradient(to right, #F58634, #00A859);
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+.hover-underline::before {
+  top: -5px;
+  transform-origin: left;
+}
+
+.hover-underline:hover::after,
+.hover-underline:hover::before {
+  transform: scaleX(1);
+}
+/* .customBtn {
+    font-family: "Inter", sans-serif;
+    border: 1px solid #00A859;
+    background-color: transparent;
+    color: #00A859;
+    width: 360px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600px;
+    line-height: 30px;
+}
+.customBtn:hover {
+    background-color: #00A859;
+    color: #fff;
+} */
+
+.cardtitle-Black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color: #0F0B0B;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.cardHeader-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color:#0F0B0B;
+    font-size: 64px;
+    line-height: 100%;
+}
+
+#imgWidth {
+    width: 360px;
+}
+
+/* hero section 3 styling */
+
+.CustomGreenH1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color: #07AA07;
+    font-size: 60px;
+    line-height: 100%;
+}
+.Customorange {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color: #F58634;
+    font-size: 65px;
+    line-height: 100%;
+}
+
+#liquid-morph-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #001;
+}
+
+#liquid-morph-element {
+ font-family: "Inter", sans-serif;
+ margin-left: 120px;
+  width: 211px;
+  padding: 10px 15px;
+  height: 56px;
+  background: #07AA07;
+  color: #fff;
+  font-size: 16px;
+    font-weight: 600;
+    line-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+#liquid-morph-element span {
+  color: #fff;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+#liquid-morph-element::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    #F58634 0deg, 
+    #024109 120deg, 
+    rgb(1, 54, 54) 240deg
+  );
+  transition: all 0.6s ease;
+  opacity: 0;
+  transform: scale(0);
+}
+
+#liquid-morph-element:hover {
+  border-radius: 10px;
+  transform: rotate(15deg);
+}
+
+#liquid-morph-element:hover::before {
+  opacity: 0.5;
+  transform: scale(2);
+}
+
+/* hero section 3 styling ends here */
+
+/* hero section 4 styling starts here  */
+.hero4background {
+    background-color: #EFFFE5;
+}
+
+.Hero4Btn {
+    border: 2px solid #fff;
+    border-radius: px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 100%;
+    font-family: "Inter", sans-serif;
+    color: #fff;
+    width: 156px;
+    height: 48px;
+}
+
+/* hero 4 styling ends here  */
+
+/* hero 6 styling starts here  */
+.hero6Image {
+    width: 730px;
+    height: 502px; 
+}
+/* hero 6 styling ends here   */
+
+/* hero 7 styling starts here  */
+.hero7Image {
+    background: url(./images/Base.png) no-repeat center center / cover;
+    width: 1117px;
+    height: 349px;
+    border-radius: 10px;
+}
+
+.PrelatiVE {
+    position: relative;
+}
+
+.ImgAbsolute {
+    position: absolute;
+    top: -30px;
+    left: 170px;
+}
+
+.ImggAbsolute {
+    position: absolute;
+    right: 290px;
+    top: 175px;
+}
+
+.newfont {
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 52px;
+
+}
+
+.inptTBtn {
+    width: 400px;
+    height: 60px;
+    padding: 2px 15px;
+    background: #fff;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #4D4D4D;
+    position: relative;
+}
+
+.inptTBtn::placeholder {
+    color: #7C797A;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+ .FormRelative {
+    position: relative;
+} 
+
+.fromAbsol {
+    position: absolute;
+    top: -2px;
+    right: 10px;
+    background: #00A859;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.hero4background2 {
+    background-color: #EFFFE5;
+    height: 500px;
+}
+
+/* hero section 7 ends here  */
+
+/* footer section srarts here */
+.footHead1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 30px;
+    color: #fff;
+}
+
+.footerBackgroundIMG {
+    background: #1B2432;
+}
+
+.customFotterp {
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    color: #fff;
+}
+
+.FooterbackG {
+    background-color: #D9D9D9;
+    width: 100% !important;
+}
+
+
+@media screen and (max-width: 600px) {
+    br {
+        display: none;
+    }
+
+    br {
+        display: none;
+    }
+
+    .hero1absolute {
+        display: none;
+        /* right: 70px;
+        /* top: 717px;  */
+    } 
+   
+
+    #imgWidth {
+        width: 100%;
+    }
+
+    .hero2head {
+        flex-direction: column;
+    }
+
+    .btnhero2 {
+        width: 100%;
+    }
+
+    .zflex {
+    flex-direction: column;
+    /* flex: 0 0 100%;
+    max-width: 50%; */
+} 
+
+    .liquid-morph-element {
+        width: 100%;
+    }
+
+    #liquid-morph-element {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .hover-underline {
+        width: 100%;
+    }
+
+    #Green1 {
+        font-size: 48px;
+    }
+
+    #Orange1 {
+        font-size: 48px;
+    }
+
+    .cardHeader-black {
+        font-size: 36px;
+    }
+
+    .CustomGreenH1 {
+        font-size: 52px;
+    }
+
+    .Customorange {
+        font-size: 41px;
+    }
+
+
+    .hero4background {
+        display: none;
+    }
+
+    .inptTBtn {
+        width: 100%;
+    }
+
+    .hero6Image {
+        width: 100%;
+    }
+    .Image6Card1 {
+        width: 100% !important;
+    }
+
+    .hero7Image {
+         width: 100%;
+        height: 457px; 
+        
+    }
+
+    .footerBackgroundIMG {
+        width: 100%;
+    }
+}
+
+ @media (min-width: 601px) and  (max-width : 900px) {
+
+    br {
+        display: none;
+    }
+
+    .zoom {
+        width: 100% !important;
+    }
+
+     #Green1 {
+        font-size: 55px;
+    }
+
+    #Orange1 {
+        font-size: 55px;
+    }
+
+    .hero1absolute {
+        right: 277px;
+        top: 999px;  
+    } 
+
+    #imgWidth {
+        width: 100%;
+    }
+
+    .hover-underline {
+        width: 100%;
+    }
+
+    .zoom {
+        width: 100%;
+    }
+
+    #liquid-morph-element {
+        width: 50%;
+         margin-left: 170px;
+
+    }
+
+    .hero6Image {
+        width: 100%;
+    }
     
+    }
+
+    @media (min-width: 901px) and  (max-width : 1200px) {
+        
+    }
     
+
+
+
+
+
+
+
+
+/*  */
 
 

@@ -197,21 +197,7 @@
 .hover-underline:hover::before {
   transform: scaleX(1);
 }
-/* .customBtn {
-    font-family: "Inter", sans-serif;
-    border: 1px solid #00A859;
-    background-color: transparent;
-    color: #00A859;
-    width: 360px;
-    height: 50px;
-    font-size: 18px;
-    font-weight: 600px;
-    line-height: 30px;
-}
-.customBtn:hover {
-    background-color: #00A859;
-    color: #fff;
-} */
+ 
 
 .cardtitle-Black {
     font-family: "Roboto", sans-serif;
@@ -442,25 +428,6 @@
 }
 
 
-
-/* .Mainsection {
-max-width: 80%;
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media screen and (max-width: 600px) {
     br {
         display: none;
@@ -595,15 +562,189 @@ max-width: 80%;
          margin-left: 170px;
 
     }
-    /* .btnhero2 {
-         flex-direction: column;
+
+    .hero6Image {
         width: 100%;
-    }  */
+    }
+    
+    }
 
+    @media (min-width: 901px) and  (max-width : 1200px) {
+      br {
+        display: none;
+    }
+      
 
+      .hero1absolute {
+        right: 154px;
+        top: 529px;
+    
+      }
+        .hero6Image {
+        width: 100%;
+    }
+
+     #Green1 {
+        font-size: 75px;
+    }
+
+    #Orange1 {
+        font-size: 75px;
+    }
+
+    #imgWidth {
+        width: 100%;
+    }
+
+    .hover-underline {
+        width: 100%;
+    }
+
+    .bulkOrderwidth {
+        width: 100%;
+    }
 
     }
     
+    /* product page styling starts here  */
+    
+.CustombLackH2 {
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    color: #0F0B0B;
+    font-size: 40px;
+    line-height: 34px;
+}
+
+#OrangeDoll {
+    color: #F58634;
+     font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.quantityBtn {
+    border: 1px solid #C4D1D0;
+    width: 25px;
+    height: 26px;
+    background-color: #C4D1D0;
+    /* background: #C4D1D0;
+    color: #000; */
+}
+
+.quantityBtN2 {
+    border: 1px solid #C4D1D0 ;
+    width: 25px;
+    height: 26px;
+}
+
+.customBtn10 {
+    font-family: "Inter", sans-serif;
+    border: 1px solid #00A859;
+    background-color: #00A859;
+    color: #fff;
+    width: 360px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600px;
+    line-height: 30px;
+}
+.customBtn10:hover {
+    background-color: #F58634;
+    color: #fff;
+}
+.customBtn11 {
+    font-family: "Inter", sans-serif;
+    border: 1px solid #F58634;
+    background-color: #F58634;
+    color: #fff;
+    width: 360px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600px;
+    line-height: 30px;
+}
+.customBtn11:hover {
+    background-color: #00A859;
+    color: #fff;
+}
+
+.cardtitle-Black12 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color: #0F0B0B;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+#dBlacK {
+    color: #000;
+}
+
+.CustomP-14-4000 {
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #0F0B0B;
+
+}
+
+.TextArea1 {
+    border: 1px solid #C4D1D0;
+    width: 470px;
+    height: 180px;
+    border-radius: 10px;
+}
+
+.LightGbtn {
+    background-color: #00A859;
+    color: #fff;
+    width: 199px;
+    height: 60px;
+    font-size: 16px;
+}
+.LightGbtn2 {
+    background-color: #00A859;
+    color: #fff;
+    width: 162px;
+    height: 60px;
+    font-size: 16px;
+}
+
+.LightGbtn:hover {
+    background-color:#00A859 ;
+    color: #ffff;
+}
+
+/* paroduct page media query  */
+@media screen and (max-width: 600px){
+    
+    .productImage1 {
+        width: 100%;
+    }
+
+    .TextArea1 {
+        width: 100%;
+    }
+
+    .LightGbtn {
+        width: 100%;
+    }
+
+    .browseBTN {
+        width: 100%;
+    }
+}
+
+@media (min-width: 601px) and  (max-width : 900px) {
+    .productImage1 {
+        width: 100%;
+    }
+}
+
+
 
 
 
