@@ -834,7 +834,7 @@
 background-color: #00A859;}
 
 
-/* cart popur media quer starts  */
+/* cart popup media quer starts  */
 @media screen and (max-width: 600px){
     .placeOrderBtn2 {
         width: 100%;
@@ -854,7 +854,18 @@ background-color: #00A859;}
 
 
 
+/* CART LANDING STYLE STARTS HERE  */
 
+.cartOrderBtn {
+    font-family: "Inter", sans-serif;
+    width: 370px;
+    height: 60px;
+    background: #F58634;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+}
 
 
 
