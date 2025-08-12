@@ -50,7 +50,7 @@
 
 #Green1 {
     font-family: "Roboto", sans-serif;
-    font-size: 70px;
+    font-size: 60px;
     font-weight: 700;
     line-height: 100%;
     color: #00A859;
@@ -59,7 +59,7 @@
 #Orange1 {
     color: #F58634;
     font-family: "Roboto", sans-serif;
-    font-size: 70px;
+    font-size: 60px;
     font-weight: 700;
     line-height: 100%;
 }
@@ -220,7 +220,7 @@
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     color:#0F0B0B;
-    font-size: 64px;
+    font-size: 44px;
     line-height: 100%;
 }
 
@@ -234,14 +234,14 @@
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     color: #07AA07;
-    font-size: 60px;
+    font-size: 40px;
     line-height: 100%;
 }
 .Customorange {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     color: #F58634;
-    font-size: 65px;
+    font-size: 45px;
     line-height: 100%;
 }
 
@@ -362,7 +362,7 @@
 .newfont {
     font-family: "Roboto", sans-serif;
     font-weight: bold;
-    font-size: 42px;
+    font-size: 30px;
     line-height: 52px;
 
 }
@@ -414,7 +414,7 @@
 .footHead1 {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
-    font-size: 32px;
+    font-size: 25px;
     line-height: 30px;
     color: #fff;
 }
@@ -425,7 +425,7 @@
 
 .customFotterp {
     font-family: "Roboto", sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     line-height: 30px;
     color: #fff;
@@ -635,14 +635,14 @@
     font-family: "Roboto", sans-serif;
     font-weight: bold;
     color: #0F0B0B;
-    font-size: 40px;
+    font-size: 30px;
     line-height: 34px;
 }
 
 #OrangeDoll {
     color: #F58634;
      font-family: "Inter", sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 700;
     line-height: 30px;
 }
@@ -669,7 +669,7 @@
     color: #fff;
     width: 360px;
     height: 50px;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600px;
     line-height: 30px;
 }
@@ -697,7 +697,7 @@
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     color: #0F0B0B;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 30px;
 }
 
@@ -707,7 +707,7 @@
 
 .CustomP-14-4000 {
     font-family: "Inter", sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     line-height: 24px;
     color: #0F0B0B;
@@ -790,6 +790,116 @@
 }
 
 /* poduct page media queery ends here  */
+
+
+/* WISHLIST STYLING STARTS HERE  */
+
+.RomoveBTNN {
+    width: 12px;
+    height: 15px;
+    color: #4D4D4D;
+    border: none;
+    background: transparent;
+}
+
+.WishlishHead {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 32px;
+    font-family: "Roboto", sans-serif;
+    color: #0F0B0B;
+
+}
+
+.wisslistCArtBtn {
+    width: 127px;
+    height: 45px;
+    border-radius: 5px;
+    background: #00A859;
+    border: #00A859;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 28px;
+}
+.wisslistCArtBtn1 {
+    width: 370px;
+    height: 60px;
+    border-radius: 5px;
+    background: #00A859;
+    border: #00A859;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+
+.login-text,
+.popular-text,
+.organic-text,
+.high-text,
+.bulk,
+.offer,
+.sub, .footer-h6, h6, .text-button h1, .wish {
+  font-family: "Roboto", sans-serif;
+  color: #00A859;
+}
+
+footer {
+  background-color: #1B2432;
+}
+.footer-h6,h6 {
+  color: #FFFFFF;
+}
+.links p {
+  color: #A6B6B6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    .wisslistCArtBtn1, .wisslistCArtBtn {
+        width: 100%;
+    }
+
+    .FLExdirectn {
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* cart pop-up section starts here */
 .CustomP-16-pop {
