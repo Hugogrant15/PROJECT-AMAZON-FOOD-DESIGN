@@ -24,6 +24,13 @@
     bottom:-220px;
     z-index: -100;
 }
+.sectionAbsolute2 {
+    position: absolute;
+    top: 750px;
+    z-index: -100;
+
+}
+
 .starRelative {
     position: relative;
 }
@@ -450,7 +457,6 @@
         position: absolute;
         bottom: -106px;
         z-index: -100;
-        width: 100% !important;
     }
 
     .sectionAbsolute2 {
@@ -872,6 +878,7 @@ footer {
 
 
 
+/* wishist media query starts here  */
 
 @media screen and (max-width: 600px) {
     .wisslistCArtBtn1, .wisslistCArtBtn {
@@ -980,8 +987,12 @@ background-color: #00A859;}
 
 
 
-
-
+/* CART MEDIA QUERY STARTS HERE  */
+@media screen and (max-width: 600px) {
+    .cartOrderBtn {
+        width: 100%;
+    }
+}
 
 
 

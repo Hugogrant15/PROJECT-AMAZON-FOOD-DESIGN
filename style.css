@@ -37,6 +37,8 @@
     border-bottom: 1px solid #E8ECEF;
 }
 
+
+
 ::placeholder {
     color: #7C797A !important;
     font-family: "Inter", sans-serif !important;
@@ -86,12 +88,16 @@
     }  */
 
      .newinput{
-    width: 100% !important;
+    width: 100%;
     } 
 
-    /* .newinput1 {
-        width: 100% !important;
-    } */
+    .IndexWidth {
+    width:100 !important
+}
+
+    .logimg {
+    width: 373px;
+}
 
     .SBtn {
        width: 100% !important;
