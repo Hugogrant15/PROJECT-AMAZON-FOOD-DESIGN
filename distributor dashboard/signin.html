@@ -11,40 +11,45 @@
 </head>
 <body>
     <main>
-        <div class="container">
+        <div class="container ">
             <div class="row ">
-                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                    <p>Welcome Back</p>
-                    <p>Welcome Back! Please enter your details.</p>
+                <div class="col-sm-12 col-md-12 col-lg-6 bshadow shadow p-lg-5">
+                    <div class=" mt-lg-4">
+                        <p class="signheAD">Welcome Back</p>
+                        <p class="CustomP-14-400 ">Welcome Back! Please enter your details.</p>
 
-                    <form action="" class="text-center">
-                    <div class="mt-5 text-center">
-                        <input type="email" class="form-control input-area fs-5 pb-3 dashboardInput " id="email" placeholder="Email Address">
-                    </div>
-                    <div class="mt-5">
-                        <input type="password" class="form-control input-area fs-5 pb-3 dashboardInput" id="password" placeholder="Password" >
-                    </div>
-                    <!-- check box and forget password section  -->
-                        <div class="row mt-5">
-                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <div class="form-check">
-                                    <input class="form-check-input checkbox" type="checkbox" value="" id="checkDefault">
-                                    <label class="form-check-label fs-5 ms-3" for="checkDefault" style="color: #7C797A;">
-                                        Remember me
-                                    </label>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label signLabel">Full Name</label>
+                                <input type="text" class="form-control dashboardInput" id="exampleInputName" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label signLabel">Email address</label>
+                                <input type="email" class="form-control dashboardInput" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label signLabel">Password</label>
+                                <input type="password" class="form-control dashboardInput" id="exampleInputPassword1">
+                                <div><i class="fa-light fa-eye"></i></div>
+                                
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input " id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">By sign up I agree with <span style="color: #FF5670;">Terms</span> and <span style="color: #FF5670;">Conditions.</span></label>
+                            </div>
+                            <button type="submit" class="btn btn-success dashboardInput text-white rounded-2">Submit</button>
+                            <button type="submit" class="btn btn-white dashboardInput btnSIGN rounded-2 d-flex align-items-center gap-2 mt-lg-3 mt-3">
+                                <div>
+                                    <img src="./distributor images/Google__G__Logo (1) 1.png" alt="">
+                                </div>Sign Up with Google</button>
+
+                                <div class="mt-lg-3 mt-3 text-center my-lg-5">
+                                    <span class="CustomP-14-400">Already have an account? </span>
+                                    <button class="btn" style="color: #00A859; font-size: 14px; ">Sign In</button>
                                 </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-lg-end">
-                                <button class="forget-btn fs-lg-5 fs-5">Forgot Password?</button>
-                            </div>
-                        </div>
-                        <button class="btn btn-success mt-4 py-2 btnLOG" style="width: 456px;" onclick="Loginbutton()">
-                            <div class="spinner-border spinner-border-sm" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                            </div>LogIn
-                        </button>
-                </form>
-                    
+                        </form>
+                    </div>
+                
                 </div>
             </div>
         </div>
