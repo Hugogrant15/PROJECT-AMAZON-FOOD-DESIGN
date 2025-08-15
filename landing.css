@@ -525,9 +525,6 @@
     }
 
 
-    .hero4background {
-        display: none;
-    }
 
     .inptTBtn {
         width: 100%;
@@ -548,6 +545,10 @@
 
     .footerBackgroundIMG {
         width: 100%;
+    }
+
+    .BulkCard {
+        width: 100% !important;
     }
 }
 
@@ -595,6 +596,10 @@
     .hero6Image {
         width: 100%;
     }
+
+    /* .BulkCard {
+        width: 100% !important;
+    } */
     
     }
 
@@ -773,6 +778,10 @@
     .LightGbtn2 {
         width: 100%;
     }
+
+    .customBtn10 , .customBtn11 {
+        width: 100%;
+    }
 }
 
 @media (min-width: 601px) and  (max-width : 900px) {
@@ -783,6 +792,16 @@
     #imgWidth {
         width: 100% !important;
     }
+
+    .cardWidth {
+        width: 100% !important;
+    }
+
+    .customBtn10 , .customBtn11 {
+        width: 100%;
+    }
+
+    
 }
 
 @media (min-width: 901px) and  (max-width : 1200px) {
@@ -792,6 +811,14 @@
 
      #imgWidth {
         width: 100% !important;
+    }
+
+    .cardWidth {
+        width: 100% !important;
+    }
+
+    .customBtn10 , .customBtn11 {
+        width: 100%;
     }
 }
 
@@ -866,18 +893,6 @@ footer {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* wishist media query starts here  */
 
 @media screen and (max-width: 600px) {
@@ -888,10 +903,17 @@ footer {
     .FLExdirectn {
         flex-direction: column;
     }
+
+    
+
+    
+
 }
 
 
-
+@media (min-width: 601px) and  (max-width : 900px) {
+   
+}
 
 
 

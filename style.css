@@ -58,7 +58,7 @@
     color: #FFFFFF;
     border: none;
     border-radius: 8px;
-    height: 48px;
+   height:48px;
 }
 
 .signC {
@@ -78,15 +78,7 @@
 }
 
  @media screen and (max-width: 600px) {
-    /* .logimg {
-        width: 100%;
-    } */
-
-    /* .contaN {
-        width: 100%;  
-        margin-top: -50px; 
-    }  */
-
+  
      .newinput{
     width: 100% !important;
     } 
@@ -142,10 +134,6 @@
 
     .logimg {
         width: 100%;
-    }
-
-    .container {
-        /* width: 862px; */
     }
 
       .btnLOG {
