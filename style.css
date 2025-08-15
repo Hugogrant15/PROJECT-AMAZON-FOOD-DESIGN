@@ -88,7 +88,7 @@
     }  */
 
      .newinput{
-    width: 100%;
+    width: 100% !important;
     } 
 
     .IndexWidth {
@@ -96,7 +96,7 @@
 }
 
     .logimg {
-    width: 373px;
+    width: 100%;
 }
 
     .SBtn {
@@ -107,9 +107,53 @@
         width: 100% !important;
     }
 }  
+
+
+ @media (min-width: 601px) and  (max-width : 900px) {
+    .newinput{
+    width: 100% !important;
+    } 
+
+     .SBtn {
+       width: 100% !important;
+    } 
+
+    .logimg {
+        width: 100% !important;
+    }
+
+      .btnLOG {
+        width: 100% !important;
+    }
+ }
+
+
+
+
+
+  @media (min-width: 901px) and  (max-width : 1200px) {
+     .newinput{
+    width: 100% !important;
+    } 
+
+     .SBtn {
+       width: 100% !important;
+    } 
+
+    .logimg {
+        width: 100%;
+    }
+
+    .container {
+        /* width: 862px; */
+    }
+
+      .btnLOG {
+        width: 100% !important;
+    }
+  }
     
     
-/* first landing page styling  and media query  */
 
 
 
@@ -120,6 +164,7 @@
 
 
 
-/*  */
+
+
 
 

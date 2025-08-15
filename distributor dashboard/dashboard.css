@@ -58,3 +58,31 @@
     height: 640px;
 }
 
+/* DISTRIBUTOR DASHBOARD STYLING STARTS HERE  */
+
+.Navlogo1 {
+    font-family: "Archivo", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 100%;
+    color: #171725;
+    margin-left: 15px;
+}
+
+.btnSharp {
+    border: 1px solid #F8FAFB;
+    width: 46px;
+    height: 46px;
+    border-radius: 30px;
+    background: #F8FAFB;
+    color: #F8FAFB;
+}
+
+.Navborder {
+    border: 1px solid #f4e9e937;
+    background: #f4e9e937;
+    width: 341px;
+    height: 40px;
+    color: #f4e9e937;
+    margin-left: 25px;
+}
