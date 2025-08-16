@@ -3,125 +3,666 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon Foods | Login in</title>
+    <title>Amazon Foods | Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.1.0/mdb.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./landing.css">
 </head>
-<body>
-    <main>
-        <!-- login page starts -->
-     <div class="row ">
-        <!-- image on login page  -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 gx-0 position-relative">
-            <div class="">
-            <img src="../images/Left.png" alt="" class=" logimg object-fit-cover">
-            </div>
-            <div class="position-absolute top-0 start-50 translate-middle-x mt-5">
-                <img src="../images/foodies.png" alt="" class="logo">
-            <img src="../images/Foodies logo.png" alt="">
-            </div>
+  <body>
+    <!--Nav itens here-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <img src="./images/Foodies logo without Banner 1.png" style="width: 50px; height: 50px" alt="">
+       <a href="./cart.html" class="cart-nav d-lg-none">
+          <i class="fa-solid fa-bag-shopping fa-2x" style="color: #0F0B0B;"></i>
+          <span class="badge rounded-pill badge-notification bg-warning">2</span>
+        </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
+          <li class="nav-item mx-3">
+            <a class="nav-link text-dark fw-bold"  href="">Home</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link NavClr "  href="">Our Products</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link NavClr"  href="#">Health Benefits</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link NavClr "  href="#">Blogs</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link NavClr"  href="#">FAQS</a>
+          </li>
+        </ul>
+        <div class="">
+          
         </div>
+        <form class="d-flex">
+          <div class="d-flex align-items-center">
+            <span class="input-group-text border-0 me-lg-5 pe-lg-4" id="search-addon">
+            <i class="fas fa-search"></i>
+            </span>
+            <!-- Icons -->
+            <a class="text-reset me-3" href="#">
+              <i class="fa-regular fa-heart"></i>
+            </a>
+            <a class="text-reset me-3" href="#">
+              <i class="fa-solid fa-bag-shopping fa-2x" style="color: #0F0B0B;"></i>
+              <span class="badge rounded-pill badge-notification bg-warning">2</span>
+            </a>
+            <button class="btn btn-success" type="submit">Contact us</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    </nav>
+    <!-- nav ends here -->
 
-        <!-- form section  -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 px-lg-5 mt-5 pt-lg-5 p-lg-0 p-5">
-            <div >
-                <!-- login text  -->
-                <p class="fs-1 fw-bold login-text">Login</p>
-                <div>
-                    <span class="fs-5" style="color: #7C797A;">Don’t have an account yet?</span> 
-                    <button class="sign-btn fs-5 fw-bold">Sign Up</button>
+    <!-- first hero section starts here  -->
+    <main Mainsection>
+      <div class="container-fluid">
+        <div class="container mt-lg-5 pt-lg-4 mt-4 section1Relative">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6 mt-lg-5 pt-lg-5">
+              <p id="interBlack">Discover the Pure Taste of Nature</p>
+              <h1 class="mt-4"><span id="Green1">Organic</span><span id="Orange1"> Snacks</span><br><span id="Green1"> Made</span><span id="Orange1"> with</span><span id="Green1"> Love,</span><br><span id="Green1"> Just</span><span id="Orange1"> for</span><span id="Green1"> You!</span></h1>
+              <button class="btn hero1Btn mt-5 liquid-morph-element mb-5 mb-lg-0">Show Now</button>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <div class="">
+              <img class="w-100 image-fluid starRelative " src="./images/Image (4).png" alt="" style="width: 100px;"> 
+              </div>
+                <div class="star-rating  hero1absolute">
+                    <i class="fa-regular fa-star" style="color: #fcfcfc; background-color: #F58634; width: 47px; height: 35px;" ></i>
+                  <i class="fa-regular fa-star" style="color: #fcfcfc; background-color: #F58634; width: 47px; height: 35px;"></i>
+                    <i class="fa-regular fa-star" style="color: #fcfcfc; background-color: #F58634; width: 47px; height: 35px;"></i>
+                    <i class="fa-regular fa-star" style="color: #fcfcfc; background-color: #F58634; width: 47px; height: 35px;"></i>
+                    <i class="fa-regular fa-star" style="color: #fcfcfc; background-color: #F58634; width: 47px; height: 35px;"></i> 
                 </div>
-                <!-- form starts  -->
-                <form action="">
-                    <div class="mt-5">
-                        <input type="email" class="form-control input-area fs-5 pb-3 IndexWidth" id="email" placeholder="Email Address">
+                <div class=" d-flex zflex mt-lg-4">
+                  <div class="d-flex align-items-center ">
+                    <img src="./images/Frame 93.png" alt="">
+                    <div class="div">
+                      <small>Fast Delivery</small>
+                      <small> Deliver within 30<br> Minutes</small>
                     </div>
-                    <div class="mt-5">
-                        <input type="password" class="form-control input-area fs-5 pb-3 IndexWidth" id="password" placeholder="Password" >
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <img src="./images/Frame 93 (1).png" alt="">
+                    <div class="div">
+                      <small>Fast Delivery</small>
+                      <small> Deliver within 30<br> Minutes</small>
                     </div>
-                    <!-- check box and forget password section  -->
-                    <div class="row mt-5">
-                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <div class="form-check">
-                                <input class="form-check-input checkbox" type="checkbox" value="" id="checkDefault">
-                                <label class="form-check-label fs-5 ms-3" for="checkDefault" style="color: #7C797A;">
-                                    Remember me
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-lg-end">
-                            <button class="forget-btn fs-lg-5 fs-5">Forgot Password?</button>
-                        </div>
+                  </div>
+                    <div class="d-flex align-items-center">
+                    <img src="./images/Frame 93 (2).png" alt="">
+                    <div class="div">
+                      <small>Fast Delivery</small>
+                      <small> Deliver within 30<br> Minutes</small>
                     </div>
-                     <button class="btn btn-success mt-4 py-lg-3 py-4 fs-5 btnLOG" style="width: 530px;" onclick="LoginButton()">
-                            <div class="spinner-border spinner-border-sm" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                            </div>LogIn
-                        </button>
-                </form>
+                  </div>
+                </div> 
             </div>
+          </div>
+        </div> 
+        <div class="section1Absolute">
+          <img src="./images/Group 1000006737.png" style="width: 100%;" alt="">
         </div>
-     </div>
+        <div class="sectionAbsolute2">
+          <img src="./images/Login/Frame 106.png" style="width: 100%; z-index: -100;" stalt="">
+        </div>
+      </div>
+      
+   
 
+    <!-- Hero section 2(our popular product) starts here -->
+     <!-- section header here -->
+    <div class="container mt-4 mt-lg-5 pt-lg-5">
+      <h2 class="mt-lg-5 pt-lg-3 cardHeader-black ">Our Popular Products</h2>
+        
+      <div class="hero2head d-flex justify-content-between align-items-center">
+        <span class="my-lg-4 my-4 CustomP-16-400 ">Browse our most popular snacks and make your day<br> more beautiful and glorious.</span>
+        <button type="button" class="btn btn-outline-success fw-bold btnhero2 mb-4 mb-lg-0">Browse all</button>
+      </div>
 
+      <div class="row ">
+        <div class="col-sm-12 col-md-12 col-lg-4">
+          <!-- first card here  -->
+          <div class="border-0 " id="imgWidth">
+            <img src="./images/Images.png" class="card-img-top w-sm-100" alt="...">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="card-title CustomP-14-400 my-3 my-lg-3">Coconut Flakes</h5>
+                <a class="text-reset " href="#">
+                  <i class="fa-regular fa-heart"></i>
+                </a> 
+              </div>
+              <p class="card-text cardtitle-Black">Organic Almond Delight</p>
 
-    </main>
-
-
-     <!-- <div class="row">
-        <div class="col-xm-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-            <div class="logimg">
-                <img src="./images/Left.png" alt="" class="logimg image-fluid">
+              <div class="d-flex justify-content-between align-items-center ">
+                <div class="div">
+                  <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+                  <span>5.0 (18)</span>
+                </div>
+                <span class="fw-bold">$110</span>
+              </div>
             </div>
+              <button class="btn customBtn mt-4 hover-underline mb-4 mb-lg-0">Add to cart</button>
+          </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-4 ">
+            <!-- second card here  -->
+            <div class="border-0 " id="imgWidth">
+              <img src="./images/Images (1).png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="card-title CustomP-14-400 my-3 my-lg-3">Coconut Flakes</h5>
+                  <a class="text-reset " href="#">
+                    <i class="fa-regular fa-heart"></i>
+                  </a> 
+                </div>
+                <p class="card-text cardtitle-Black">Berry Bliss Bites</p>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="div">
+                    <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+                    <span>5.0 (18)</span>
+                  </div>
+                  <span class="fw-bold">$139</span>
+                </div>
+              </div>
+                <button class="btn customBtn mt-4 hover-underline mb-4 mb-lg-0">Add to cart</button>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-4 ">
+            <!-- third card here  -->
+            <div class="border-0 " id="imgWidth">
+              <img src="./images/Images (2).png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="card-title CustomP-14-400 my-3 my-lg-3">Coconut Flakes</h5>
+                  <a class="text-reset " href="#">
+                    <i class="fa-regular fa-heart"></i>
+                  </a> 
+                </div>
+                <p class="card-text cardtitle-Black">Coconut Crunchies</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="div">
+                    <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+                    <span>5.0 (18)</span>
+                  </div>
+                  <span class="fw-bold">$399</span>
+                </div>
+              </div>
+                <button class="btn customBtn mt-4 hover-underline mb-4 mb-lg-0">Add to cart</button>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!--hero section 2 ends here -->
+
+        <!-- hero section  3 (high quality organic snacks)  -->
+        <div class="container mt-lg-5 pt-lg-5 mt-5">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-5">
+              <div class="div">
+                <img src="./images/Group 96.png" alt="" class="img-fluid mt-lg-5 pt-lg-3 zoom">
+                <div class="text-lg-center">
+                  <button class=" btn  rounded-pill mb-5 mb-lg-0 " id="liquid-morph-element"> 100% Organic</button>
+                </div>
+                
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-7">
+              <div class="div">
+                <h1 class="CustomGreenH1">HIGH QUALITY</h1>
+                <h1 class="Customorange">ORGANIC SNACKS</h1>
+                <p class="CustomP-16-400">At Foodie Amazon, we believe in the power of nature to provide wholesome,<br> delicious snacks. Our journey began with a simple mission: to bring the pure<br> taste of nature to your doorstep. We are dedicated to creating snacks that are<br> not only delicious but also healthy and free from artificial additives. Our major<br> focus is on providing organic snacks that are made with the finest ingredients<br> sourced from sustainable farms.<br> Our commitment to quality means that you won't find any gums, preservatives,<br> or artificial sugars in our products. Instead, we use natural sweeteners and<br> preservatives to ensure that every bite is as healthy as it is tasty.</p>
+                <p class="CustomP-16-400 fst-italic" style="font-size: 14px;">Our vision is to become a household name in organic snacks, known for our commitment to quality and sustainability.</p>
+                <img src="./images/John Doe.png" alt="">
+                <p>Chief Executive Officer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Hero section 3 ends here  -->
+
+        <!-- hero section 4 (Bulk Order) starts here  -->
+        <section class=" hero4background">
+          <div class="container mt-lg-5 pt-lg-5 mt-5">
+            <!-- header section here -->
+            <div class="text-center">
+              <h1 class="cardHeader-black">Bulk Orders</h1>
+              <p class="CustomP-16-400">Our snacks are free from artificial additives, providing a pure and wholesome snacking experience. Discover<br> our range of delightful organic treats designed to satisfy your cravings while supporting a healthy lifestyle.</p>
+            </div>
+
+            <div class="row mt-lg-5 pt-lg-3">
+              <div class="col-sm-12 col-md-12 col-lg-3 mt-lg-0 mt-3">
+                <!-- first card here -->
+                <div class="border-0 rounded-3 text-center bg-white py-3 w-100" style="width: 268px; height: 482px;">
+                  <div class="div  ">
+                    <img class="BulkCard" src="./images/Frame 115.png" alt="">
+                    <p class="cardtitle-Black mt-3">Organic Almond Delight</p>
+                    <p class="CustomP-16-400">Crunchy almonds<br> coated with a touch<br> of organic honey,<br> perfect for a healthy<br> snack.</p>
+                    <button class="btn btn-outline-success px-5 mt-3">ORDER NOW</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-lg-3 mt-lg-0 mt-3">
+                <!-- second card here  -->
+                <div class="border-0 rounded-3 text-center bg-white py-3 w-100" style="width: 268px; height: 482px;">
+                  <div class="div ">
+                    <img class="BulkCard" src="./images/Frame 115 (1).png" alt="">
+                    <p class="cardtitle-Black mt-3">Organic Almond Delight</p>
+                    <p class="CustomP-16-400">Crunchy almonds<br> coated with a touch<br> of organic honey,<br> perfect for a healthy<br> snack.</p>
+                    <button class="btn btn-outline-success px-5 mt-3">ORDER NOW</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-lg-3 mt-lg-0 mt-3">
+                <!-- third card here  -->
+                <div class="border-0 rounded-3 text-center bg-white py-3 w-100" style="width: 268px; height: 482px;">
+                  <div class="div ">
+                    <img class="BulkCard" src="./images/Frame 115 (2).png" alt="">
+                    <p class="cardtitle-Black mt-3">Organic Almond Delight</p>
+                    <p class="CustomP-16-400">Crunchy almonds<br> coated with a touch<br> of organic honey,<br> perfect for a healthy<br> snack.</p>
+                    <button class="btn btn-outline-success px-5 mt-3">ORDER NOW</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-12 col-lg-3 mt-lg-0 mt-5 ">
+                <!-- fourth card here  -->
+                <div class="border-0 rounded-3 text-center bg-green py-3  BulkCard" style="width: 268px; height: 482px; background-color: #00A859;">
+                  <div class="div mt-lg-5 mt-5 pt-lg-3 pt-5">
+                    <p class="text-white mt-lg-5" >Others</p>
+                    <p class="text-white">Milk, Tools, Spice, etc.</p>
+                    <button class="btn Hero4Btn  mt-lg-5">See Others</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- hero section 4 ends here  -->
+
+    <!-- Hero section 5 our new products starts here -->
+       
+    <div class="container">
+      <h2 class="mt-lg-5 mt-5 pt-5 pt-lg-3 cardHeader-black">Our New Products</h2>
+        <!-- section header here -->
+      <div class="hero2head d-flex justify-content-between align-items-center">
+        <span class="my-lg-4 my-4 CustomP-16-400">Browse our most popular snacks and make your day<br> more beautiful and glorious.</span>
+        <button type="button" class="btn btn-outline-success fw-bold btnhero2 mb-5 mb-lg-0 py-lg-0 py-3">Browse all</button>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ">
+          <!-- first card here  -->
+          <div class="border-0 Image6Card1" >
+            <img src="./images/Images.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="card-title CustomP-14-400 my-3 my-lg-3">Coconut Flakes</h5>
+                <a class="text-reset " href="#">
+                  <i class="fa-regular fa-heart"></i>
+                </a> 
+              </div>
+              <p class="card-text cardtitle-Black">Organic Almond Delight</p>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="div">
+                  <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+                  <span>5.0 (18)</span>
+                </div>
+                <span class="fw-bold">$110</span>
+              </div>
+            </div>
+              <button class="btn customBtn mt-4 hover-underline mb-4 mb-lg-0">Add to cart</button>
+          </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ">
+            <!-- second card here  -->
+            <div class="border-0 Image6Card1" style=>
+              <img src="./images/Images (1).png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="card-title CustomP-14-400 my-3 my-lg-3">Coconut Flakes</h5>
+                  <a class="text-reset " href="#">
+                    <i class="fa-regular fa-heart"></i>
+                  </a> 
+                </div>
+                <p class="card-text cardtitle-Black">Berry Bliss Bites</p>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="div">
+                    <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+                    <span>5.0 (18)</span>
+                  </div>
+                  <span class="fw-bold">$139</span>
+                </div>
+              </div>
+                <button class="btn customBtn mt-4 hover-underline mb-4 mb-lg-0">Add to cart</button>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ">
+            <!-- third card here  -->
+            <div class="border-0 Image6Card1 " >
+              <img src="./images/Images (2).png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="card-title CustomP-14-400 my-3 my-lg-3">Coconut Flakes</h5>
+                  <a class="text-reset " href="#">
+                    <i class="fa-regular fa-heart"></i>
+                  </a> 
+                </div>
+                <p class="card-text cardtitle-Black">Coconut Crunchies</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="div">
+                    <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+                    <span>5.0 (18)</span>
+                  </div>
+                  <span class="fw-bold">$399</span>
+                </div>
+              </div>
+                <button class="btn customBtn mt-4 hover-underline mb-4 mb-lg-0">Add to cart</button>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- Hero section 5 ends here -->
+
+    <!-- hero section 6 (Black Friday) starts here  -->
+      <div class="container mt-lg-0 mt-5">
+        <h2 class="mt-lg-5 pt-lg-3 cardHeader-black">Hurry Do not Miss Out On<br> This Offers!</h2>
+          <!-- section header here -->
+        <div class="hero2head d-flex justify-content-between align-items-center">
+          <span class="my-lg-4 CustomP-16-400 mt-lg-0 mt-3">Browse our most popular snacks and make your day<br> more beautiful and glorious.</span>
+          <button type="button" class="btn btn-success btnhero2 py-4 py-lg-0 mt-lg-0 mt-4">Browse all</button>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-8 mt-lg-0 mt-5">
+              <img class="hero6Image" src="./images/Banner.png"  alt="">
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4 mt-lg-0 mt-4">
+              <div class="border-0 Image6Card1">
+                <img  src="./images/Images.png" class="card-img-top w-100 " alt="...">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="card-title CustomP-14-400 my-3 my-lg-3">Coconut Flakes</h5>
+                    <a class="text-reset " href="#">
+                      <i class="fa-regular fa-heart"></i>
+                    </a> 
+                  </div>
+                  <p class="card-text cardtitle-Black ">Organic Almond Delight</p>
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="div ">
+                      <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+                      <span>5.0 (18)</span>
+                    </div>
+                    <span class="fw-bold">$110</span>
+                  </div>
+                </div>
+                  <button class="btn customBtn mt-4 hover-underline mb-lg-0 mb-4">Add to cart</button>
+              </div>
+            </div>      
+          </div>
+
+          <!-- hero 6 bottom  card section -->
+          <div class="row mt-lg-4">
+        <div class="col-sm-12 col-md-12 col-lg-4 ">
+          <!-- first card here  -->
+          <div class="border-0 Image6Card1" >
+            <img src="./images/Images.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="card-title CustomP-14-400 my-3 my-lg-3">Coconut Flakes</h5>
+                <a class="text-reset " href="#">
+                  <i class="fa-regular fa-heart"></i>
+                </a> 
+              </div>
+              <p class="card-text cardtitle-Black">Organic Almond Delight</p>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="div">
+                  <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+                  <span>5.0 (18)</span>
+                </div>
+                <span class="fw-bold">$110</span>
+              </div>
+            </div>
+              <button class="btn customBtn mt-4 hover-underline mb-lg-0 mb-4">Add to cart</button>
+          </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-4 ">
+            <!-- second card here  -->
+            <div class="border-0 Image6Card1" >
+              <img src="./images/Images (1).png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="card-title CustomP-14-400 my-3 my-lg-3">Coconut Flakes</h5>
+                  <a class="text-reset " href="#">
+                    <i class="fa-regular fa-heart"></i>
+                  </a> 
+                </div>
+                <p class="card-text cardtitle-Black">Berry Bliss Bites</p>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="div">
+                    <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+                    <span>5.0 (18)</span>
+                  </div>
+                  <span class="fw-bold">$139</span>
+                </div>
+              </div>
+                <button class="btn customBtn mt-4 hover-underline mb-lg-0 mb-4">Add to cart</button>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-4 ">
+            <!-- third card here  -->
+            <div class="border-0 Image6Card1" >
+              <img src="./images/Images (2).png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="card-title CustomP-14-400 my-3 my-lg-3">Coconut Flakes</h5>
+                  <a class="text-reset " href="#">
+                    <i class="fa-regular fa-heart"></i>
+                  </a> 
+                </div>
+                <p class="card-text cardtitle-Black">Coconut Crunchies</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="div">
+                    <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+                    <span>5.0 (18)</span>
+                  </div>
+                  <span class="fw-bold">$399</span>
+                </div>
+              </div>
+                <button class="btn customBtn mt-4 hover-underline mb-lg-0 mb-4">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- hero section 6 ends here  -->
+
+    <!-- hero section 7 starts here -->
+    <section class= "hero4background2 PrelatiVE ">
+      <div class="container text-lg-center hero7Image mt-lg-5 pt-lg-5 py-5">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="text-center text-white mt-lg-5 ">
+              <h3 class="newfont">Subscribe Our Newsletter</h3>
+              <p class="CustomP-16-400 text-white">Receive latest updates on our products and many other things<br> every week. </p>
+              <img  class="ImgAbsolute" src="./images/Polygon 15.png" alt="">
+              <img class="ImggAbsolute" src="./images/Ellipse 2702.png" alt="">
+              <form action="" >
+                <span class="FormRelative">
+                  <input  type="email" class="form inptTBtn " placeholder="Enter your email address">
+                  <button class="fromAbsol"><i class="fa-regular fa-paper-plane" style="color: #fff;"></i></button>
+                </span>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- hero section ends here -->
+
+    <!-- footer section starts here  -->
+      <div class="container-fluid footerBackgroundIMG ">
+        <div class="container pt-5">
+          <div class="text-center">
+              <h3 class="footHead1">Excellent</h3>
+                <div class="star-rating text-center mt-3">
+                  <i class="fa-regular fa-star" style="color: #fcfcfc; background-color: #00A859; width: 47px; height: 35px;" ></i>
+                  <i class="fa-regular fa-star" style="color: #fcfcfc; background-color: #00A859; width: 47px; height: 35px;"></i>
+                  <i class="fa-regular fa-star" style="color: #fcfcfc; background-color: #00A859; width: 47px; height: 35px;"></i>
+                  <i class="fa-regular fa-star" style="color: #fcfcfc; background-color: #00A859; width: 47px; height: 35px;"></i>
+                  <i class="fa-regular fa-star" style="color: #fcfcfc; background-color: #00A859; width: 47px; height: 35px;"></i>
+              </div>
+              <p class="CustomP-14-400 text-white mt-3">Based on 13,586 reviews</p>
+              <div>
+                <span><i class="fa-solid fa-star" style="color: #047c58; width: 35px; height: 25px;"></i></span>
+                <span class="text-white fs-5">Trustpilot</span>
+              </div>
+          </div>
+          <div class="row mt-lg-5 pt-lg-3">
+            <div class="col-sm-12 col-md-4 col-lg-3">
+              <div class="div text-white">
+                <p class="customFotterp">Customer Service</p>
+                <p class="CustomP-16-400">Order Lookup</p>
+                <p class="CustomP-16-400">Bulk Order</p>
+                <p class="CustomP-16-400">Shipping & Delivery</p>
+                <p class="CustomP-16-400">Discounts</p>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3">
+              <div class="div text-white">
+                <p class="customFotterp">About Us</p>
+                <p class="CustomP-16-400">News & Blogs</p>
+                <p class="CustomP-16-400">Supplier</p>
+                <p class="CustomP-16-400">Terms & condition</p>
+                <p class="CustomP-16-400">Privacy Policy</p>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-2">
+              <div class="div text-white">
+                <p class="customFotterp">Need Help?</p>
+                <p class="CustomP-16-400">Contact Us</p>
+                <p class="CustomP-16-400">FAQs</p>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-2">
+              <div class="div text-white">
+                <p class="customFotterp">Privacy</p>
+                <p class="CustomP-16-400">Terms & Condition</p>
+                <p class="CustomP-16-400">Privacy Polivcy</p>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-2 my-lg-5 my-5">
+              <div class="div text-white">
+                <p class="customFotterp">Follow Us</p>
+                <img src="./images/Social.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid FooterbackG">
+        <div class="container py-lg-4">
+          <div class="row align-items-center">
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-lg-0 mt-3">
+              <img src="./images/Foodies logo without Banner 1.png" style="width: 40px; height: 40px" alt="">
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 mt-lg-0 mt-3">
+              <img src="./images/pay.png" alt="">
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 mt-lg-0 mt-3">
+              <small>Copyright © 2024 FoodieAmazon. All Rights Reserved</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div class="container-fluid FooterbackG py-lg-3">
+          <div class="container">
+          <div class="d-flex justify-content-between align-items-center columnDisplay">
+            <div class="div">
+              <img src="./images/Foodies logo without Banner 1.png" style="width: 40px; height: 40px" alt="">
+            </div>
+            <div class=" ">
+              <a href=""><img src="./images/Login/Group 17748.png" alt=""></a>
+              <a class="mx-4" href=""><img src="./images/Login/Group (3).png" alt=""></a>
+              <a href=""><img src="./images/Login/Group 17749.png" alt=""></a>
+             <small class="text-white ms-lg-5 ps-lg-5">Copyright © 2024 FoodieAmazon. All Rights Reserved</small>
+            </div>
+          </div>
+          </div>
         </div> -->
+    </main>
+      
+      
 
-        <!-- <div class="col-xm-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 pt-5 mt-5">
-            <div class="container">
-                <h2 class="fs1 fw-bold signC">Login</h2>
-                <div>
-                    <span class="fs-5 fw-5" style="color: #7C797A;">Don’t have an account yet? </span>
-                    <button class="signBtn fs-5 fw-5">Sign Up</button>
-                </div>
-                <div >
-                    <form>
-                        <div class="mt-4">
-                            <input type="email" class=" newinput" id="email" placeholder="Email Address">
-                        </div>
-                    
-                        <div class="mt-4">
-                            <input type="password" class=" newinput" id="password" placeholder="Password" >
-                            <button class=" Eyelogo">
-                             <i class="fas fa-eye"></i>
-                            </button> 
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-6">
-                                <div class="mt-4 form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button class="btn btn-success mt-4 py-2" style="width: 456px;" onclick="Loginbutton()">
-                            <div class="spinner-border spinner-border-sm" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                            </div>Sign up
-                        </button>
-                    <form>       
-                </div>
-            </div>
-        </div>
-    </div>  -->
- 
+
+
+
+      
+
+
     
     
 
+    
 
+
+
+
+
+    
+
+
+
+
+
+
+
+        
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.1.0/mdb.umd.min.js"></script>
     <script src="./js/index.js"></script>
 </body>
 </html>
