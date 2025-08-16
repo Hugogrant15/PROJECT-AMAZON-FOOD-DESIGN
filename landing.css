@@ -752,6 +752,17 @@
     color: #ffff;
 }
 
+.customBtnH2 {
+    width: 265px;
+    height: 60px;
+    color: #00A859;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 32px;
+    font-family: "Inter", sans-serif;
+
+}
+
 /* paroduct page media query  */
 @media screen and (max-width: 600px){
     
