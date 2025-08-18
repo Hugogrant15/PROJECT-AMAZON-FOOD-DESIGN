@@ -9,6 +9,13 @@
     padding: 0;
 }
 
+.loginBack {
+    background: url(./images/Login/Left.png) no-repeat center center /cover;
+    height: 100vh;
+    
+}
+
+
 .form-pg{
     padding-right: 200px !important;
 }

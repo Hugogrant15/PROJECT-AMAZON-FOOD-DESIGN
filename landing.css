@@ -657,6 +657,13 @@
     font-weight: 700;
     line-height: 30px;
 }
+#OrangeDoll12 {
+    color: #000;
+     font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 30px;
+}
 
 .quantityBtn {
     border: 1px solid #C4D1D0;
