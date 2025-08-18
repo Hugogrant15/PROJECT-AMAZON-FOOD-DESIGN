@@ -657,7 +657,7 @@
   }
 }
 
-/* product page styling starts here  */
+/* product styling starts here  */
 
 .CustombLackH2 {
   font-family: "Roboto", sans-serif;
@@ -785,7 +785,7 @@
   font-family: "Inter", sans-serif;
 }
 
-/* paroduct page media query  */
+/* paroduct  media query  */
 @media screen and (max-width: 600px) {
   .productImage1 {
     width: 100%;
@@ -855,7 +855,35 @@
   }
 }
 
-/* poduct page media queery ends here  */
+/* poduct  media queery ends here  */
+
+
+/* PRODUCT-PAGE STYLING STARTS HERE  */
+
+
+/* PRODUCT-PAGE MEDIA QUEERY STARTS  HERE  */
+@media screen and (max-width: 600px) {
+    .customBtnH2 {
+        width: 100%;
+    } 
+}
+
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .customBtnH2 {
+        width: 100%;
+    }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+    .customBtnH2 {
+        width: 100%;
+    }
+}
+@media (min-width: 1200px) and (max-width: 1400px) {
+    .customBtnH2 {
+        width: 100%;
+    }
+}
 
 /* WISHLIST STYLING STARTS HERE  */
 
@@ -937,7 +965,19 @@ h6 {
   }
 }
 
+
 @media (min-width: 601px) and (max-width: 900px) {
+    .wishwidth {
+        max-width: 100%;
+    }
+}
+
+
+
+@media (min-width: 901px) and (max-width: 1200px) {
+    .wishwidth {
+        max-width: 100%;
+    }
 }
 
 /* cart pop-up section starts here */
@@ -999,6 +1039,19 @@ h6 {
     width: 100% !important;
   }
 }
+@media (min-width: 901px) and (max-width: 1200px) {
+  .placeOrderBtn2 {
+    width: 100% !important;
+  }
+
+  .placeOrderBtn {
+    width: 100% !important;
+  }
+
+  .cartOrderBtn {
+    width: 100% !important;
+  }
+}
 
 /* CART LANDING STYLE STARTS HERE  */
 
@@ -1017,6 +1070,18 @@ h6 {
 @media screen and (max-width: 600px) {
   .cartOrderBtn {
     width: 100%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .cartOrderBtn {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+    .cartOrderBtn {
+    width: 100% !important;
   }
 }
 
@@ -1107,6 +1172,34 @@ h6 {
   .width213::placeholder {
     font-size: 14px;
   }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+   .width21, .width214, .width215 {
+    width: 100%;
+   }
+   
+   .width212 {
+    width: 336px;
+   }
+
+   .width213 {
+    width: 227px;
+   }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+    .width21, .width214, .width215 {
+    width: 100%;
+   }
+   
+   .width212 {
+    width: 256px
+   }
+
+   .width213 {
+    width: 100%;
+   }
 }
 
 /*  */
