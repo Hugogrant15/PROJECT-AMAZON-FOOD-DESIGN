@@ -4,6 +4,10 @@
     font-family: "Inter", sans-serif;
 }
 
+.spin, .spin2 {
+    display: none;
+}
+
 .row {
     margin: 0;
     padding: 0;

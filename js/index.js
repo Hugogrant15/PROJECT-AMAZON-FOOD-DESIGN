@@ -1,5 +1,5 @@
 function showProducts(event) {
-     location.href = "cart.html"
+     location.href = "product-page.html"
 }
 
 function proceedLogin(event) {
