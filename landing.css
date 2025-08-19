@@ -332,6 +332,7 @@
 /* hero section 4 styling starts here  */
 .hero4background {
   background-color: #efffe5;
+  
 }
 
 .Hero4Btn {
@@ -346,12 +347,28 @@
   height: 48px;
 }
 
+.hero4GreenCard {
+  color: #00A859;
+  background: #00A859;
+  height: 500px;
+}
+
 /* hero 4 styling ends here  */
 
 /* hero 6 styling starts here  */
 .hero6Image {
   width: 730px;
   height: 502px;
+}
+
+.OUTrelative {
+  position: relative;
+}
+
+.OUTabsolute {
+  position: absolute;
+  width: 355px;
+  top: 120px;
 }
 /* hero 6 styling ends here   */
 
@@ -479,21 +496,7 @@
     height: 100%; */
  }
 
- 
-
-  /* .section1Absolute {
-    position: absolute;
-    bottom: -106px;
-    z-index: -100;
-  }
-
-  .sectionAbsolute2 {
-    position: absolute;
-    bottom: -174px;
-    z-index: -100;
-  } */
-
-  .hero1absolute {
+   .hero1absolute {
      right: 52px;
     top: 645px;
   } 
@@ -566,6 +569,11 @@
     height: 457px;
   }
 
+  .OUTabsolute {
+  width: 351px;
+  top: 120px;
+}
+
   .footerBackgroundIMG {
     width: 100%;
   }
@@ -622,9 +630,20 @@
     width: 100%;
   }
 
-  /* .BulkCard {
-        width: 100% !important;
-    } */
+  .OUTabsolute {
+  width: 97%;
+  top: 210px;
+}
+
+.hero4GreenCard {
+  color: #00A859;
+  background: #00A859;
+  height: 416px;
+}
+
+
+
+
 }
 
 @media (min-width: 901px) and (max-width: 1200px) {
@@ -658,6 +677,15 @@
 
   .bulkOrderwidth {
     width: 100%;
+  }
+
+  .hero4GreenCard {
+  color: #00A859;
+  background: #00A859;
+  height: 466px;
+}
+.BulkCard {
+    width: 100% !important;
   }
 }
 
