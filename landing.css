@@ -50,17 +50,6 @@
   z-index: -100;
 }
 
-/* .starRelative {
-    position: relative;
-} */
-
-/* .starAbsolute {
-    position: absolute;
-    bottom: -90px;
-    right: -270px;
-    width: 100% !important;
-} */
-
 .hero1absolute {
   position: absolute;
   right: 177px;
@@ -147,23 +136,7 @@
   transform: scale(2);
 }
 
-/* .hero1Btn {
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 100%;
-    background: #F58634;
-    color: #fff;
-    border: 2px solid #f58634;
-    border-radius: 10px;
-    width: 145px;
-    height: 48px;
-    padding: 10px;
-} */
 .hero1Btn:hover {
-  /* background: #F58634;
-    color: #fff;
-    border-radius: 20px; */
   background-color: #f58634;
   color: white;
   padding: 10px 20px;
