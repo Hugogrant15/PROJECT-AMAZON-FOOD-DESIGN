@@ -573,6 +573,10 @@
   .BulkCard {
     width: 100% !important;
   }
+
+  .ourProdctBTN {
+    width: 100%;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
