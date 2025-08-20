@@ -52,7 +52,7 @@
 .hero1absolute {
   position: absolute;
   right: 177px;
-  top: 500px;
+  top: 490px;
 }
 
 #interBlack {
@@ -452,6 +452,9 @@
   br {
     display: none;
   }
+  .ContainHeight {
+    height: 1000px
+  }
 
   .H1background {
     top: -344px;
@@ -464,8 +467,8 @@
  }
 
    .hero1absolute {
-     right: 52px;
-    top: 645px;
+     right: 66px;
+    top: 681px;
   } 
 
   #imgWidth {
@@ -535,7 +538,7 @@
   }
 
   .OUTabsolute {
-  width: 351px;
+  max-width: 100% !important;
   top: 120px;
 }
 
@@ -570,8 +573,8 @@
   }
 
   .hero1absolute {
-    right: 277px;
-    top: 999px;
+    right: 253px;
+    top: 939px;
   }
 
   #imgWidth {
@@ -605,6 +608,9 @@
   background: #00A859;
   height: 416px;
 }
+.Image6Card1 {
+    width: 100% !important;
+  }
 
 
 
@@ -617,8 +623,8 @@
   }
 
   .hero1absolute {
-    right: 154px;
-    top: 529px;
+    right: 126px;
+    top: 422px;
   }
   .hero6Image {
     width: 100%;
@@ -650,6 +656,9 @@
   height: 466px;
 }
 .BulkCard {
+    width: 100% !important;
+  }
+  .Image6Card1 {
     width: 100% !important;
   }
 }
