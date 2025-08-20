@@ -1,4 +1,27 @@
 
+function signupButton(event) {
+     event.preventDefault();
+
+     const spinItem = document.querySelector(".spin2");
+     spinItem.style.display = "inline-block";
+
+     const getName = document.getElementById("firstName").value;
+     const getEmail = document.getElementById("email").value;
+     const getPhone = document.getElementById("phoneNumber").value;
+     const getPass = document.getElementById("password").value;
+
+     if (getName === "" || getEmail === "" || getPhone === "" || getPass === "") {
+          swal.fire({
+               icon: 'info',
+               text: 'All filds are Required',
+               confirmButtonColor:'#f58634'
+          })
+          spinItem.style.display = 'none';
+     }
+
+}
+
+
 function loginButton(event) {
      event.preventDefault()
      const spinItem = document.querySelector(".spin");
