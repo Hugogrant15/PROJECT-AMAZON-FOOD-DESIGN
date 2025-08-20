@@ -214,6 +214,7 @@
   color: #0f0b0b;
   font-size: 44px;
   line-height: 100%;
+  /* margin-top: 100px; */
 }
 
 #imgWidth {
@@ -615,6 +616,12 @@
 
 
 
+}
+
+@media (min-width: 540px) and (max-width: 540px) {
+  .ContainHeight {
+      height: 1100px
+    }
 }
 
 @media (min-width: 901px) and (max-width: 1200px) {
