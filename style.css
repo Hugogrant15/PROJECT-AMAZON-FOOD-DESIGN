@@ -90,6 +90,71 @@
     width: 456px !important;
 }
 
+
+
+
+/* oAuth styling starts here  */
+
+.err-bg {
+    /* background: linear-gradient(90deg, #00A859, #f58634); */
+    background: url(./images/backround.png);
+}
+
+.err-box {
+    margin: 2% auto;
+}
+
+.err-box img {
+    max-width: 100%;
+}
+
+.err-box h3 {
+    font-weight: bolder;
+    color: #00A859;
+    font-size: 30px;
+}
+
+.err-box p {
+    color: #f58634;
+    font-size: 20px;
+}
+
+.err-btn {
+    outline: none;
+    box-shadow: rgb(90, 103, 115) 0px 20px 30px -10px;
+    border: 0;
+    padding: 10px 25px;
+    background: #00A859;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+.mim {
+    width: 5%;
+}
+
+.fourIMG {
+    color: #00A859 !important;
+}
+
+.H1four {
+    font-size: 350px;
+    font-weight: bolder;
+    color: #f58634;
+}
+
+
+
+
+
+
+
+
+
+
+
+
  @media screen and (max-width: 600px) {
   
      .newinput{
