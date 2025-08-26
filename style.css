@@ -115,7 +115,14 @@
     border-radius: none !important;
     border: none !important;
     border-bottom: 1px solid #E8ECEF !important;
-    width: 456px !important;
+    width: 100%;
+}
+
+.newinput2 {
+    border-radius: none !important;
+    border: none !important;
+    border-bottom: 1px solid #E8ECEF !important;
+    width: 456px;
 }
 
 

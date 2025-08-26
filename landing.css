@@ -1161,6 +1161,7 @@ h6 {
 .placeOrderBtn:hover {
   color: #fff;
   background-color: #f58634;
+  border-radius: 50px;
 }
 
 @media screen and (max-width: 600px) {
