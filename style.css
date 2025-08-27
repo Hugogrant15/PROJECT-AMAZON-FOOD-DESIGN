@@ -192,7 +192,7 @@
 
  @media screen and (max-width: 600px) {
   
-     .newinput{
+     .newinput, .newinput2 {
     width: 100% !important;
     } 
 
@@ -220,7 +220,7 @@
 
 
  @media (min-width: 601px) and  (max-width : 900px) {
-    .newinput{
+    .newinput, .newinput2 {
     width: 100% !important;
     } 
 
@@ -247,7 +247,7 @@
 
 
   @media (min-width: 901px) and  (max-width : 1200px) {
-     .newinput{
+     .newinput, .newinput2{
     width: 100% !important;
     } 
 
