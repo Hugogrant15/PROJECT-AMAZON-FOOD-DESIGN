@@ -355,7 +355,7 @@
 
 /* hero 7 styling starts here  */
 .hero7Image {
-  background: url(./images/Base.png) no-repeat center center / cover;
+  /* background: url(./images/Base.png) no-repeat center center / cover; */
   width: 1117px;
   height: 349px;
   border-radius: 10px;
