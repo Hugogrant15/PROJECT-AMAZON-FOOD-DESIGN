@@ -37,9 +37,15 @@
                     <div class="mt-4">
                         <div class=" signupRelative ">
                         <input type="password" class="form-control newinput2 " id="password" placeholder="Password" >
-                        <button class="signupAbsolute" style="background: transparent; border: none;"><i class="fa-regular fa-eye"></i></button>
+                        <button class="signupAbsolute "  style="background: transparent; border: none;"><i class="fa-solid fa-eye-slash" id="eyeicon"></i></button>
                         </div>
                     </div>
+                     <div class="mt-4">
+                        <div class=" signupRelative ">
+                        <input type="password" class="form-control newinput2 " id="ConfirmPassword" placeholder="Confirm Password" >
+                        <button class="signupAbsolute signAB2"  style="background: transparent; border: none;"></button>
+                        </div>
+                    </div> 
                     <div class="mt-4 form-check">
                         <input type="checkbox" class="form-check-input" id="termsCheck">
                         <span class="newinput1">i aggree with <a style="text-decoration: none; color: #00A859;" >privacy policy</a> and <a style="text-decoration: none; color: #00A859;" href="">term of use</a></span>
@@ -58,7 +64,53 @@
     </main>
 
 
+    <script>
+        
+        // const eyeicon = document.getElementById('eyeicon');
+        // const password = document.getElementById('password');
 
+        // eyeicon.onclick = function() {
+        //     if (password.type == "password") {
+        //         password.type = "text";
+        //     } else {
+        //         password.type = "password";
+        //     }
+        // }
+
+        const eyeButton = document.querySelector('.signupAbsolute');
+        eyeButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (password.type === "password" ) {
+                password.type = "text";
+                eyeicon.classList.remove('fa-eye-slash');
+                eyeicon.classList.add('fa-eye');
+            } else {
+                password.type = "password";
+                eyeicon.classList.remove('fa-eye');
+                eyeicon.classList.add('fa-eye-slash');
+            }
+        });
+        
+
+        // const confirmPasswordInput = document.getElementById('ConfirmPassword');
+        // const confirmEyeButton = document.querySelector('.signAB2');
+        // const confirmEyeIcon = confirmEyeButton.querySelector('i');
+
+        // confirmEyeButton.addEventListener('click', function(e) {
+        //     e.preventDefault();
+        //     if (confirmPasswordInput.type === "password") {
+        //         confirmPasswordInput.type = "text";
+        //         confirmEyeIcon.classList.remove('fa-eye-slash');
+        //         confirmEyeIcon.classList.add('fa-eye');
+        //     } else {
+        //         confirmPasswordInput.type = "password";
+        //         confirmEyeIcon.classList.remove('fa-eye');
+        //         confirmEyeIcon.classList.add('fa-eye-slash');
+        //     }
+        // });
+
+
+    </script>
 
 
 
@@ -74,5 +126,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/index.js"></script>
+    
 </body>
 </html>
