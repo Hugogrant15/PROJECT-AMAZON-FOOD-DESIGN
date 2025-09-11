@@ -45,7 +45,7 @@
                     </div>
                     <div class="mt-5 signupRelative1">
                         <input  type="password"  class="form-control input-area fs-5 pb-3 IndexWidth" id="password" placeholder="Password" >
-                        <button class="signupAbsolute1"  style="background: transparent; border: none;"><i class="fa-regular fa-eye"></i></button>
+                        <button class="signupAbsolute1"  style="background: transparent; border: none;"><i class="fa-solid fa-eye-slash" id="eyeicon"></i></button>
                     </div>
                     <!-- check box and forget password section  -->
                     <div class="row mt-5">
@@ -70,11 +70,23 @@
             </div>
         </div>
      </div>
-
-
-
-    
     </main>
+
+    <script>
+         const eyeButton = document.querySelector('.signupAbsolute1');
+        eyeButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (password.type === "password" ) {
+                password.type = "text";
+                eyeicon.classList.remove('fa-eye-slash');
+                eyeicon.classList.add('fa-eye');
+            } else {
+                password.type = "password";
+                eyeicon.classList.remove('fa-eye');
+                eyeicon.classList.add('fa-eye-slash');
+            }
+        });
+    </script>
  
     
     
