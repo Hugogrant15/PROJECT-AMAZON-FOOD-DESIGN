@@ -197,14 +197,64 @@ function loginButton(event) {
     }
 }
 
+// function showProducts(event) {
+//     const products = document.querySelector(".productDisplay");
+//     event.preventDefault();
+//     const token = localStorage.getItem("key");
+//     const dashItem = new Headers();
+//     dashItem.append("Authorization", `Bearer ${token}`);
+//     const dashMethod = {
+//         method: 'GET',
+//         headers: dashItem
+//     };
+
+//     let data = [];
+//     const url = 'http://localhost:3001/amazon/document/api/products';
+//     fetch(url, dashMethod)
+//     .then(response => response.json())
+//     .then(result => {
+//         console.log(result)
+//         if (result.length === 0) {
+//             products.innerHTML = `<p class="text-center">No Records Found</p>`;
+//             return;
+//         }
+//         else {
+//             result.map((item) => {
+//                 data += `
+//                    <div class="border-0 Image6Card1" >
+//                 <img src="./images/Images.png" class="card-img-top object-fit-cover w-100 " alt="...">
+//                 <div class="card-body">
+//                 <div class="d-flex justify-content-between align-items-center">
+//                     <h5 class="card-title CustomP-14-400 my-3 my-lg-3">Coconut Flakes</h5>
+//                     <a class="text-reset " href="#">
+//                     <i class="fa-regular fa-heart"></i>
+//                     </a> 
+//                 </div>
+//                 <p class="card-text cardtitle-Black">Organic Almond Delight</p>
+
+//                 <div class="d-flex justify-content-between align-items-center">
+//                     <div class="div">
+//                     <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+//                     <span>5.0 (18)</span>
+//                     </div>
+//                     <span class="fw-bold">$110</span>
+//                 </div>
+//                 </div>
+//                 <button class="btn btn-outline-success customBtnH2  mt-4  mb-lg-0 mb-4">Add to cart</button>
+//                 `
+//                 products.innerHTML = data;
+//             })
+//         }
+//     })
+//     .catch(error => console.log('error', error));
+// }
 
 
 
 
-
-function showProducts(event) {
-     location.href = "product-page.html"
-}
+// function showProducts(event) {
+//      location.href = "product-page.html"
+// }
 
 function proceedLogin(event) {
      location.href = "login.html"
