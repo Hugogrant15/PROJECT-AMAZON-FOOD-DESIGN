@@ -229,7 +229,7 @@ function loginButton(event) {
     result.forEach(item => {
       const card = `
         <div class="col-md-3 mb-3">
-          <div class="card h-100 ">
+          <div class="card h-100 shadow border-0">
             <img src="${item.image}" style="height: 200px;" class="card-img-top object-fit-cover" alt="${item.name}">
             <div class="card-body mt-3">
               <div class="d-flex align-items-center justify-content-between">
@@ -260,13 +260,75 @@ function loginButton(event) {
     productRow.innerHTML = `<p class="text-danger text-center">Failed to load products</p>`;
   }
 }
-
-
 // Call on page load
-
 // document.addEventListener("DOMContentLoaded", showProducts);
 
+// function show 4 products
 
+const productRow1 = document.getElementById("productsRow1");
+
+    async function showProducts1(event) {
+  if (event) event.preventDefault();
+
+  const token = localStorage.getItem("key");
+  const headers = new Headers();
+  headers.append("Authorization", `Bearer ${token}`);
+
+  try {
+    const response = await fetch("http://localhost:3001/amazon/document/api/features", {
+      method: "GET",
+      headers
+    });
+
+    const result = await response.json();
+    console.log(result);
+
+    if (!result || result.length === 0) {
+      productRow1.innerHTML = `<p class="text-center">No Records Found</p>`;
+      return;
+    }
+
+    // Clear before adding
+    productRow1.innerHTML = "";
+
+    result.forEach(item => {
+      const card = `
+        <div class="col-md-4 mb-3">
+        <div class="  " style="width: 360px;" >
+            <img src="${item.image}"   class="card-img-top  " alt="${item.name}">
+                <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="card-title CustomP-14-400 my-3 my-lg-3">${item.name}</h5>
+                    <a class="text-reset " href="#">
+                    <i class="fa-regular fa-heart"></i>
+                    </a> 
+                </div>
+                <p class="card-text cardtitle-Black">${item.description.substring(0, 100)}</p>
+
+                <div class="d-flex justify-content-between align-items-center ">
+                    <div class="div">
+                    <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
+                    <span>5.0 (18)</span>
+                    </div>
+                    <span class="fw-bold">₦${item.price}</span>
+                </div>
+                </div>
+                <p class="mb-2"><small>Stock: ${item.numberInStock}</small></p>
+                <button class="btn customBtn mt-4 hover-underline mb-5 mb-lg-0">Add to cart</button>
+            </div>
+            </div>
+        </div>
+      `;
+      productRow1.innerHTML += card;
+    });
+
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    productRow1.innerHTML = `<p class="text-danger text-center">Failed to load products</p>`;
+  }
+}
+// Call on page load
+document.addEventListener("DOMContentLoaded", showProducts1);
 
 
 
