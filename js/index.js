@@ -281,6 +281,7 @@ const productRow1 = document.getElementById("productsRow1");
     });
 
     const result = await response.json();
+
     console.log(result);
 
     if (!result || result.length === 0) {
