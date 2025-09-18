@@ -263,9 +263,11 @@ function loginButton(event) {
 // Call on page load
 // document.addEventListener("DOMContentLoaded", showProducts);
 
+
 // function show 4 products
 
 const productRow1 = document.getElementById("productsRow1");
+const productRow2 = document.getElementById("productsRow2");
 
     async function showProducts1(event) {
   if (event) event.preventDefault();
@@ -291,6 +293,7 @@ const productRow1 = document.getElementById("productsRow1");
 
     // Clear before adding
     productRow1.innerHTML = "";
+    productRow2.innerHTML = "";
 
     result.forEach(item => {
       const card = `
@@ -321,6 +324,7 @@ const productRow1 = document.getElementById("productsRow1");
         </div>
       `;
       productRow1.innerHTML += card;
+      productRow2.innerHTML += card;
     });
 
   } catch (error) {
