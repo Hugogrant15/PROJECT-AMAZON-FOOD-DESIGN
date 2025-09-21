@@ -29,7 +29,7 @@
                 <a class="nav-link text-dark fw-bold"  href="./index.html">Home</a>
             </li>
             <li class="nav-item mx-3">
-                <a class="nav-link NavClr "  href="#">Our Products</a>
+                <a class="nav-link NavClr "  href="./product-page.html">Our Products</a>
             </li>
             <li class="nav-item mx-3">
                 <a class="nav-link NavClr"  href="./health-benefit.html">Health Benefits</a>
@@ -75,25 +75,27 @@
     <div class="container">
         <div class="row mt-lg-5 pt-lg-5 pt-3 mt-5">
             <div class="col-sm-12 col-md-12 col-lg-7">
-                <img src="./images/Login/Images (4).png" class="productImage1" alt="">
+              <img id="mainImage" class="w-100 border rounded mb-3 productImage1" alt="Product Image">
+                <!-- <img src="./images/Login/Images (4).png" class="productImage1" alt=""> -->
                 <div class="">
-                <img src="./images/Login/Frame 17990.png" class="w-75 mx-lg-5 px-lg-5" alt="">
+                <!-- <img src="./images/Login/Frame 17990.png" class="w-75 mx-lg-5 px-lg-5" alt=""> -->
 
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5 ">
                 <p class="CustomP-14-400">Coconut Flakes</p>
-                <h2>Coconut Crunchies</h2>
+                <h2 id="productName" class="fw-bold text-dark"></h2>
                 <div class="div">
-                  <del><small><span><i class="fa-solid fa-naira-sign"></i></span>120 </small></del>
-                  <span id="OrangeDoll" class="mt-lg-3 mt-3"><i class="fa-solid fa-naira-sign" style="color: #ec8209;"></i>60</span>
+                  <p id="productPrice" class="fs-4 text-success"></p>
+                  <!-- <del><small><span><i class="fa-solid fa-naira-sign"></i></span>120 </small></del> -->
+                  <!-- <span id="OrangeDoll" class="mt-lg-3 mt-3"><i class="fa-solid fa-naira-sign" style="color: #ec8209;"></i>60</span>  -->
                 </div>
                 <div class="div mt-lg-3 mt-3">
                   <span><i class="fa-solid fa-star" style="color: #f27907;"></i></span>
                   <span>5.0 (37)</span>
                 </div>
                 <ul class="list-unstyled">
-                    <li class="mt-lg-3 mt-3">Variety:
+                    <li class="mt-lg-3 mt-3" id="productVariety">Variety:
                         <ul>
                         <li>are unaffected by this style</li>
                         <li>will still show a bullet</li>
@@ -122,17 +124,17 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-7 mt-lg-5 mt-5">
-                <p class="cardtitle-Black12">About This Product</p>
+                <p class="cardtitle-Black12" id="productDescription">About This Product</p>
                 <ul class="list-unstyled">
                     <li class="CustomP-16-400">Indulge in the natural crunch and flavor of our Crunchy Nut Mix, a<br> blend of premium nuts roasted to perfection. This mix includes<br> almonds, cashews, and walnuts, providing a delicious and<br> nutritious snack that is rich in protein and healthy fats.  
-                        <ul class="mt-lg-3 mt-3">
+                        <ul class="mt-lg-3 mt-3" id="productIngredients">
                         <li>Blend of organic almonds, cashews, and walnuts</li>
                         <li>Lightly roasted to enhance natural flavors</li>
                         <li> No added oils or preservatives</li>
                         </ul>
                     </li>
                 </ul>
-                <small class="CustomP-16-400"><span style="color: #000; font-weight: bold;">Benefits: </span>Excellent source of protein and healthy fats. Supports<br> heart health and brain function. Satisfies hunger and boosts<br> energy.</small>
+                <small class="CustomP-16-400" id="productBenefits"><span style="color: #000; font-weight: bold;">Benefits: </span>Excellent source of protein and healthy fats. Supports<br> heart health and brain function. Satisfies hunger and boosts<br> energy.</small>
             </div>
         </div>
 
@@ -458,10 +460,46 @@
         </div>
       </div>
 
+       
+
+    <div class="container mt-4">
+  <div class="row">
+    <!-- Image + carousel -->
+    <div class="col-md-6">
+      <img id="mainImage" class="img-fluid border rounded mb-3" alt="Product Image">
+      <div id="imageCarousel" class="carousel-thumbnails d-flex gap-2"></div>
+      <button id="prevBtn" class="btn btn-outline-secondary me-2">Prev</button>
+      <button id="nextBtn" class="btn btn-outline-secondary">Next</button>
+    </div>
+
+    <!-- Details -->
+    <div class="col-md-6">
+
+      <p id="productPrice" class="fs-4 text-success"></p>
+      <p id="productDescription" class="text-muted"></p>
+      <h5>Varieties</h5>
+      <ul id="productVariety" class="list-unstyled"></ul>
+      <h5>Benefits</h5>
+      <p id="productBenefits" class="text-muted"></p>
+      <h5>Ingredients</h5>
+      <ul id="productIngredients" class="list-unstyled"></ul>
+    </div>
+  </div>
+</div>
+
+
 
   
     
-
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  if (id) {
+    productDetails(id);
+  }
+});
+</script>
 
 
 
