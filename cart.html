@@ -16,11 +16,10 @@
             <div class="container">
                 <img src="./images/Foodies logo without Banner 1.png" style="width: 50px; height: 50px" alt="">
                 <div class="position-relative me-3 d-lg-none d-md-none">
-                      <i class="fa-solid fa-bag-shopping fa-2x w-75" style="color: #0F0B0B; " ></i> <!-- Bootstrap Cart Icon -->
-                      <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
-                          5
-                          <span class="visually-hidden">items in cart</span>
-                      </span>
+                    <a href="cart.html" class="nav-link">
+                        <i class="fa-solid fa-cart-shopping fa-2x"></i>
+                        <span id="cartCount" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+                    </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -54,11 +53,10 @@
                             <i class="fa-regular fa-heart"></i>
                             </a>
                             <div class="position-relative me-3">
-                              <i class="fa-solid fa-bag-shopping fa-2x w-75" style="color: #0F0B0B; " ></i> <!-- Bootstrap Cart Icon -->
-                              <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
-                                  5
-                                  <span class="visually-hidden">items in cart</span>
-                              </span>
+                               <a href="cart.html" class="nav-link">
+                                    <i class="fa-solid fa-cart-shopping fa-2x"></i>
+                                    <span id="cartCount" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+                                </a>
                           </div>
                           <a class="text-reset me-3" href="./">
                             <i class="fa-solid fa-user fa-1x"></i>
@@ -189,6 +187,8 @@
 
                     <a href="./checkout.html"><button class="btn cartOrderBtn mt-lg-4 mt-5" type="button"> Proceed To Checkout</button></a>
                 </div>
+
+                
                 
             </div>
         </div>
@@ -203,15 +203,17 @@
             <button type="button" class="btn btn-outline-success fw-bold browseBTN my-lg-0 my-5">Browse all</button>
           </div>
 
-          <div class="div" >
-                <div id="displayRow1" class="products-scroll-x">
-                    <div class="border-0 " id="imgWidth"> 
-
-                    </div>
-              </div> 
+          <div class="bbb px-lg-5 ">
+          <div class="carousel products-scroll-x" id="carousel2">
           </div>
+        </div>
           </div> 
         </div>
+
+
+        
+
+
     
 
 
@@ -305,7 +307,8 @@
 
 
 
-
+    <h1>Shopping Cart</h1>
+  <div id="cartItems"></div>
 
 
 

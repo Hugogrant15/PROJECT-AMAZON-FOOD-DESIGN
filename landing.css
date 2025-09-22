@@ -1,5 +1,79 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
+.product-main-image {
+  width: 75%;
+  height: 700px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: block;
+  margin: 0 auto 15px auto;
+  object-fit: cover;
+}
+/* Carousel container */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+/* Thumbnails container */
+.carousel-thumbnails {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* hide scrollbar Firefox */
+  -ms-overflow-style: none; /* hide scrollbar IE/Edge */
+}
+.carousel-thumbnails::-webkit-scrollbar {
+  display: none; /* hide scrollbar Chrome */
+}
+/* Thumbnail images */
+.carousel-thumbnails img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, border 0.2s;
+  border: 2px solid transparent;
+  flex-shrink: 0; /* prevents shrinking */
+}
+.carousel-thumbnails img:hover {
+  transform: scale(1.05);
+  border: 2px solid #F86624;
+}
+.carousel-thumbnails img.active {
+  border: 2px solid #F86624;
+}
+/* Scroll buttons */
+.carousel-btn {
+  background: #F86624;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.carousel-btn:hover {
+  background: #D94D0F;
+}
+
+
+#user-status {
+  width: 10px;
+  height: 10px;
+}
+
+
+
+
+
 * {
   font-family: "Inter", sans-serif;
 }
@@ -176,7 +250,7 @@
   border: 1px solid #00a859;
   background-color: transparent;
   color: #00a859;
-  width: 360px;
+  width: 100% !important;
   height: 50px;
   font-size: 18px;
   font-weight: 600px;
@@ -230,6 +304,8 @@
 #imgWidth {
   width: 360px;
 }
+
+
 
 .products-scroll-x {
   display: flex;

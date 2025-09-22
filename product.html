@@ -13,13 +13,12 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
         <img src="./images/Foodies logo without Banner 1.png" style="width: 50px; height: 50px" alt="">
-        <div class="position-relative me-3 d-lg-none d-md-none">
-          <i class="fa-solid fa-bag-shopping fa-2x w-75" style="color: #0F0B0B; " ></i> <!-- Bootstrap Cart Icon -->
-          <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
-              5
-              <span class="visually-hidden">items in cart</span>
-          </span>
-        </div>
+         <div class="position-relative me-3 d-lg-none d-md-none">
+          <a href="cart.html" class="nav-link">
+              <i class="fa-solid fa-cart-shopping fa-2x"></i>
+              <span id="cartCount" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+          </a>
+        </div> 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -54,11 +53,16 @@
                 <i class="fa-regular fa-heart"></i>
                 </a>
                 <div class="position-relative me-3">
-                  <i class="fa-solid fa-bag-shopping fa-2x w-75" style="color: #0F0B0B; " ></i> <!-- Bootstrap Cart Icon -->
-                  <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
+
+                  <a href="cart.html" class="nav-link">
+                    <i class="fa-solid fa-cart-shopping fa-2x"></i>
+                    <span id="cartCount" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+                  </a>
+                  <!-- <i class="fa-solid fa-bag-shopping fa-2x w-75" style="color: #0F0B0B; " ></i> 
+                   <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
                       5
                       <span class="visually-hidden">items in cart</span>
-                  </span>
+                  </span> -->
                 </div>
                 <a class="text-reset me-3" href="./">
                   <i class="fa-solid fa-user fa-1x"></i>
@@ -75,12 +79,18 @@
     <div class="container">
         <div class="row mt-lg-5 pt-lg-5 pt-3 mt-5">
             <div class="col-sm-12 col-md-12 col-lg-7">
-              <img id="mainImage" class="w-100 border rounded mb-3 productImage1" alt="Product Image">
-                <!-- <img src="./images/Login/Images (4).png" class="productImage1" alt=""> -->
-                <div class="">
-                <!-- <img src="./images/Login/Frame 17990.png" class="w-75 mx-lg-5 px-lg-5" alt=""> -->
-
+              <div class="product-gallery">
+                <!-- Main Image -->
+                <div id="mainImageWrapper product-image">
+                  <img id="mainImage" class="product-main-image w-100 h-75"  src="" alt="Product">
                 </div>
+                <!-- Carousel with buttons -->
+                <div class="carousel-wrapper">
+                  <button id="prevBtn" class="carousel-btn">‹</button>
+                  <div id="imageCarousel" class="carousel-thumbnails"></div>
+                  <button id="nextBtn" class="carousel-btn">›</button>
+                </div>
+              </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5 ">
                 <p class="CustomP-14-400">Coconut Flakes</p>
@@ -105,15 +115,16 @@
                     <div class="mt-lg-3 mt-3">
                       <span class="fw-bold">Quality:</span>
                       <span>
-                        <button class=" quantityBtn">-</button>
-                        <button class="quantityBtN2">1</button>
+                        <button class=" quantityBtn" >-</button>
+                         <span id="quantityDisplay">1</span>
+                        <!-- <button class="quantityBtN2">1</button> -->
                         <button class="quantityBtn">+</button>
                       </span>
                     </div>
                     
                     <li class="mt-lg-3 mt-3 CustomP-16-400">Our Date-Coconut Delight combines the rich<br> sweetness of organic date syrup with the tropical<br> flavor of coconut flakes, creating a snack that’s both<br> indulgent and healthy.</li>
-                     <button class="btn customBtn10 mt-4 ">Add to cart</button>
-                      <button class="btn customBtn11 mt-4 ">Add to cart</button>
+                     <button class="btn customBtn10 mt-4" >Add to cart</button>
+                      <button class="btn customBtn11 mt-4 ">Check out</button>
                 </ul>
             </div>
         </div>
@@ -127,14 +138,14 @@
                 <p class="cardtitle-Black12" id="productDescription">About This Product</p>
                 <ul class="list-unstyled">
                     <li class="CustomP-16-400">Indulge in the natural crunch and flavor of our Crunchy Nut Mix, a<br> blend of premium nuts roasted to perfection. This mix includes<br> almonds, cashews, and walnuts, providing a delicious and<br> nutritious snack that is rich in protein and healthy fats.  
-                        <ul class="mt-lg-3 mt-3" id="productIngredients">
-                        <li>Blend of organic almonds, cashews, and walnuts</li>
+                        <ul class="mt-lg-3 mt-3" id="">
+                        <li id="productIngredients">Blend of organic almonds, cashews, and walnuts</li>
                         <li>Lightly roasted to enhance natural flavors</li>
                         <li> No added oils or preservatives</li>
                         </ul>
                     </li>
                 </ul>
-                <small class="CustomP-16-400" id="productBenefits"><span style="color: #000; font-weight: bold;">Benefits: </span>Excellent source of protein and healthy fats. Supports<br> heart health and brain function. Satisfies hunger and boosts<br> energy.</small>
+                <small class="CustomP-16-400" id="productBenefits"><span style="color: #000; font-weight: bold;"></span> </small>
             </div>
         </div>
 
@@ -301,13 +312,10 @@
         <button type="button" class="btn btn-outline-success fw-bold browseBTN my-lg-0 my-5">Browse all</button>
       </div>
 
-      <div class="div"  >
-            <div id="displayRow1" class="products-scroll-x">
-                <div class="border-0 " id="imgWidth"> 
-
-                </div>
-           </div> 
-      </div>
+        <div class="bbb px-lg-5 ">
+          <div class="carousel products-scroll-x" id="carousel2">
+          </div>
+        </div>
       <!-- <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-4">
           <div class="border-0 " id="imgWidth">
@@ -463,7 +471,7 @@
        
 
     <div class="container mt-4">
-  <div class="row">
+  <!-- <div class="row">
     <!-- Image + carousel -->
     <div class="col-md-6">
       <img id="mainImage" class="img-fluid border rounded mb-3" alt="Product Image">
@@ -484,7 +492,7 @@
       <h5>Ingredients</h5>
       <ul id="productIngredients" class="list-unstyled"></ul>
     </div>
-  </div>
+  </div> -->
 </div>
 
 

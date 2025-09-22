@@ -14,12 +14,10 @@
     <div class="container">
       <img src="./images/Foodies logo without Banner 1.png" style="width: 50px; height: 50px" alt="">
        <div class="position-relative me-3 d-lg-none d-md-none">
-            <a href="./cart.html"><i class="fa-solid fa-bag-shopping fa-2x w-75" style="color: #0F0B0B;" ></i> <!-- Bootstrap Cart Icon -->
-            <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
-                5
-                <span class="visually-hidden">items in cart</span>
-            </span>
-            </a>
+           <a href="cart.html" class="nav-link">
+            <i class="fa-solid fa-cart-shopping fa-2x"></i>
+            <span id="cartCount" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+          </a>
         </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -55,15 +53,18 @@
               <i class="fa-regular fa-heart" ></i>
             </a>
             <div class="position-relative me-3">
-              <a href="./cart.html"><i class="fa-solid fa-bag-shopping fa-2x w-75" style="color: #0F0B0B; " ></i></a> <!-- Bootstrap Cart Icon -->
-              <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
+              <a href="cart.html" class="nav-link">
+                    <i class="fa-solid fa-cart-shopping fa-2x"></i>
+                    <span id="cartCount" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+                  </a>
+              <!-- <a href="./cart.html"><i class="fa-solid fa-bag-shopping fa-2x w-75" style="color: #0F0B0B; " ></i></a>  -->
+              <!-- <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
                   5
                   <span class="visually-hidden">items in cart</span>
-              </span>
+              </span> -->
            </div>
             <a class="text-reset me-3" href="./">
-              <i class="fa-solid fa-user-plus"></i>
-              <i class="fa-solid fa-user-plus"></i>
+              <i class="fa-solid fa-user"></i>
             </a>
             <button class="btn btn-success " type="submit">Contact us</button>
           </div>
@@ -143,13 +144,18 @@
           <span class="my-lg-4 my-4 CustomP-16-400 ">Browse our most popular snacks and make your day<br> more beautiful and glorious.</span>
           <button type="button" class="btn btn-outline-success fw-bold btnhero2  py- py-lg-3 py-3 my-lg-0 my-4">Browse All</button>
         </div>
-
-          <div class="div  "  >
-            <div id="productsRow1" class="products-scroll-x">
+        
+        <div class="bbb px-lg-5 ">
+          <div class="carousel products-scroll-x" id="carousel1">
+          </div>
+        </div>
+          
+          <div class="div d-flex"  >
+            <!-- <div id="productsRow1" class="products-scroll-x">
                 <div class="border-0 " id="imgWidth">
-
+                  
                 </div>
-            </div>
+            </div> -->
 
 
 
@@ -411,15 +417,10 @@
           <button type="button" class="btn btn-outline-success fw-bold btnhero2 mb-5 mb-lg-0 py-lg-3 py-3">Browse All</button>
         </div>
 
-          <div class="div"  >
-            <div id="productsRow2" class="products-scroll-x">
-                <div class="border-0 " id="imgWidth"> 
-
-                </div>
-           </div>
-
-         
+          <div class="bbb px-lg-5 ">
+          <div class="carousel products-scroll-x" id="carousel2">
           </div>
+        </div>
       </div>
       <!-- Hero section 5 ends here -->
 
