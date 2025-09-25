@@ -64,10 +64,22 @@
                       <span class="visually-hidden">items in cart</span>
                   </span> -->
                 </div>
-                <a class="text-reset me-3" href="./">
-                  <i class="fa-solid fa-user fa-1x"></i>
-                </a>
-                <button class="btn btn-success" type="submit">Contact us</button>
+                <div id="userContainer" style="position: relative; display: inline-block; z-index: 1200;">
+              <!-- use a button so it's always clickable and accessible -->
+              <button id="logoutBtn" type="button" class="btn btn-link p-0 me-3" aria-label="User menu"
+                      style="border: none; background: transparent; cursor: pointer;">
+                <i id="logoutIcon" class="fa-solid fa-user " style="color: #333;"></i>
+              </button>
+
+              <!-- badge -->
+              <span id="loginBadge"
+                style="display:none; position: absolute; top: 0; right: -6px; 
+                      background: #00A859; color: #fff; font-size: 10px; 
+                      padding: 2px 6px; border-radius: 50%; pointer-events: none;">
+                     ✓
+              </span>
+            </div>
+                <button class="btn btn-success ms-3" type="submit">Contact us</button>
             </div>
             </form>
         </div>
@@ -492,11 +504,78 @@
       <h5>Ingredients</h5>
       <ul id="productIngredients" class="list-unstyled"></ul>
     </div>
-  </div> -->
+  </div> 
 </div>
 
 
+<script>
+            document.addEventListener('DOMContentLoaded', () => {
+        const logoutBtn = document.getElementById('logoutBtn');
+        const loginBadge = document.getElementById('loginBadge');
 
+        // Safe initialization of badge on load
+        if (loginBadge) {
+          const token = localStorage.getItem('key');
+          const email = localStorage.getItem('customerEmail') || '';
+          if (token) {
+            loginBadge.style.display = 'inline-block';
+            if (email) loginBadge.textContent = email.charAt(0).toUpperCase();
+          } else {
+            loginBadge.style.display = 'none';
+          }
+        }
+
+        // If no button found, bail out (prevents null errors)
+        if (!logoutBtn) {
+          console.warn('logoutBtn not found in DOM.');
+          return;
+        }
+
+        // Optional: debug log so you can confirm handler is attached
+        console.log('logout button initialized');
+
+        // Attach click listener
+        logoutBtn.addEventListener('click', (e) => {
+          // quick debug log
+          console.log('logoutBtn clicked', e);
+
+          // Show confirmation
+          Swal.fire({
+            title: 'Are you sure you want to log out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Logout',
+            cancelButtonText: 'No',
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Clear localStorage keys
+              localStorage.removeItem("key");
+              localStorage.removeItem("customerloginid");
+              localStorage.removeItem("customerid");
+              localStorage.removeItem("cart");
+              localStorage.removeItem("site_cart_v1");
+
+              // hide badge if present
+              if (loginBadge) loginBadge.style.display = 'none';
+
+              // show success and redirect
+              Swal.fire({
+                icon: 'success',
+                title: 'Logged Out',
+                text: 'You have been successfully logged out.',
+                timer: 1200,
+                showConfirmButton: false
+              });
+
+              setTimeout(() => { window.location.href = 'login.html'; }, 1200);
+            }
+          });
+        }, { passive: true });
+      });
+
+    </script>
   
     
 <script>

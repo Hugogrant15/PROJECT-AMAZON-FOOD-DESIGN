@@ -152,6 +152,7 @@ function loginButton(event) {
             if (result.success || result.token ) {
                 localStorage.setItem("key", result.token)
                 localStorage.setItem("customerloginid", result._id)
+
                 const currentId = localStorage.getItem('customerloginid')
                 const previousId = localStorage.getItem('customerid')
 
@@ -161,6 +162,8 @@ function loginButton(event) {
                     text: `Youre Logging In With a Different Account`,
                     confirmButtonColor: "#2D85DE"
                 })
+                  // ✅ Show badge immediately
+                
                 setTimeout(() => {
                     
                 }, 1000)
@@ -176,6 +179,8 @@ function loginButton(event) {
                 }, 3000)
                 localStorage.setItem("customerid", currentId );
             }
+            // const loginBadge = document.getElementById("loginBadge");
+            //     if (loginBadge) loginBadge.style.display = "inline-block";
             else {
                 Swal.fire({
                     icon: 'info',
@@ -393,27 +398,43 @@ function renderCartPage() {
   cart.forEach(item => {
     const lineTotal = Number(item.price || 0) * Number(item.quantity || 1);
     const row = document.createElement("div");
-    row.className = "d-flex align-items-center justify-content-between p-2 border-bottom flex-wrap";
-    row.style.gap = "12px";
+    row.className = "  col-md-7";
+    row.style.gap = "";
     row.innerHTML = `
-      <div class="d-flex align-items-center" style="gap:12px;">
-        <img src="${item.image || "https://via.placeholder.com/80"}" alt="${escapeHtml(item.name)}" width="80" height="60" style="object-fit:cover;">
-        <div>
-          <strong>${escapeHtml(item.name)}</strong><br>
-          ₦${lineTotal.toLocaleString()}
-          <small class="text-muted d-block">(₦${Number(item.price || 0).toLocaleString()} each)</small>
-        </div>
-      </div>
-      <div class="d-flex align-items-center" style="gap:10px;">
-        <div class="input-group input-group-sm" style="width:110px;">
-          <button class="btn btn-outline-secondary qty-btn" data-id="${item.id}" data-change="-1">−</button>
-          <input type="text" readonly class="form-control text-center" value="${item.quantity}">
-          <button class="btn btn-outline-secondary qty-btn" data-id="${item.id}" data-change="1">+</button>
-        </div>
-        <button class="btn btn-danger btn-sm remove-btn" data-id="${item.id}">
-          <i class="fa-solid fa-trash"></i> Remove
-        </button>
-      </div>
+            
+          <div class="d-flex justify-content-between align-items-center ">
+              <p class="CustomP-16-pop mt fw-bold">Item 1</p> 
+            
+              <div class="div d-flex align-items-center">
+                <p><a class="link-offset-2 CustomP-16-400 me-3 me-lg-3" href="#">save for later</a></p>
+                <button class=" CustomP-16-400 remove-btn mb-3" data-id="${item.id}" style = "border: none; background: transparent; " >
+                <i class="fa-solid fa-trash"></i> Remove
+              </button>
+              </div>
+
+            <div class="d-flex align-items-center justify-content-between" style="gap:10px;">
+              <div class="input-group input-group-sm" style="width:110px;">
+                  <button class="btn btn-outline-secondary qty-btn" data-id="${item.id}" data-change="-1">−</button>
+                  <input type="text" readonly class="form-control text-center" value="${item.quantity}">
+                  <button class="btn btn-outline-secondary qty-btn" data-id="${item.id}" data-change="1">+</button>
+              </div>
+            </div>
+          </div>
+          
+      
+
+
+
+
+          <div class="d-flex align-items-center" style="gap:12px;">
+            <img src="${item.image || "https://via.placeholder.com/80"}" alt="${escapeHtml(item.name)}" width="100" height="100" style="object-fit:cover;">
+              <div>
+                <strong class="mt-2">${escapeHtml(item.name)}</strong><br>
+                ₦${lineTotal.toLocaleString()}
+                <small class="text-muted d-block ">(₦${Number(item.price || 0).toLocaleString()} each)</small>
+              </div>
+          </div>
+
     `;
     container.appendChild(row);
   });
@@ -537,7 +558,7 @@ async function fiveProducts() {
         col.className = "  ";
         col.innerHTML = `
           <div class=" ">
-              <div class="card h-100  shadow ">
+              <div class="card h-100 shadow border-0">
                   <img  style = "object-fit: cover; width: 360px; height: 300px;" src="${imageSrc}" alt="${product.name}"
                       class="card-img-top product-img px-lg-0 px-2"
                       id="imageReveal"
@@ -558,13 +579,24 @@ async function fiveProducts() {
                         </div>
                         <span class="fw-bold mt-3">₦${product.price}</span>
                      </div>
-                      <button type="button" class="btn  hover-underline   mt-5">Add To Cart</button>
+                     <div class="mt-5">
+                     <button
+                      type="button"
+                      class="cart-btn btn btn-outline-success mt-auto w-100 py-3 fs-5 mt-5"
+                      data-product-id="${productId}"
+                      data-product-name="${escapeHtml(product.name)}"
+                      data-product-price="${product.price}"
+                      data-product-image="${Array.isArray(product.image) ? product.image[0] : (product.image || '')}">
+                      Add To Cart
+                    </button>
+                    </div>
                   </div>
-                </div>
+              </div>
           </div>
         `;
         productsRow.appendChild(col);
       });
+        syncCartButtons();
     });
   } catch (error) {
     console.error("Error loading products:", error);
@@ -761,6 +793,138 @@ function updateMainImage() {
 
 
 
+
+
+
+
+
+// -------------------
+// LOGIN FUNCTION
+// -------------------
+// function loginButton(event) {
+//   event.preventDefault();
+//   const spinItem = document.querySelector(".spin");
+//   spinItem.style.display = "inline-block";
+
+//   const getEmail = document.getElementById("email").value;
+//   const getPassword = document.getElementById("password").value;
+
+//   if (getEmail === "" || getPassword === "") {
+//     Swal.fire({
+//       icon: 'info',
+//       text: 'All fields are required!',
+//       confirmButtonColor: "#00A859"
+//     });
+//     spinItem.style.display = "none";
+//     return;
+//   }
+
+//   const signData = { email: getEmail, password: getPassword };
+//   const signMethod = {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(signData)
+//   };
+
+//   fetch('http://localhost:3001/amazon/document/api/login', signMethod)
+//     .then(response => response.json())
+//     .then(result => {
+//       console.log(result);
+
+//       if (result.success || result.token) {
+//         // Save token and ids
+//         localStorage.setItem("key", result.token);
+//         localStorage.setItem("customerloginid", result._id);
+//         localStorage.setItem("customerid", result._id);
+
+//         Swal.fire({
+//           icon: 'success',
+//           text: `Login Successful`,
+//           confirmButtonColor: "#2D85DE",
+//           timer: 1500,
+//           showConfirmButton: false
+//         });
+
+//         // ✅ Show badge immediately
+//         const loginBadge = document.getElementById("loginBadge");
+//         if (loginBadge) loginBadge.style.display = "inline-block";
+
+//         // Redirect
+//         setTimeout(() => {
+//           location.href = "index.html";
+//         }, 2000);
+//       } else {
+//         Swal.fire({
+//           icon: 'info',
+//           text: result.message || 'Login Failed',
+//           confirmButtonColor: "#2D85DE"
+//         });
+//         spinItem.style.display = "none";
+//       }
+//     })
+//     .catch(error => {
+//       console.error('error', error);
+//       Swal.fire({
+//         icon: 'info',
+//         text: `Something went wrong, Try Again`,
+//         confirmButtonColor: "#2D85DE"
+//       });
+//       spinItem.style.display = "none";
+//     });
+// }
+
+// -------------------
+// LOGOUT FUNCTION
+// -------------------
+// window.addEventListener("DOMContentLoaded", () => {
+//   const logoutIcon = document.getElementById("logoutIcon");
+//   const loginBadge = document.getElementById("loginBadge");
+
+//   // Show/hide badge depending on token
+//   if (loginBadge) {
+//     const token = localStorage.getItem("key");
+//     loginBadge.style.display = token ? "inline-block" : "none";
+//   }
+
+//   if (logoutIcon) {
+//     logoutIcon.addEventListener("click", () => {
+//       Swal.fire({
+//         title: 'Are you sure you want to log out?',
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonText: 'Yes, Logout',
+//         cancelButtonText: 'No',
+//         confirmButtonColor: "#d33",
+//         cancelButtonColor: "#3085d6"
+//       }).then((result) => {
+//         if (result.isConfirmed) {
+//           // Clear login data
+//           localStorage.removeItem("key");
+//           localStorage.removeItem("customerloginid");
+//           localStorage.removeItem("customerid");
+//           localStorage.removeItem("site_cart_v1");
+
+//           // Hide badge
+//           if (loginBadge) loginBadge.style.display = "none";
+
+//           Swal.fire({
+//             icon: 'success',
+//             title: 'Logged Out',
+//             text: 'You have been successfully logged out.',
+//             confirmButtonColor: "#00A859",
+//             timer: 1500,
+//             showConfirmButton: false
+//           });
+
+//           // Redirect to login page
+//           setTimeout(() => {
+//             location.href = "login.html";
+//           }, 2000);
+//         }
+//       });
+//     });
+//   }
+// });
 
 
 

@@ -57,13 +57,22 @@
                                     <i class="fa-solid fa-cart-shopping fa-2x"></i>
                                     <span id="cartCount" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
                                 </a>
+                            </div>
+                         <div id="userContainer" style="position: relative; display: inline-block; z-index: 1200;">
+                            <!-- use a button so it's always clickable and accessible -->
+                            <button id="logoutBtn" type="button" class="btn btn-link p-0" aria-label="User menu"
+                                    style="border: none; background: transparent; cursor: pointer;">
+                              <i id="logoutIcon" class="fa-solid fa-user " style="color: #333;"></i>
+                            </button>
+
+                            <!-- badge -->
+                            <span id="loginBadge"
+                              style="display:none; position: absolute; top: 0; right: -6px; 
+                                    background: #00A859; color: #fff; font-size: 10px; 
+                                    padding: 2px 6px; border-radius: 50%; pointer-events: none;">
+                                  ✓
+                            </span>
                           </div>
-                          <a class="text-reset me-3" href="./">
-                            <i class="fa-solid fa-user fa-1x"></i>
-                          </a>
-                            <!-- <a class="text-reset me-3" href="#">
-                            <i class="fas fa-bell"></i>
-                            </a> -->
                             <button class="btn btn-success" type="submit">Contact us</button>
                         </div>
                     </form>
@@ -305,10 +314,47 @@
 
     
 
+    <!-- <div class="row"> -->
+      <div class="container">
+        <h1>Shopping Cart</h1>
+        
+        <div id="cartItems">
+        </div>
+        
+
+        <div class=" col-md-5 ">
+            <div class="d-flex justify-content-between mt-lg-0 mt-5">
+              <p class="popupblack mb-lg-0">Order Summary</p>
+              <p class="fw-bold">$582</p>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center">
+                <p>Original Price</p>
+                <p>$582.00</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <p>Savings</p>
+                <p>$$82.00</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <p>Shipping</p>
+                <p>FREE</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <p>Estimated Sales Tax</p>
+                <p>$3.50</p>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="fw-bold">Total</p>
+                <p class="fw-bold">$496.50</p>
+            </div>
 
 
-    <h1>Shopping Cart</h1>
-  <div id="cartItems"></div>
+            <a href="./checkout.html"><button class="btn cartOrderBtn mt-lg-4 mt-5" type="button"> Proceed To Checkout</button></a>
+        </div>
+      </div>
+    </div>
 
 
 
