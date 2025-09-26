@@ -437,9 +437,9 @@ function renderCartPage() {
           <div class="d-flex justify-content-between align-items-center diSplay">
               <div class="div d-flex align-items-center">
                 <p><a class="link-offset-2 CustomP-16-400 me-3 me-lg-3" href="#">save for later</a></p>
-                <button class=" CustomP-16-400 remove-btn mb-3" data-id="${item.id}" style = "border: none; background: transparent; " >
+                <button class=" CustomP-16-400 remove-btn mb-3 mb-lg-3" data-id="${item.id}" style = "border: none; background: transparent; " >
                 <i class="fa-solid fa-trash"></i> Remove
-              </button>
+                </button>
               </div>
 
             <div class="d-flex align-items-center justify-content-between" style="gap:10px;">
@@ -455,7 +455,7 @@ function renderCartPage() {
             <img src="${item.image || "https://via.placeholder.com/80"}" alt="${escapeHtml(item.name)}" width="120" height="120" style="object-fit:cover;">
               <div class="">
                 <strong class="cartPTAG">${escapeHtml(item.name)}</strong><br>
-                <p class=" CustomP-16-400 ">Product ID: ${escapeHtml(item.id)}</p>
+                <p class=" CustomP-16-400CT ">Product ID: ${escapeHtml(item.id)}</p>
                 ₦${lineTotal.toLocaleString()}
                 <small class="text-muted d-block mb-2 fw-bold text-dark">(₦${Number(item.price || 0).toLocaleString()} each)</small>
               </div>
@@ -493,7 +493,7 @@ function renderOrderSummary() {
 
   // 2. Render summary
   summaryEl.innerHTML = `
-    <div class="border-top pt-4 ">
+    <div class="border-top pt-4 pt-lg-4 ">
       <p>Original Price: <span class="float-end">₦${originalPrice.toLocaleString()}</span></p>
       <p>Savings (5%): <span class="float-end text-success">-₦${savings.toLocaleString()}</span></p>
       <p>Shipping: <span class="float-end">FREE</span></p>

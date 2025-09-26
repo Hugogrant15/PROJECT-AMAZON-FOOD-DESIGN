@@ -1246,6 +1246,14 @@ h6 {
 
 }
 
+.CustomP-16-400CT {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 20px;
+  color: #4d4d4d;
+}
+
 .cartOrderBtn {
   font-family: "Inter", sans-serif;
   width: 100%;
@@ -1268,6 +1276,22 @@ h6 {
   .cartOrderBtn {
     width: 100%;
   }
+
+  .cartPTAG {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 10px;
+
+}
+
+.CustomP-16-400CT {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 20px;
+  color: #4d4d4d;
+}
+
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
