@@ -251,6 +251,33 @@ function loginButton(event) {
 
 const CART_KEY = "site_cart_v1";
 let cart = [];
+
+// -------------------- Toast Setup --------------------
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 2000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  }
+});
+let toastOffset = 0;
+function showStackedToast(icon, title) {
+  Toast.fire({
+    icon,
+    title,
+    didOpen: (toast) => {
+      toast.style.marginTop = `${toastOffset}px`;
+      toastOffset += 60;
+      toast.addEventListener("animationend", () => {
+        toastOffset = 0;
+      });
+    }
+  });
+}
 // -------------------- Cart helpers --------------------
 function loadCart() {
   try {
@@ -265,6 +292,7 @@ function saveCart() {
   updateCartCount();
   syncCartButtons();
   renderCartPage();
+  renderOrderSummary();
   // notify any same-page listeners
   document.dispatchEvent(new CustomEvent("cartUpdated", { detail: { cart } }));
   // other tabs will receive storage event automatically
@@ -289,10 +317,15 @@ function addToCart(product) {
     });
   }
   saveCart();
+  showStackedToast("success", `${product.name} added to cart`);
 }
 function removeFromCart(id) {
+  const item = findItem(id);
   cart = cart.filter(i => String(i.id) !== String(id));
   saveCart();
+  if (item) {
+    showStackedToast("error", `${item.name} removed from cart`);
+  }
 }
 function setQty(id, qty) {
   const item = findItem(id);
@@ -305,13 +338,7 @@ function toggleCart(product) {
   if (isInCart(product.id)) removeFromCart(product.id);
   else addToCart(product);
 }
-// -------------------- UI sync --------------------
-// function updateCartCount() {
-//   const cartCount = document.getElementById("cartCount") || document.getElementById("cartCount1") ;
-//   if (!cartCount) return;
-//   const totalProducts = cart.length; // unique products only
-//   cartCount.textContent = totalProducts;
-// }
+
 function updateCartCount() {
   if (typeof cart === 'undefined') return; // make sure `cart` exists
   const totalProducts = cart.length; // unique products only
@@ -369,7 +396,7 @@ function renderProducts(products, containerId = "productsRow") {
           </div>
           <button
             type="button"
-            class="cart-btn btn btn-outline-success mt-auto w-100 py-3 fs-5"
+            class="cart-btn btn btn-outline-success mt-4 w-100 py-3 fs-5 "
             data-product-id="${productId}"
             data-product-name="${escapeHtml(product.name)}"
             data-product-price="${product.price}"
@@ -395,16 +422,19 @@ function renderCartPage() {
     if (totalEl) totalEl.textContent = "₦0";
     return;
   }
+  const title = document.createElement("p");
+  title.className = "bill fw-bold fs-4 text-dark";
+  title.textContent = `Shopping Cart (${cart.length} items)`;
+  container.appendChild(title);
+
   cart.forEach(item => {
     const lineTotal = Number(item.price || 0) * Number(item.quantity || 1);
     const row = document.createElement("div");
-    row.className = "  col-md-7";
+    row.className = "  ";
     row.style.gap = "";
     row.innerHTML = `
             
-          <div class="d-flex justify-content-between align-items-center ">
-              <p class="CustomP-16-pop mt fw-bold">Item 1</p> 
-            
+          <div class="d-flex justify-content-between align-items-center diSplay">
               <div class="div d-flex align-items-center">
                 <p><a class="link-offset-2 CustomP-16-400 me-3 me-lg-3" href="#">save for later</a></p>
                 <button class=" CustomP-16-400 remove-btn mb-3" data-id="${item.id}" style = "border: none; background: transparent; " >
@@ -421,17 +451,13 @@ function renderCartPage() {
             </div>
           </div>
           
-      
-
-
-
-
           <div class="d-flex align-items-center" style="gap:12px;">
-            <img src="${item.image || "https://via.placeholder.com/80"}" alt="${escapeHtml(item.name)}" width="100" height="100" style="object-fit:cover;">
-              <div>
-                <strong class="mt-2">${escapeHtml(item.name)}</strong><br>
+            <img src="${item.image || "https://via.placeholder.com/80"}" alt="${escapeHtml(item.name)}" width="120" height="120" style="object-fit:cover;">
+              <div class="">
+                <strong class="cartPTAG">${escapeHtml(item.name)}</strong><br>
+                <p class=" CustomP-16-400 ">Product ID: ${escapeHtml(item.id)}</p>
                 ₦${lineTotal.toLocaleString()}
-                <small class="text-muted d-block ">(₦${Number(item.price || 0).toLocaleString()} each)</small>
+                <small class="text-muted d-block mb-2 fw-bold text-dark">(₦${Number(item.price || 0).toLocaleString()} each)</small>
               </div>
           </div>
 
@@ -441,6 +467,51 @@ function renderCartPage() {
   const total = cart.reduce((s, it) => s + (Number(it.price || 0) * Number(it.quantity || 0)), 0);
   if (totalEl) totalEl.textContent = `₦${total.toLocaleString()}`;
 }
+
+// order summary function 
+function renderOrderSummary() {
+  const summaryEl = document.getElementById("orderSummary");
+  if (!summaryEl) return;
+
+  if (!cart.length) {
+    summaryEl.innerHTML = `
+      <p>Your cart is empty</p>
+      <h4>Total: ₦0</h4>
+    `;
+    return;
+  }
+
+  // 1. Calculate values
+  const originalPrice = cart.reduce(
+    (sum, item) => sum + (Number(item.price || 0) * Number(item.quantity || 1)),
+    0
+  );
+  const savings = originalPrice * 0.05; // 5% savings
+  const subtotal = originalPrice - savings;
+  const estimatedTax = subtotal * 0.05; // 5% tax
+  const total = subtotal + estimatedTax;
+
+  // 2. Render summary
+  summaryEl.innerHTML = `
+    <div class="border-top pt-4 ">
+      <p>Original Price: <span class="float-end">₦${originalPrice.toLocaleString()}</span></p>
+      <p>Savings (5%): <span class="float-end text-success">-₦${savings.toLocaleString()}</span></p>
+      <p>Shipping: <span class="float-end">FREE</span></p>
+      <p>Estimated Sales Tax (5%): <span class="float-end">₦${estimatedTax.toLocaleString()}</span></p>
+      <hr>
+      <h5>Total: <span class="float-end fw-bold">₦${total.toLocaleString()}</span></h5>
+    </div>
+    
+  `;
+}
+
+
+
+
+
+
+
+
 // -------------------- Fetching --------------------
 async function loadProductsFromApi() {
   // try both container ids, so function runs only if product page exists
@@ -524,6 +595,8 @@ window.addEventListener("storage", (e) => {
     updateCartCount();
     syncCartButtons();
     renderCartPage();
+    
+
   }
 });
 // -------------------- Init on page load --------------------
@@ -535,6 +608,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCartPage();
   // fetch products and render if on product page
   loadProductsFromApi();
+  renderOrderSummary();
 });
 // function to show all products ends here
 
@@ -735,59 +809,7 @@ function updateMainImage() {
   
    
 
-//   
-//     const cartCountEl = document.getElementById("cart-count"); // shopping cart icon badge
-//     const addBtn = document.getElementById("addBtn");   // increment button
-//     const minusBtn = document.getElementById("minusBtn"); // decrement button
-//     const addToCartBtn = document.getElementById("addToCartBtn"); // add-to-cart button
-//     const qtyEl = document.getElementById("quantity"); // element showing qty number
 
-//     let quantity = 1;
-
-//     // Display initial quantity
-//     qtyEl.textContent = quantity;
-
-//     // Increment button
-//     addBtn.addEventListener("click", () => {
-//         quantity++;
-//         qtyEl.textContent = quantity;
-//     });
-
-//     // Decrement button
-//     minusBtn.addEventListener("click", () => {
-//         if (quantity > 1) {
-//             quantity--;
-//             qtyEl.textContent = quantity;
-//         }
-//     });
-
-//     // Add to Cart button
-//     addToCartBtn.addEventListener("click", () => {
-//         let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-//         // check if product already exists
-//         let existing = cart.find(item => item.id === productId);
-//         if (existing) {
-//             existing.quantity += quantity;
-//         } else {
-//             cart.push({ id: productId, quantity });
-//         }
-
-//         // save back to localStorage
-//         localStorage.setItem("cart", JSON.stringify(cart));
-
-//         // update cart icon
-//         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-//         cartCountEl.textContent = totalItems;
-
-//         console.log("Cart updated:", cart);
-//     });
-
-//     // Load cart count on page load
-//     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-//     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-//     cartCountEl.textContent = totalItems;
-// }
 
 
 
@@ -873,58 +895,7 @@ function updateMainImage() {
 //     });
 // }
 
-// -------------------
-// LOGOUT FUNCTION
-// -------------------
-// window.addEventListener("DOMContentLoaded", () => {
-//   const logoutIcon = document.getElementById("logoutIcon");
-//   const loginBadge = document.getElementById("loginBadge");
 
-//   // Show/hide badge depending on token
-//   if (loginBadge) {
-//     const token = localStorage.getItem("key");
-//     loginBadge.style.display = token ? "inline-block" : "none";
-//   }
-
-//   if (logoutIcon) {
-//     logoutIcon.addEventListener("click", () => {
-//       Swal.fire({
-//         title: 'Are you sure you want to log out?',
-//         icon: 'warning',
-//         showCancelButton: true,
-//         confirmButtonText: 'Yes, Logout',
-//         cancelButtonText: 'No',
-//         confirmButtonColor: "#d33",
-//         cancelButtonColor: "#3085d6"
-//       }).then((result) => {
-//         if (result.isConfirmed) {
-//           // Clear login data
-//           localStorage.removeItem("key");
-//           localStorage.removeItem("customerloginid");
-//           localStorage.removeItem("customerid");
-//           localStorage.removeItem("site_cart_v1");
-
-//           // Hide badge
-//           if (loginBadge) loginBadge.style.display = "none";
-
-//           Swal.fire({
-//             icon: 'success',
-//             title: 'Logged Out',
-//             text: 'You have been successfully logged out.',
-//             confirmButtonColor: "#00A859",
-//             timer: 1500,
-//             showConfirmButton: false
-//           });
-
-//           // Redirect to login page
-//           setTimeout(() => {
-//             location.href = "login.html";
-//           }, 2000);
-//         }
-//       });
-//     });
-//   }
-// });
 
 
 

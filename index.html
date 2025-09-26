@@ -152,7 +152,7 @@
           
         <div class="hero2head d-flex justify-content-between align-items-center">
           <span class="my-lg-4 my-4 CustomP-16-400 ">Browse our most popular snacks and make your day<br> more beautiful and glorious.</span>
-          <button type="button" class="btn btn-outline-success fw-bold btnhero2  py- py-lg-3 py-3 my-lg-0 my-4">Browse All</button>
+          <a href="./product-page.html"><button type="button" class="btn btn-outline-success fw-bold btnhero2  py- py-lg-3 py-3 my-lg-0 my-4">Browse All</button></a>
         </div>
         
         <div class="bbb px-lg-5 ">
@@ -660,71 +660,71 @@
 
 
      <script>
-            document.addEventListener('DOMContentLoaded', () => {
-        const logoutBtn = document.getElementById('logoutBtn');
-        const loginBadge = document.getElementById('loginBadge');
+          document.addEventListener('DOMContentLoaded', () => {
+      const logoutBtn = document.getElementById('logoutBtn');
+      const loginBadge = document.getElementById('loginBadge');
 
-        // Safe initialization of badge on load
-        if (loginBadge) {
-          const token = localStorage.getItem('key');
-          const email = localStorage.getItem('customerEmail') || '';
-          if (token) {
-            loginBadge.style.display = 'inline-block';
-            if (email) loginBadge.textContent = email.charAt(0).toUpperCase();
-          } else {
-            loginBadge.style.display = 'none';
+      // Safe initialization of badge on load
+      if (loginBadge) {
+        const token = localStorage.getItem('key');
+        const email = localStorage.getItem('customerEmail') || '';
+        if (token) {
+          loginBadge.style.display = 'inline-block';
+          if (email) loginBadge.textContent = email.charAt(0).toUpperCase();
+        } else {
+          loginBadge.style.display = 'none';
+        }
+      }
+
+      // If no button found, bail out (prevents null errors)
+      if (!logoutBtn) {
+        console.warn('logoutBtn not found in DOM.');
+        return;
+      }
+
+      // Optional: debug log so you can confirm handler is attached
+      console.log('logout button initialized');
+
+      // Attach click listener
+      logoutBtn.addEventListener('click', (e) => {
+        // quick debug log
+        console.log('logoutBtn clicked', e);
+
+        // Show confirmation
+        Swal.fire({
+          title: 'Are you sure you want to log out?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, Logout',
+          cancelButtonText: 'No',
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#3085d6"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Clear localStorage keys
+            localStorage.removeItem("key");
+            localStorage.removeItem("customerloginid");
+            localStorage.removeItem("customerid");
+            localStorage.removeItem("cart");
+            localStorage.removeItem("site_cart_v1");
+
+            // hide badge if present
+            if (loginBadge) loginBadge.style.display = 'none';
+
+            // show success and redirect
+            Swal.fire({
+              icon: 'success',
+              title: 'Logged Out',
+              text: 'You have been successfully logged out.',
+              timer: 1200,
+              showConfirmButton: false
+            });
+
+            setTimeout(() => { window.location.href = 'login.html'; }, 1200);
           }
-        }
-
-        // If no button found, bail out (prevents null errors)
-        if (!logoutBtn) {
-          console.warn('logoutBtn not found in DOM.');
-          return;
-        }
-
-        // Optional: debug log so you can confirm handler is attached
-        console.log('logout button initialized');
-
-        // Attach click listener
-        logoutBtn.addEventListener('click', (e) => {
-          // quick debug log
-          console.log('logoutBtn clicked', e);
-
-          // Show confirmation
-          Swal.fire({
-            title: 'Are you sure you want to log out?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, Logout',
-            cancelButtonText: 'No',
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6"
-          }).then((result) => {
-            if (result.isConfirmed) {
-              // Clear localStorage keys
-              localStorage.removeItem("key");
-              localStorage.removeItem("customerloginid");
-              localStorage.removeItem("customerid");
-              localStorage.removeItem("cart");
-              localStorage.removeItem("site_cart_v1");
-
-              // hide badge if present
-              if (loginBadge) loginBadge.style.display = 'none';
-
-              // show success and redirect
-              Swal.fire({
-                icon: 'success',
-                title: 'Logged Out',
-                text: 'You have been successfully logged out.',
-                timer: 1200,
-                showConfirmButton: false
-              });
-
-              setTimeout(() => { window.location.href = 'login.html'; }, 1200);
-            }
-          });
-        }, { passive: true });
-      });
+        });
+      }, { passive: true });
+    });
 
     </script> 
        

@@ -30,7 +30,7 @@
                         <a class="nav-link text-dark fw-bold"  href="./index.html">Home</a>
                     </li>
                     <li class="nav-item mx-3">
-                        <a class="nav-link NavClr "  href="#">Our Products</a>
+                        <a class="nav-link NavClr "  href="./product-page.html">Our Products</a>
                     </li>
                     <li class="nav-item mx-3">
                         <a class="nav-link NavClr"  href="./health-benefit.html">Health Benefits</a>
@@ -62,18 +62,18 @@
                             <!-- use a button so it's always clickable and accessible -->
                             <button id="logoutBtn" type="button" class="btn btn-link p-0" aria-label="User menu"
                                     style="border: none; background: transparent; cursor: pointer;">
-                              <i id="logoutIcon" class="fa-solid fa-user " style="color: #333;"></i>
+                              <i id="logoutIcon" class="fa-solid fa-user me-3" style="color: #333;"></i>
                             </button>
 
                             <!-- badge -->
                             <span id="loginBadge"
                               style="display:none; position: absolute; top: 0; right: -6px; 
                                     background: #00A859; color: #fff; font-size: 10px; 
-                                    padding: 2px 6px; border-radius: 50%; pointer-events: none;">
+                                    padding: 2px 6px; border-radius: 50%; pointer-events: none;" class="ms-3">
                                   ✓
                             </span>
                           </div>
-                            <button class="btn btn-success" type="submit">Contact us</button>
+                            <button class="btn btn-success ms-3" type="submit">Contact us</button>
                         </div>
                     </form>
                 </div>
@@ -83,90 +83,25 @@
     </header>
 
     <main>
-        <div class="container mt-lg-5 mt-5 pt-lg-5">
-            <div class="row justify-content-evenly">
-                <div class="col-sm-12 col-md-12 col-lg-7">
-                    <!-- ITEM 1 SECTION  -->
-                    <div class="d-flex justify-content-between align-items-center ">
-                      <p class="CustomP-16-pop mt fw-bold">Item 1</p> 
-                      
-                       <div class="div d-flex">
-                        <p><a class="link-offset-2 CustomP-16-400 me-3 me-lg-3" href="#">save for later</a></p>
-                        <p><a class="link-offset-2 CustomP-16-400 me-2 me-lg-4" href="#">remove</a></p>
-                        
-                        <div>
-                          <span class="fw-bold me-lg-3">Qty:</span>
-                          <button class=" quantityBtn me-lg-2">-</button>
-                          <button class="quantityBtN2 me-lg-2">1</button>
-                          <button class="quantityBtn ">+</button>
-                       </div>
-                      </div>
-                    </div>
-                    
-                    <div class="d-flex gap-lg-4 gap-3">
-                        <img src="./images/Login/Images (5).png" alt="">
-                        <div class="div">
-                            <p class="cardtitle-Black">Coconut Date Energy Bars</p>
-                            <p class="CustomP-16-400">Cart ID: 12345678910</p>
-                            <p class="fw-bold">$60</p>
-                        </div>
-                    </div>
-
-                    <!-- ITEM 2 SECTION  -->
-                    <div class="d-flex justify-content-between align-items-center  ">
-                      <p class="CustomP-16-pop mt-lg-3 mt-2 fw-bold">Item 2</p> 
-                      
-                      <div class="div d-flex">
-                        <p><a class="link-offset-2 CustomP-16-400 me-3 me-lg-3" href="#">save for later</a></p>
-                        <p><a class="link-offset-2 CustomP-16-400 me-2 me-lg-4" href="#">remove</a></p>
-                        
-                        <div>
-                          <span class="fw-bold me-lg-3">Qty:</span>
-                          <button class=" quantityBtn me-lg-2">-</button>
-                          <button class="quantityBtN2 me-lg-2">1</button>
-                          <button class="quantityBtn ">+</button>
-                       </div>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="d-flex gap-lg-4 gap-3">
-                        <img src="./images/Login/Images (6).png" alt="">
-                        <div class="div">
-                            <p class="cardtitle-Black">Organic Fruit Bites</p>
-                            <p class="CustomP-16-400">Cart ID: 12345678910</p>
-                            <p class="fw-bold">$60</p>
-                        </div>
-                    </div>
-
-                    <!-- ITEM 3 SECTION -->
-                    <div class="d-flex justify-content-between align-items-center  ">
-                      <p class="CustomP-16-pop mt-lg-3 mt-2 fw-bold">Item 3</p> 
-                      
-                       <div class="div d-flex">
-                        <p><a class="link-offset-2 CustomP-16-400 me-3 me-lg-3" href="#">save for later</a></p>
-                        <p><a class="link-offset-2 CustomP-16-400 me-2 me-lg-4" href="#">remove</a></p>
-                        
-                        <div>
-                          <span class="fw-bold me-lg-3">Qty:</span>
-                          <button class=" quantityBtn me-lg-2">-</button>
-                          <button class="quantityBtN2 me-lg-2">1</button>
-                          <button class="quantityBtn ">+</button>
-                       </div>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="d-flex gap-lg-4 gap-3">
-                        <img src="./images/Login/Images (7).png" alt="">
-                        <div class="div">
-                            <p class="cardtitle-Black">Choco-Chia Delight</p>
-                            <p class="CustomP-16-400">Cart ID: 12345678910</p>
-                            <p class="fw-bold">$60</p>
-                        </div>
-                    </div>
+        <div class="container mt-lg-4 mt-4 pt-lg-5">
+            <div class="row ">
+              <div class="col-md-7 ">
+              <div class="">
+                <!-- <h3>Shopping Cart ( items)</h3> -->
+                
+                <div id="cartItems" class="mt-3">
+                </div>
               </div>
+              </div>
+              
 
-              <div class="col-sm-12 col-md-12 col-lg-4">
-                    <div class="d-flex justify-content-between mt-lg-0 mt-5">
+              <div class="col-sm-12 col-md-12 col-lg-5">
+                <p class="popupblack mb-lg-3">Order Summary</p>
+                  <div id="orderSummary" class="mt-lg-0 mt-3">
+                     
+                  </div>
+
+                    <!-- <div class="d-flex justify-content-between mt-lg-0 mt-5">
                       <p class="popupblack mb-lg-0">Order Summary</p>
                       <p class="fw-bold">$582</p>
                     </div>
@@ -191,10 +126,10 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="fw-bold">Total</p>
                         <p class="fw-bold">$496.50</p>
-                    </div>
+                    </div> -->
 
 
-                    <a href="./checkout.html"><button class="btn cartOrderBtn mt-lg-4 mt-5" type="button"> Proceed To Checkout</button></a>
+                    <a href="./checkout.html"><button class="btn cartOrderBtn mt-lg-4 mt-5" type="button"> Proceed To Checkout</button></a> 
                 </div>
 
                 
@@ -321,42 +256,78 @@
         <div id="cartItems">
         </div>
         
-
-        <div class=" col-md-5 ">
-            <div class="d-flex justify-content-between mt-lg-0 mt-5">
-              <p class="popupblack mb-lg-0">Order Summary</p>
-              <p class="fw-bold">$582</p>
-            </div>
-            <hr>
-            <div class="d-flex justify-content-between align-items-center">
-                <p>Original Price</p>
-                <p>$582.00</p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-                <p>Savings</p>
-                <p>$$82.00</p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-                <p>Shipping</p>
-                <p>FREE</p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-                <p>Estimated Sales Tax</p>
-                <p>$3.50</p>
-            </div>
-            <hr>
-            <div class="d-flex justify-content-between align-items-center">
-                <p class="fw-bold">Total</p>
-                <p class="fw-bold">$496.50</p>
-            </div>
-
-
-            <a href="./checkout.html"><button class="btn cartOrderBtn mt-lg-4 mt-5" type="button"> Proceed To Checkout</button></a>
-        </div>
       </div>
     </div>
 
 
+    <script>
+            document.addEventListener('DOMContentLoaded', () => {
+        const logoutBtn = document.getElementById('logoutBtn');
+        const loginBadge = document.getElementById('loginBadge');
+
+        // Safe initialization of badge on load
+        if (loginBadge) {
+          const token = localStorage.getItem('key');
+          const email = localStorage.getItem('customerEmail') || '';
+          if (token) {
+            loginBadge.style.display = 'inline-block';
+            if (email) loginBadge.textContent = email.charAt(0).toUpperCase();
+          } else {
+            loginBadge.style.display = 'none';
+          }
+        }
+
+        // If no button found, bail out (prevents null errors)
+        if (!logoutBtn) {
+          console.warn('logoutBtn not found in DOM.');
+          return;
+        }
+
+        // Optional: debug log so you can confirm handler is attached
+        console.log('logout button initialized');
+
+        // Attach click listener
+        logoutBtn.addEventListener('click', (e) => {
+          // quick debug log
+          console.log('logoutBtn clicked', e);
+
+          // Show confirmation
+          Swal.fire({
+            title: 'Are you sure you want to log out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Logout',
+            cancelButtonText: 'No',
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Clear localStorage keys
+              localStorage.removeItem("key");
+              localStorage.removeItem("customerloginid");
+              localStorage.removeItem("customerid");
+              localStorage.removeItem("cart");
+              localStorage.removeItem("site_cart_v1");
+
+              // hide badge if present
+              if (loginBadge) loginBadge.style.display = 'none';
+
+              // show success and redirect
+              Swal.fire({
+                icon: 'success',
+                title: 'Logged Out',
+                text: 'You have been successfully logged out.',
+                timer: 1200,
+                showConfirmButton: false
+              });
+
+              setTimeout(() => { window.location.href = 'login.html'; }, 1200);
+            }
+          });
+        }, { passive: true });
+      });
+
+    </script>
 
 
 

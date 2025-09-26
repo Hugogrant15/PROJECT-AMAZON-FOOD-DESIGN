@@ -70,6 +70,14 @@
   height: 10px;
 }
 
+ /* #mainImage {
+  max-width: 100% !important;   
+  max-height: 400px; 
+  object-fit: contain; 
+  display: block;
+  margin: 0 auto;
+}  */
+
 
 
 
@@ -1230,9 +1238,17 @@ h6 {
 
 /* CART LANDING STYLE STARTS HERE  */
 
+.cartPTAG {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 30px;
+  font-family: "Roboto", sans-serif;
+
+}
+
 .cartOrderBtn {
   font-family: "Inter", sans-serif;
-  width: 370px;
+  width: 100%;
   height: 60px;
   background: #f58634;
   color: #fff;
@@ -1283,6 +1299,15 @@ h6 {
 .width214 {
   width: 570px;
   height: 180px;
+}
+
+.PAYwith {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 34px;
+  font-family: "Roboto", sans-serif;
+  color: #131717;
+
 }
 
 .width215 {
@@ -1391,4 +1416,5 @@ h6 {
   }
 }
 
-/*  */
+/* rendercart() style */
+
