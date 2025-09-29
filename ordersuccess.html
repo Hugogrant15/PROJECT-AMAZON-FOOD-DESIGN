@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Successful</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Clear cart and customer snapshot
+      localStorage.removeItem("site_cart_v1");
+      localStorage.removeItem("customerSnapshot");
+      localStorage.removeItem("customerId");
+
+      // (Optional) keep JWT for login, so don’t remove "key"
+      console.log(":white_check_mark: Cleared order data");
+    });
+  </script>
+</head>
+<body style="text-align:center; margin-top:50px;">
+  <h2>✅ Payment Successful!</h2>
+  <p>Thank you for your purchase. Your order has been placed successfully.</p>
+  <button onclick="window.location.href='product-page.html'">
+    Continue Shopping
+  </button>
+</body>
+</html>

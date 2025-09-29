@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+  <h2 class="mb-4">Checkout</h2>
+  <div class="row">
+    <!-- Customer Details -->
+    <div class="col-lg-7">
+      <div class="card p-4 shadow-sm">
+        <h4 class="mb-3">Billing Details</h4>
+        <form id="checkoutForm">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" id="firstName" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" id="lastName" class="form-control" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="tel" id="phone" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" id="address" class="form-control" required>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="city" class="form-label">City</label>
+              <input type="text" id="city" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label for="state" class="form-label">State</label>
+              <input type="text" id="state" class="form-control" required>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="col-lg-5">
+      <div class="card p-4 shadow-sm">
+        <h4 class="mb-3">Your Order</h4>
+        <ul id="orderSummary" class="list-group mb-3">
+          <!-- cart items will be injected here -->
+        </ul>
+        <h5 class="d-flex justify-content-between">
+          <span>Total:</span>
+          <strong id="orderTotal">₦0.00</strong>
+        </h5>
+        <button id="placeOrderBtn" class="btn btn-success btn-lg w-100 mt-3">
+          Place Order
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Paystack SDK -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+  // Render cart items from localStorage
+  function renderCartSummary() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const summary = document.getElementById("orderSummary");
+    const totalElem = document.getElementById("orderTotal");
+    summary.innerHTML = "";
+
+    let total = 0;
+
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.className = "list-group-item d-flex justify-content-between";
+      li.innerHTML = `
+        <div>${item.name}</div>
+        <span>₦${Number(item.price).toLocaleString()}</span>
+      `;
+      summary.appendChild(li);
+      total += Number(item.price);
+    });
+
+    totalElem.textContent = "₦" + total.toLocaleString();
+    return total;
+  }
+
+  document.addEventListener("DOMContentLoaded", renderCartSummary);
+
+  // Place Order
+  document.getElementById("placeOrderBtn").addEventListener("click", async () => {
+    try {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      // gather customer details
+      const customerSnapshot = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        address: document.getElementById("address").value,
+        city: document.getElementById("city").value,
+        state: document.getElementById("state").value
+      };
+
+      const totalAmount = renderCartSummary();
+
+      const response = await fetch("http://localhost:3001/orders/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerId: "1234567890abcdef", // replace with real logged-in user ID
+          customerSnapshot,
+          items: cart.map(item => ({
+            productId: item.id,
+            productName: item.name,
+            quantity: 1,
+            unitPrice: item.price
+          })),
+          totalAmount
+        })
+      });
+
+      if (!response.ok) throw new Error("Failed to create order");
+
+      const data = await response.json();
+
+      if (data.authorizationUrl) {
+        window.location.href = data.authorizationUrl;
+      } else {
+        alert("Payment initialization failed.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error placing order. Try again.");
+    }
+  });
+</script>
+</body>
+</html>
