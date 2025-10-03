@@ -54,6 +54,11 @@
 // });
 
 
+
+
+
+
+
 // order summary function 
 function renderOrderSummary2() {
   const summaryEl = document.getElementById("Summary1");
