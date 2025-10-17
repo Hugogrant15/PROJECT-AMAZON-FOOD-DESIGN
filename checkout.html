@@ -103,7 +103,7 @@
                     <form class="form" id="checkoutForm">
                             <div class="">
                                 <label for="formGroupExampleInput" class="form-label">Billing Details</label>
-                                <input type="email" class="form-control width21 mt-lg-3" id="email" placeholder="your email address">
+                                <input type="email" class="form-control width21 mt-lg-3" id="email" placeholder="your email address" >
                             </div> 
 
                             
@@ -131,14 +131,14 @@
                                 <div>
                                   <!-- <label for="state" class="form-label mt-lg-4 mt-4">State</label> -->
                                     <select id="state" name="state" class="form-select width213" required >
-                                      <option value="">Select State</option>
+                                      <option value="">State</option>
                                     </select>
                                     <!-- <input type="text" class="width213  form-control" id="city" placeholder="City"> -->
                                 </div>
                                 <div>
                                      <!-- <label for="city">City</label> -->
                                       <select id="city" name="city"  class="form-select width213" required >
-                                        <option value="">Select City</option>
+                                        <option value="">City</option>
                                       </select>
                                     <!-- <select class="form-select width213"  aria-label="Default select example">
                                         <option selected>ikeja</option>
@@ -203,150 +203,15 @@
                         <p><strong>Total: ₦<span id="cartTotal">0</span></strong></p> -->
 
                         <div class="mt-4">
-                        <button id="placeOrderBtn" class="btn placeOrderBtn  fs-5 px-5" type="button" onclick="placeOrder(event)">Place Order</button>
+                        <button id="placeOrderBtn" class="btn placeOrderBtn  fs-5 px-5" type="button" >Place Order</button>
                         </div> 
 
                     </div>
                     </div>
                 </form>
                 
-
-
-                  <!-- <script>
-                    
-                    // Render cart items from localStorage
-                    function renderCartSummary() {
-                        const cart = JSON.parse(localStorage.getItem("site_cart_v1")) || [];
-                        const summary = document.getElementById("orderSummary");
-                        const totalElem = document.getElementById("cartTotal");
-                        summary.innerHTML = "";
-
-                        let total = 0;
-
-                        cart.forEach(item => {
-                        const li = document.createElement("li");
-                        li.className = "list-group-item d-flex justify-content-between";
-                        li.innerHTML = `
-                            <div>${item.name}</div>
-                            <span>₦${Number(item.price).toLocaleString()}</span>
-                        `;
-                        summary.appendChild(li);
-                        total += Number(item.price);
-                        });
-
-                        totalElem.textContent = "₦" + total.toLocaleString();
-                        return total;
-                    }
-
-                    document.addEventListener("DOMContentLoaded", renderCartSummary);
-
-                    // Place Order
-                    document.getElementById("placeOrderBtn").addEventListener("click", async () => {
-                        try {
-                        const cart = JSON.parse(localStorage.getItem("site_cart_v1")) || [];
-                        if (cart.length === 0) {
-                            alert("Your cart is empty!");
-                            return;
-                        }
-
-                        // gather customer details
-                        const customerSnapshot = {
-                            firstName: document.getElementById("firstName").value,
-                            lastName: document.getElementById("lastName").value,
-                            email: document.getElementById("email").value,
-                            phone: document.getElementById("phone").value,
-                            address: document.getElementById("address").value,
-                            city: document.getElementById("city").value,
-                            state: document.getElementById("state").value
-                        };
-
-                        const totalAmount = renderCartSummary();
-
-                        const response = await fetch("http://localhost:3001/orders/create", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({
-                            customerId: "customerid", // replace with real logged-in user ID
-                            customerSnapshot,
-                            items: cart.map(item => ({
-                                productId: item.id,
-                                productName: item.name,
-                                quantity: 1,
-                                unitPrice: item.price
-                            })),
-                            totalAmount
-                            })
-                        });
-
-                        if (!response.ok) throw new Error("Failed to create order");
-
-                        const data = await response.json();
-
-                        if (data.authorizationUrl) {
-                            window.location.href = data.authorizationUrl;
-                        } else {
-                            alert("Payment initialization failed.");
-                        }
-                        } catch (err) {
-                        console.error(err);
-                        alert("Error placing order. Try again.");
-                        }
-                    });
-                </script>   -->
-
-                  <!-- <script>
-                    function getCartTotal() {
-                        const cart = JSON.parse(localStorage.getItem("site_cart_v1") || "[]");
-                        return cart.reduce((sum, item) => sum + (Number(item.price) * (item.quantity || 1)), 0);
-                        }
-
-                </script>
-
-                <script>
-                    document.getElementById("cartTotal").textContent = getCartTotal().toFixed(2);
-
-                </script>
-
-                <script>
-                    document.getElementById("placeOrderBtn").addEventListener("click", function () {
-                    const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked').value;
-                    const totalAmount = getCartTotal();
-
-                    if (selectedPayment === "bank") {
-                        alert("Please complete your payment via bank transfer. Total: ₦" + totalAmount);
-                    }
-
-                if (selectedPayment === "paystack") {
-                    const handler = PaystackPop.setup({
-                        key: "sk_test_8a0385fad55d4aa441b1e0e3df1dbd079e8b8d44",
-                        email: document.getElementById("email").value,
-                        amount: totalAmount * 100, // kobo
-                        currency: "NGN",
-                        callback: function (response) {
-                            alert("Payment successful! Reference: " + response.reference);
-                            // send order + reference to backend here
-                        },
-                        onClose: function () {
-                            alert("Transaction was not completed, window closed.");
-                        }
-                    });
-                    handler.openIframe();
-                }
-
-                    if (selectedPayment === "paypal") {
-                        alert("PayPal checkout coming soon. Total: ₦" + totalAmount);
-                    }
-                });
-
-                </script>   -->
-
-                  
-
-                
-                
-                
-
-                <script>
+                <!-- order create/ paystack -->
+                <!-- <script>
                     function parseJwt(token) {
                       try {
                         const base64Url = token.split(".")[1];
@@ -472,8 +337,134 @@
           }
         });
       });
-                </script>
+                </script> -->
 
+                <!-- NEW CHECKOUT  -->
+                <script>
+function parseJwt(token) {
+  try {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    return JSON.parse(window.atob(base64));
+  } catch (err) {
+    console.error(":x: Invalid token", err);
+    return null;
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("placeOrderBtn");
+  if (!btn) return console.error(":x: placeOrderBtn not found in DOM");
+  btn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    console.log(":large_green_circle: Place Order clicked");
+    // Collect form values
+    const firstName = document.getElementById("firstName")?.value.trim();
+    const lastName = document.getElementById("lastName")?.value.trim();
+    const email = document.getElementById("email")?.value.trim();
+    const phone = document.getElementById("phone")?.value.trim();
+    const state = document.getElementById("state")?.value.trim();
+    const city = document.getElementById("city")?.value.trim();
+    const address = document.getElementById("address")?.value.trim();
+    const country = document.getElementById("country")?.value.trim();
+    if (!firstName || !lastName || !email || !phone || !state || !city || !address || !country) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Missing Information",
+        text: "Please fill in all required fields.",
+        confirmButtonColor: "#F58634"
+      });
+    }
+    // Decode token
+    const token = localStorage.getItem("key");
+    const decoded = parseJwt(token);
+    const customerId = decoded?.id || decoded?._id || decoded?.userId;
+    if (!customerId) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Login Required",
+        text: "You must be logged in to place an order.",
+        confirmButtonColor: "#F58634"
+      }).then(() => window.location.href = "./login.html");
+    }
+    // Load cart
+    const cart = JSON.parse(localStorage.getItem("site_cart_v1")) || [];
+    if (!cart.length) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Empty Cart",
+        text: "Your cart is empty. Please add items before placing an order.",
+        confirmButtonColor: "#F58634"
+      });
+    }
+    // Format items & totals
+    const items = cart.map(item => ({
+      productId: item.id,
+      name: item.name,
+      image: item.image,
+      price: item.price,
+      quantity: item.quantity,
+      subTotal: item.price * item.quantity
+    }));
+    const originalPrice = items.reduce((acc, item) => acc + item.subTotal, 0);
+    const savings = Math.round(originalPrice * 0.05);
+    const estimatedTax = Math.round((originalPrice - savings) * 0.05);
+    const total = originalPrice - savings + estimatedTax;
+    // Step 1: Create order in backend (which also initializes Paystack)
+    const orderPayload = {
+      customerId,
+      customerSnapshot: { firstName, lastName, email, phone, state, city, address, country},
+      items,
+      totalAmount: total,
+    };
+    console.log(":rocket: Sending order payload:", orderPayload);
+    try {
+      const response = await fetch("http://localhost:3001/amazon/document/api/orders/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderPayload),
+      });
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(`Backend returned HTTP ${response.status}: ${text}`);
+      }
+      const orderData = await response.json();
+      console.log(":large_blue_circle: Backend response:", orderData);
+      if (!orderData.success || !orderData.authorizationUrl) {
+        throw new Error(orderData.message || "Order creation failed");
+      }
+      Swal.fire({
+        icon: "success",
+        title: "Order Created!",
+        text: "Redirecting to Paystack for secure payment...",
+        showConfirmButton: false,
+        timer: 2000
+      }).then(() => window.location.href = orderData.authorizationUrl);
+    } catch (err) {
+      console.error(":x: Order/Payment error:", err);
+      Swal.fire({
+        icon: "error",
+        title: "Order Failed",
+        text: err.message,
+        confirmButtonColor: "#F58634"
+      });
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- LOAD COUNTRIES ABD STATES API -->
                 <script>
               // ✅ Local dataset for Nigeria (States + LGAs)
               const nigeriaStatesAndLGAs = {
@@ -610,137 +601,7 @@
               loadCountries();
               </script>
 
-                <!-- <script>
-  const countrySelect = document.getElementById("country");
-  const stateSelect = document.getElementById("state");
-  const citySelect = document.getElementById("city");
-
-  // Load countries
-  async function loadCountries() {
-    try {
-      const res = await fetch("https://restcountries.com/v3.1/all?fields=name");
-      const data = await res.json();
-
-      const countries = Array.isArray(data) ? data : [];
-
-      countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
-
-      countries.forEach(c => {
-        const opt = document.createElement("option");
-        opt.value = c.name.common;
-        opt.textContent = c.name.common;
-        countrySelect.appendChild(opt);
-      });
-
-      // ✅ Auto-select Nigeria if available
-      const defaultCountry = "Nigeria";
-      const nigeriaOption = [...countrySelect.options].find(
-        opt => opt.value === defaultCountry
-      );
-      if (nigeriaOption) {
-        countrySelect.value = defaultCountry;
-        await loadStates(defaultCountry); // load states immediately
-      }
-    } catch (err) {
-      console.error("Error loading countries:", err);
-    }
-  }
-
-  // Load states when country is selected
-  async function loadStates(country) {
-    try {
-      stateSelect.innerHTML = `<option value="">Loading...</option>`;
-      stateSelect.disabled = true;
-      citySelect.innerHTML = `<option value="">Select City</option>`;
-      citySelect.disabled = true;
-
-      const res = await fetch("https://countriesnow.space/api/v0.1/countries/states", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ country })
-      });
-      const data = await res.json();
-
-      stateSelect.innerHTML = `<option value="">Select State</option>`;
-      if (data.data && data.data.states) {
-        data.data.states.forEach(s => {
-          const opt = document.createElement("option");
-          opt.value = s.name;
-          opt.textContent = s.name;
-          stateSelect.appendChild(opt);
-        });
-      }
-
-      stateSelect.disabled = false;
-    } catch (err) {
-      console.error("Error loading states:", err);
-      stateSelect.innerHTML = `<option value="">No states found</option>`;
-    }
-  }
-
-  // Load cities when state is selected
-async function loadCities(country, state) {
-  try {
-    citySelect.innerHTML = `<option value="">Loading...</option>`;
-    citySelect.disabled = true;
-
-    const res = await fetch("https://countriesnow.space/api/v0.1/countries/state/cities", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ country, state })
-    });
-    const data = await res.json();
-
-    // ✅ log AFTER defining "data"
-    console.log("Fetching cities for:", country, state, data);
-
-    citySelect.innerHTML = `<option value="">Select City</option>`;
-    if (data.data && Array.isArray(data.data) && data.data.length > 0) {
-      data.data.forEach(city => {
-        const opt = document.createElement("option");
-        opt.value = city;
-        opt.textContent = city;
-        citySelect.appendChild(opt);
-      });
-      citySelect.disabled = false;
-    } else {
-      citySelect.innerHTML = `<option value="">No cities found</option>`;
-    }
-  } catch (err) {
-    console.error("Error loading cities:", err);
-    citySelect.innerHTML = `<option value="">No cities found</option>`;
-  }
-}
-
-
-
-  // Event listeners
-  countrySelect.addEventListener("change", e => {
-    const country = e.target.value;
-    if (country) {
-      loadStates(country);
-    } else {
-      stateSelect.innerHTML = `<option value="">Select State</option>`;
-      stateSelect.disabled = true;
-      citySelect.innerHTML = `<option value="">Select City</option>`;
-      citySelect.disabled = true;
-    }
-  });
-
-  stateSelect.addEventListener("change", e => {
-    const state = e.target.value;
-    const country = countrySelect.value;
-    if (state && country) {
-      loadCities(country, state);
-    } else {
-      citySelect.innerHTML = `<option value="">Select City</option>`;
-      citySelect.disabled = true;
-    }
-  });
-
-  // Initial load
-  loadCountries();
-                </script> -->
+               
                 
                
 
@@ -835,6 +696,11 @@ async function loadCities(country, state) {
         </div>
 
 
+
+
+
+
+
         <!-- checkout footer section  -->
         <div class="container-fluid footerBackgroundIMG  mt-lg-5 mt-5 ">
             <div class="container pt-5">
@@ -917,7 +783,7 @@ async function loadCities(country, state) {
 
 
 
-
+    
     <script>
             document.addEventListener('DOMContentLoaded', () => {
         const logoutBtn = document.getElementById('logoutBtn');
@@ -966,6 +832,9 @@ async function loadCities(country, state) {
               localStorage.removeItem("customerid");
               localStorage.removeItem("cart");
               localStorage.removeItem("site_cart_v1");
+              localStorage.removeItem("customername")
+              localStorage.removeItem("customeremail");
+              localStorage.removeItem("customerphone");
 
               // hide badge if present
               if (loginBadge) loginBadge.style.display = 'none';
@@ -988,6 +857,47 @@ async function loadCities(country, state) {
     </script>
 
 
+    <!-- PREFILL THE CHECKOUT FORM IF DATA EXISTS IN localStorage -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Get stored user data from localStorage
+          const userEmail = localStorage.getItem("customeremail");
+          const userPhone = localStorage.getItem("customerphone");
+          // Prefill email input
+          const emailInput = document.getElementById("email");
+          if (emailInput && userEmail) {
+            emailInput.value = userEmail;
+            emailInput.readOnly = true; // Prevent editing but still submits
+          }
+          // Prefill phone input
+          const phoneInput = document.getElementById("phone");
+          if (phoneInput && userPhone) {
+            phoneInput.value = userPhone;
+            phoneInput.readOnly = true; // Prevent editing but still submits
+          }
+        });
+          const fullName = localStorage.getItem("customername");
+          // Split full name into first and last name
+          let firstName = "";
+          let lastName = "";
+          if (fullName) {
+            const nameParts = fullName.trim().split(" ");
+            firstName = nameParts[0] || "";
+            lastName = nameParts.slice(1).join(" ") || "";
+          }
+          // Prefill First Name
+          const firstInput = document.getElementById("firstName");
+          if (firstInput && firstName) {
+            firstInput.value = firstName;
+            firstInput.readOnly = true; // user can’t change it
+          }
+          // Prefill Last Name
+          const lastInput = document.getElementById("lastName");
+          if (lastInput && lastName) {
+    lastInput.value = lastName;
+    lastInput.readOnly = true;
+  }
+    </script>
 
 
 

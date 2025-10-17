@@ -152,6 +152,9 @@ function loginButton(event) {
             if (result.success || result.token ) {
                 localStorage.setItem("key", result.token)
                 localStorage.setItem("customerloginid", result._id)
+                localStorage.setItem("customername", result.name)
+                localStorage.setItem("customeremail", result.email)
+                localStorage.setItem("customerphone", result.phoneNumber)
 
                 const currentId = localStorage.getItem('customerloginid')
                 const previousId = localStorage.getItem('customerid')
@@ -175,7 +178,7 @@ function loginButton(event) {
                     confirmButtonColor: "#2D85DE"
                 })
                 setTimeout(() => {
-                    location.href = "checkout.html";
+                    location.href = "product-page.html";
                 }, 3000)
                 localStorage.setItem("customerid", currentId );
             }
@@ -201,54 +204,7 @@ function loginButton(event) {
         });
     }
 }
-
-// function to show all products
-// async function showProducts() {
-//   try {
-//     const response = await fetch("http://localhost:3001/amazon/document/api/products");
-//     if (!response.ok) throw new Error("Failed to fetch products");
-//     const products = await response.json();
-//     console.log("Products:", products);
-//     const productsRow = document.getElementById("productpageRow");
-//     if (!productsRow) return;
-//     productsRow.innerHTML = "";
-//     products.forEach(product => {
-//       // Prefer MongoDB _id, fallback to id
-//       const productId = product._id || product.id;
-//       const col = document.createElement("div");
-//       col.className = "col-md-6 col-lg-3 mb-4";
-//       col.innerHTML = `
-//         <div class="card h-100 shadow-sm Image6Card1">
-//           <img style = "object-fit: cover; width: 100%; height: 250px;" src="${Array.isArray(product.image) ? product.image[0] : product.image}"
-//                alt="${product.name}"
-//                class="card-img-top product-img"
-//                id= "imageReveal Image6Card1"
-//                onclick="goToProductDetails('${productId}')">
-//                 <div class="card-body">
-//                 <h5 class=""></h5>
-//                     <div class="d-flex justify-content-between mt-3"><p class="">Coconut Flakes</p>
-//                     <div>
-//                     <a href="#"><i class="fa-regular fa-heart fa-2x" style="color: #0F0B0B;"></i></a>
-//                     </div>
-//                 </div>
-//                 <p class = "card-title fs-5 fw-bold">${product.name}</p>
-//               <div class="d-flex justify-content-between">
-//                 <p class="fs-5"><i class="fa-solid fa-star me-2" style="color: #F58634;"></i>5.0 (18)</p>
-//               <p class="fs-5">₦${product.price}</p>
-//             </div>
-//             <button type="button" class="btn btn-outline-success w-100 py-3 fs-5">Add To Cart</button>
-//         </div>
-//       `;
-//       productsRow.appendChild(col);
-//     });
-//   } catch (error) {
-//     console.error("Error loading products:", error);
-//   }
-// }
-// document.addEventListener('DOMContentLoaded', function() {
-//     showProducts();
-// })
-
+// -------------------- Cart logic --------------------
 const CART_KEY = "site_cart_v1";
 let cart = [];
 
@@ -373,6 +329,7 @@ function renderProducts(products, containerId = "productsRow") {
   container.innerHTML = "";
   products.forEach(product => {
     const productId = String(product._id || product.id || product.name.replace(/\s+/g, "-"));
+    const category = product.category?.name || product.category || "Uncategorized";
     // create bootstrap column wrapper if you want grid layout
     const col = document.createElement("div");
     col.className = "col-md-6 col-lg-3 mb-4";
@@ -387,7 +344,7 @@ function renderProducts(products, containerId = "productsRow") {
           >
         <div class="card-body d-flex flex-column">
           <div class="d-flex justify-content-between mt-1 mb-2">
-            <small class="text-muted">Category</small>
+            <small class="text-muted">${escapeHtml(category)}</small>
             <a href="#" class="text-dark"><i class="fa-regular fa-heart fa-lg"></i></a>
           </div>
           <p class="card-title fs-5 fw-bold mb-2">${escapeHtml(product.name)}</p>
@@ -852,515 +809,382 @@ function updateMainImage() {
 
 
 
+// logout function logic
+  //  document.addEventListener('DOMContentLoaded', () => {
+  //   const logoutBtn = document.getElementById('logoutBtn');
+  //   const loginBadge = document.getElementById('loginBadge');
 
-// async function prefillCheckoutForm() {
-//   const customerId = localStorage.getItem("customerloginid");
-//   if (!customerId) return;
+  //   // Safe initialization of badge on load
+  //   if (loginBadge) {
+  //     const token = localStorage.getItem('key');
+  //     const email = localStorage.getItem('customerEmail') || '';
+  //     if (token) {
+  //       loginBadge.style.display = 'inline-block';
+  //       if (email) loginBadge.textContent = email.charAt(0).toUpperCase();
+  //     } else {
+  //       loginBadge.style.display = 'none';
+  //     }
+  //   }
 
-//   try {
-//     const res = await fetch(`http://localhost:3001/amazon/document/api/customers/${customerId}`);
-//     if (!res.ok) throw new Error("Failed to fetch customer data");
+  //   // If no button found, bail out (prevents null errors)
+  //   if (!logoutBtn) {
+  //     console.warn('logoutBtn not found in DOM.');
+  //     return;
+  //   }
 
-//     const customer = await res.json();
+  //   // Optional: debug log so you can confirm handler is attached
+  //   console.log('logout button initialized');
 
-//     document.getElementById("firstName").value = customer.firstName || "";
-//     document.getElementById("lastName").value = customer.lastName || "";
-//     document.getElementById("email").value = customer.email || "";
-//     document.getElementById("phone").value = customer.phone || "";
-//     document.getElementById("state").value = customer.state || "";
-//     document.getElementById("city").value = customer.city || "";
-//     document.getElementById("address").value = customer.address || "";
-//   } catch (err) {
-//     console.error("Checkout prefill failed:", err);
+  //   // Attach click listener
+  //   logoutBtn.addEventListener('click', (e) => {
+  //     // quick debug log
+  //     console.log('logoutBtn clicked', e);
+
+  //     // Show confirmation
+  //     Swal.fire({
+  //       title: 'Are you sure you want to log out?',
+  //       icon: 'warning',
+  //       showCancelButton: true,
+  //       confirmButtonText: 'Yes, Logout',
+  //       cancelButtonText: 'No',
+  //       confirmButtonColor: "#d33",
+  //       cancelButtonColor: "#3085d6"
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         // Clear localStorage keys
+  //         localStorage.removeItem("key");
+  //         localStorage.removeItem("customerloginid");
+  //         localStorage.removeItem("customerid");
+  //         localStorage.removeItem("cart");
+  //         localStorage.removeItem("site_cart_v1");
+  //         localStorage.removeItem("customername")
+  //         localStorage.removeItem("customeremail");
+  //         localStorage.removeItem("customerphone");
+
+  //         // hide badge if present
+  //         if (loginBadge) loginBadge.style.display = 'none';
+
+  //         // show success and redirect
+  //         Swal.fire({
+  //           icon: 'success',
+  //           title: 'Logged Out',
+  //           text: 'You have been successfully logged out.',
+  //           timer: 1200,
+  //           showConfirmButton: false
+  //         });
+
+  //         setTimeout(() => { window.location.href = 'login.html'; }, 1200);
+  //       }
+  //     });
+  //   }, { passive: true });
+  // });
+
+  // prefil checkout form if user is logged in
+// document.addEventListener("DOMContentLoaded", function() {
+//   // Get stored user data from localStorage
+//   const userEmail = localStorage.getItem("customeremail");
+//   const userPhone = localStorage.getItem("customerphone");
+//   // Prefill email input
+//   const emailInput = document.getElementById("email");
+//   if (emailInput && userEmail) {
+//     emailInput.value = userEmail;
+//     emailInput.readOnly = true; // Prevent editing but still submits
 //   }
-// }
+//   // Prefill phone input
+//   const phoneInput = document.getElementById("phone");
+//   if (phoneInput && userPhone) {
+//     phoneInput.value = userPhone;
+//     phoneInput.readOnly = true; // Prevent editing but still submits
+//   }
+// });
+//   const fullName = localStorage.getItem("customername");
+//   // Split full name into first and last name
+//   let firstName = "";
+//   let lastName = "";
+//   if (fullName) {
+//     const nameParts = fullName.trim().split(" ");
+//     firstName = nameParts[0] || "";
+//     lastName = nameParts.slice(1).join(" ") || "";
+//   }
+//   // Prefill First Name
+//   const firstInput = document.getElementById("firstName");
+//   if (firstInput && firstName) {
+//     firstInput.value = firstName;
+//     firstInput.readOnly = true; // user can’t change it
+//   }
+//   // Prefill Last Name
+//   const lastInput = document.getElementById("lastName");
+//   if (lastInput && lastName) {
+//     lastInput.value = lastName;
+//     lastInput.readOnly = true;
+//   }
+ 
 
-// document.addEventListener("DOMContentLoaded", prefillCheckoutForm);
-
-
-
-
-
-
-
-
-
-
-
-
-// -------------------
-// LOGIN FUNCTION
-// -------------------
-// function loginButton(event) {
-//   event.preventDefault();
-//   const spinItem = document.querySelector(".spin");
-//   spinItem.style.display = "inline-block";
-
-//   const getEmail = document.getElementById("email").value;
-//   const getPassword = document.getElementById("password").value;
-
-//   if (getEmail === "" || getPassword === "") {
-//     Swal.fire({
-//       icon: 'info',
-//       text: 'All fields are required!',
-//       confirmButtonColor: "#00A859"
-//     });
-//     spinItem.style.display = "none";
-//     return;
+  
+// -------------------- Place Order + Paystack --------------------
+//   function parseJwt(token) {
+//     try {
+//       const base64Url = token.split(".")[1];
+//       const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+//       return JSON.parse(window.atob(base64));
+//     } catch (err) {
+//       console.error(":x: Invalid token", err);
+//       return null;
+//     }
 //   }
 
-//   const signData = { email: getEmail, password: getPassword };
-//   const signMethod = {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(signData)
-//   };
+//   document.addEventListener("DOMContentLoaded", () => {
+//   const btn = document.getElementById("placeOrderBtn");
+//   if (!btn) return console.error(":x: placeOrderBtn not found in DOM");
 
-//   fetch('http://localhost:3001/amazon/document/api/login', signMethod)
-//     .then(response => response.json())
-//     .then(result => {
-//       console.log(result);
+//   btn.addEventListener("click", async (e) => {
+//     e.preventDefault();
+//     console.log(":large_green_circle: Place Order clicked");
 
-//       if (result.success || result.token) {
-//         // Save token and ids
-//         localStorage.setItem("key", result.token);
-//         localStorage.setItem("customerloginid", result._id);
-//         localStorage.setItem("customerid", result._id);
+//     // Collect form values
+//     const firstName = document.getElementById("firstName")?.value.trim();
+//     const lastName = document.getElementById("lastName")?.value.trim();
+//     const email = document.getElementById("email")?.value.trim();
+//     const phone = document.getElementById("phone")?.value.trim();
+//     const address = document.getElementById("address")?.value.trim();
+//     const country = document.getElementById("country")?.value.trim();
+//     const state = document.getElementById("state")?.value.trim();
+//     const city = document.getElementById("city")?.value.trim();
 
-//         Swal.fire({
-//           icon: 'success',
-//           text: `Login Successful`,
-//           confirmButtonColor: "#2D85DE",
-//           timer: 1500,
-//           showConfirmButton: false
-//         });
-
-//         // ✅ Show badge immediately
-//         const loginBadge = document.getElementById("loginBadge");
-//         if (loginBadge) loginBadge.style.display = "inline-block";
-
-//         // Redirect
-//         setTimeout(() => {
-//           location.href = "index.html";
-//         }, 2000);
-//       } else {
-//         Swal.fire({
-//           icon: 'info',
-//           text: result.message || 'Login Failed',
-//           confirmButtonColor: "#2D85DE"
-//         });
-//         spinItem.style.display = "none";
-//       }
-//     })
-//     .catch(error => {
-//       console.error('error', error);
-//       Swal.fire({
-//         icon: 'info',
-//         text: `Something went wrong, Try Again`,
-//         confirmButtonColor: "#2D85DE"
+//     if (!firstName || !lastName || !email || !phone || !state || !city || !address || !country) {
+//       return Swal.fire({
+//         icon: "warning",
+//         title: "Missing Information",
+//         text: "Please fill in all required fields.",
+//         confirmButtonColor: "#F58634"
 //       });
-//       spinItem.style.display = "none";
-//     });
-// }
-
-// async function placeOrder(event) {
-//   event.preventDefault();
-
-//   try {
-//     const form = event.target.closest('form') || document.querySelector('#checkoutForm');
-//     if (!form) return Swal.fire ('Error', 'checkout not found', 'error');
-
-//     const formObject = Object.fromEntries(new FormData(form).entries());
-
-//     const customerSnapshot = {
-//         firstName: formObject.firstName,
-//         lastName: formObject.lastName,
-//         email: formObject.email,
-//         phone: formObject.phone,
-//         state: formObject.state,
-//         city: formObject.city,
-//         address: formObject.address
 //     }
 
-//     if(!customerSnapshot.email || !customerSnapshot.phone) {
-//       swal.fire({
-//           icon: 'info',
-//           text: 'All filds are Required',
-//           confirmButtonColor:'#f58634'
-//       });
-//       return;
-//     }
-
-//     const customerResponse = await 
-//     fetch ('http://localhost:3001/amazon/document/api/customers',{
-
-//       method: 'POST',
-//       headers: {
-//         'content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(customerSnapshot)
-//     });
-     
-//     console.log(customerResponse)
-
-//     const customerdata = await customerResponse.json();
-      
-
-
-
-//   }
-//   catch(err ) {
-
-//   }
-// }
-
-// async function placeOrder(event) {
-//   event.preventDefault();
-//   // Collect form values
-//   const email = document.getElementById("email").value.trim();
-//   const firstName = document.getElementById("firstName").value.trim();
-//   const lastName = document.getElementById("lastName").value.trim();
-//   const phone = document.getElementById("phone").value.trim();
-//   const address = document.querySelector("input#address").value.trim();
-//   const city = document.getElementById("city").value.trim();
-//   const country = document.querySelectorAll("select")[1].value;
-//   const state = document.querySelectorAll("select")[2].value;
-//   const zipcode = document.querySelector('input[placeholder="Zipcode"]').value.trim();
-//   const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
-//   // Validation
-//   if (!email || !firstName || !lastName || !phone || !address || !city || !country || !state) {
-//     return Swal.fire("Error", "Please fill in all required fields", "error");
-//   }
-//   if (!paymentMethod) {
-//     return Swal.fire("Error", "Please select a payment method", "error");
-//   }
-//   // Build snapshot
-//   const customerSnapshot = {
-//     email, firstName, lastName, phone, address, city, country, state, zipcode
-//   };
-//   try {
-//     // Step 1: Call Customer API
-//     const res = await fetch("http://localhost:3001/amazon/document/api/customers", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(customerSnapshot)
-//     });
-//     console.log(res);
-//     if (!res.ok) {
-//       const errData = await res.json();
-//       return Swal.fire("Error", errData.message || "Failed to create customer", "error");
-//     }
-//     const customerData = await res.json();
-//     const customerId = customerData._id || customerData.customerId;
+//     // Decode token
+//     const token = localStorage.getItem("key");
+//     const decoded = parseJwt(token);
+//     const customerId = decoded?.id || decoded?._id || decoded?.userId;
 //     if (!customerId) {
-//       return Swal.fire("Error", "Customer ID missing from API", "error");
+//       return Swal.fire({
+//         icon: "warning",
+//         title: "Login Required",
+//         text: "You must be logged in to place an order.",
+//         confirmButtonColor: "#F58634"
+//       }).then(() => window.location.href = "./login.html");
 //     }
-//     // Save locally
-//     localStorage.setItem("customerId", customerId);
-//     localStorage.setItem("customerSnapshot", JSON.stringify(customerSnapshot));
-//     // Step 2: Get cart items
-//     const cartItems = JSON.parse(localStorage.getItem("finalCart")) || [];
-//     if (cartItems.length === 0) {
-//       return Swal.fire("Error", "Your cart is empty", "error");
-//     }
-//     const totalAmount = cartItems.reduce((sum, i) => sum + (i.price || 0) * (i.quantity || 1), 0);
-//     const amountKobo = Math.round(totalAmount * 100); // Paystack expects amount in kobo
-//     // Step 3: Payment handling
-//     if (paymentMethod === "bank") {
-//       // Direct COD/Bank order
-//       const orderRes = await fetch("http://localhost:3001/byc/api/orders/create", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ customerId, items: cartItems, paymentMethod: "bank", total: totalAmount })
+
+//     // Load cart
+//     const cart = JSON.parse(localStorage.getItem("site_cart_v1")) || [];
+//     if (!cart.length) {
+//       return Swal.fire({
+//         icon: "warning",
+//         title: "Empty Cart",
+//         text: "Your cart is empty. Please add items before placing an order.",
+//         confirmButtonColor: "#F58634"
 //       });
-//       const orderData = await orderRes.json();
-//       if (!orderRes.ok) {
-//         return Swal.fire("Error", orderData.message || "Failed to create bank order", "error");
-//       }
-//       localStorage.removeItem("finalCart");
-//       return Swal.fire("Success", "Order placed with Bank Transfer. Awaiting confirmation.", "success")
-//         .then(() => window.location.href = "order-success.html");
-//     } else if (paymentMethod === "paystack") {
-//       // Initialize Paystack via backend
-//       const payRes = await fetch("http://localhost:3001/byc/api/paystack/initialize", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ customerId, items: cartItems, amount: amountKobo })
-//       });
-//       const payData = await payRes.json();
-//       if (!payRes.ok || !payData.data?.authorization_url) {
-//         return Swal.fire("Error", payData.message || "Error initializing Paystack", "error");
-//       }
-//       Swal.fire("Redirecting", "Please wait, redirecting to Paystack...", "info");
-//       window.location.href = payData.data.authorization_url;
-//     } else if (paymentMethod === "paypal") {
-//       Swal.fire("Info", "PayPal integration coming soon", "info");
-//       // TODO: Integrate PayPal if needed
 //     }
-//   } catch (err) {
-//     console.error(err);
-//     Swal.fire("Error", "Something went wrong: " + err.message, "error");
-//   }
-// }
 
-// async function placeOrder(event) {
-//   event.preventDefault();
-//   try {
-//     // --- Get values from your form (using your ids) ---
-//     const email = document.getElementById("email")?.value.trim();
-//     const firstName = document.getElementById("firstName")?.value.trim();
-//     const lastName = document.getElementById("lastName")?.value.trim();
-//     const address = document.querySelector('input#address')?.value.trim();
-//     const city = document.getElementById("city")?.value.trim();
-//     const phone = document.getElementById("phone")?.value.trim();
-//     const selects = document.querySelectorAll("select.form-select");
-//     const deliverTo = selects[0]?.value || "";
-//     const country = selects[1]?.value || "";
-//     const state = selects[2]?.value || "";
-//     const zipcode = document.querySelector('input[placeholder="Zipcode"]')?.value.trim();
-//     const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
-//     // --- Basic validation ---
-//     if (!email) return Swal.fire("Error", "Email is required", "error");
-//     if (!firstName) return Swal.fire("Error", "First name is required", "error");
-//     if (!lastName) return Swal.fire("Error", "Last name is required", "error");
-//     if (!address) return Swal.fire("Error", "Address is required", "error");
-//     if (!city) return Swal.fire("Error", "City is required", "error");
-//     if (!state) return Swal.fire("Error", "State is required", "error");
-//     if (!country) return Swal.fire("Error", "Country is required", "error");
-//     if (!phone) return Swal.fire("Error", "Phone number is required", "error");
-//     if (!paymentMethod) return Swal.fire("Error", "Please select a payment method", "error");
-//     const customerSnapshot = {
-//       email, firstName, lastName, address, city,
-//       state, country, phone, zipcode, deliverTo
-//     };
-//     // --- 1) Save customer ---
-//     const custRes = await fetch("http://localhost:3001/amazon/document/api/customers", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(customerSnapshot)
-//     });
-//     let custData;
-//       custData = await custRes.json();
-//     console.log(custRes);
-//     console.log(custData);
-//     // try {
-//     // } catch (e) {
-//     //   const raw = await custRes.text();
-//     //   console.error("Customer API raw:", raw);
-//     //   return Swal.fire("Error", "Customer API did not return valid JSON", "error");
-//     // }
-//     if (!custRes.ok) {
-//       return Swal.fire("Error", custData.message || "Failed to save customer", "error");
-//     }
-//     // const customerId = custData._id || custData.customerId;
-//     // if (!customerId) {
-//     //   return Swal.fire("Error", "No customer ID returned", "error");
-//     // }
-//     // localStorage.setItem("customerId", customerId);
-//     // localStorage.setItem("customerSnapshot", JSON.stringify(custData.customerSnapshot || customerSnapshot));
-//     // // --- 2) Get cart ---
-//     // const items = JSON.parse(localStorage.getItem("finalCart") || "[]");
-//     // if (!items.length) return Swal.fire("Error", "Cart is empty", "error");
-//     // const totalAmount = items.reduce((s, i) => s + (i.price || 0) * (i.quantity || 1), 0);
-//     // const amountKobo = Math.round(totalAmount * 100);
-//     // // --- 3) Handle payment ---
-//     // if (paymentMethod === "paystack") {
-//     //   const payRes = await fetch("http://localhost:3001/byc/api/paystack/initialize", {
-//     //     method: "POST",
-//     //     headers: { "Content-Type": "application/json" },
-//     //     body: JSON.stringify({ customerId, items, amount: amountKobo })
-//     //   });
-//     //   let payData;
-//     //   try {
-//     //     payData = await payRes.json();
-//     //   } catch (e) {
-//     //     const raw = await payRes.text();
-//     //     console.error("Paystack init raw:", raw);
-//     //     return Swal.fire("Error", "Payment init did not return valid JSON", "error");
-//     //   }
-//     //   if (!payRes.ok || !payData.data?.authorization_url) {
-//     //     return Swal.fire("Error", payData.message || "Failed to initialize payment", "error");
-//     //   }
-//     //   window.location.href = payData.data.authorization_url;
-//     // } else if (paymentMethod === "bank") {
-//     //   const orderRes = await fetch("http://localhost:3001/byc/api/orders/create", {
-//     //     method: "POST",
-//     //     headers: { "Content-Type": "application/json" },
-//     //     body: JSON.stringify({ customerId, customerSnapshot, items, paymentMethod: "bank", total: totalAmount })
-//     //   });
-//     //   let orderData;
-//     //   try {
-//     //     orderData = await orderRes.json();
-//     //   } catch (e) {
-//     //     const raw = await orderRes.text();
-//     //     console.error("Order create raw:", raw);
-//     //     return Swal.fire("Error", "Order API did not return valid JSON", "error");
-//     //   }
-//     //   if (!orderRes.ok) {
-//     //     return Swal.fire("Error", orderData.message || "Failed to create order", "error");
-//     //   }
-//     //   localStorage.removeItem("finalCart");
-//     //   Swal.fire("Success", "Order placed successfully!", "success")
-//     //     .then(() => window.location.href = "order-success.html");
-//     // } else if (paymentMethod === "paypal") {
-//     //   Swal.fire("Info", "PayPal not integrated yet", "info");
-//     // }
-//   } catch (err) {
-//     console.error(err);
-//     Swal.fire("Error", "Something went wrong: " + err.message, "error");
-//   }
-// }
+//     // Format items & totals
+//     const items = cart.map(item => ({
+//       productId: item.id,
+//       name: item.name,
+//       image: item.image,
+//       price: item.price,
+//       quantity: item.quantity,
+//       subTotal: item.price * item.quantity
+//     }));
+//     const originalPrice = items.reduce((acc, item) => acc + item.subTotal, 0);
+//     const savings = Math.round(originalPrice * 0.05);
+//     const estimatedTax = Math.round((originalPrice - savings) * 0.05);
+//     const total = originalPrice - savings + estimatedTax;
 
-
-// async function placeOrder(event) {
-//   event.preventDefault();
-
-//   try {
-//     // --- 1. Collect Billing Details ---
-//     const email = document.getElementById("email")?.value.trim();
-//     const firstName = document.getElementById("firstName")?.value.trim();
-//     const lastName = document.getElementById("lastName")?.value.trim();
-//     const address = document.querySelectorAll("#address")[1]?.value.trim(); // ⚡ because you have 2 inputs with same id
-//     const city = document.getElementById("city")?.value.trim();
-//     const phone = document.getElementById("phone")?.value.trim();
-
-//     // selects
-//     const selects = document.querySelectorAll("select.form-select");
-//     const deliverTo = selects[0]?.value || "";
-//     const country = selects[1]?.value || "Nigeria"; // default
-//     const state = selects[2]?.value || "";
-
-//     const paymentMethod = document.querySelector(
-//       'input[name="paymentMethod"]:checked'
-//     )?.value;
-
-//     // --- 2. Validation ---
-//     if (!email) return Swal.fire("Error", "Email is required", "error");
-//     if (!firstName) return Swal.fire("Error", "First name is required", "error");
-//     if (!lastName) return Swal.fire("Error", "Last name is required", "error");
-//     if (!address) return Swal.fire("Error", "Address is required", "error");
-//     if (!city) return Swal.fire("Error", "City is required", "error");
-//     if (!state) return Swal.fire("Error", "State is required", "error");
-//     if (!country) return Swal.fire("Error", "Country is required", "error");
-//     if (!phone) return Swal.fire("Error", "Phone number is required", "error");
-//     if (!paymentMethod) return Swal.fire("Error", "Please select a payment method", "error");
-
-//     const customerSnapshot = {
-//       email,
-//       firstName,
-//       lastName,
-//       address,
-//       city,
-//       state,
-//       country,
-//       phone,
-//       deliverTo,
+//     // Step 1: Create order in backend (which also initializes Paystack)
+//     const orderPayload = {
+//       customerId,
+//       customerSnapshot: { firstName, lastName, email, phone, state, city, address, country },
+//       items,
+//       totalAmount: total,
+//       // quantity: items.reduce((acc, item) => acc + item.quantity, 0)
 //     };
 
-//     // --- 3. Save Customer to backend ---
-//     const custRes = await fetch("http://localhost:3001/amazon/document/api/customers", {
-      
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(customerSnapshot),
-//     });
+//     console.log(":rocket: Sending order payload:", orderPayload);
+
+//     try {
+//       const response = await fetch("http://localhost:3001/amazon/document/api/orders/create", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(orderPayload),
+//       });
+
+//       if (!response.ok) {
+//         const text = await response.text();
+//         throw new Error(`Backend returned HTTP ${response.status}: ${text}`);
+//       }
+
+//       const orderData = await response.json();
+//       console.log(":large_blue_circle: Backend response:", orderData);
+
+//       if (!orderData.success || !orderData.authorizationUrl) {
+//         throw new Error(orderData.message || "Order creation failed");
+//       }
+
+//       Swal.fire({
+//         icon: "success",
+//         title: "Order Created!",
+//         text: "Redirecting to Paystack for secure payment...",
+//         showConfirmButton: false,
+//         timer: 2000
+//       }).then(() => window.location.href = orderData.authorizationUrl);
+
+//     } catch (err) {
+//       console.error(":x: Order/Payment error:", err);
+//       Swal.fire({
+//         icon: "error",
+//         title: "Order Failed",
+//         text: err.message,
+//         confirmButtonColor: "#F58634"
+//       });
+//     }
+//   });
+// });
+                
+
+// -------------------- Nigeria States + LGAs --------------------
+ // ✅ Local dataset for Nigeria (States + LGAs)
+  // const nigeriaStatesAndLGAs = {
+  //   "Abia": ["Aba North","Aba South","Arochukwu","Bende","Ikwuano","Isiala Ngwa North","Isiala Ngwa South","Isuikwuato","Obi Ngwa","Ohafia","Osisioma","Ugwunagbo","Ukwa East","Ukwa West","Umuahia North","Umuahia South","Umu Nneochi"],
+  //   "Adamawa": ["Demsa","Fufure","Ganye","Girei","Gombi","Guyuk","Hong","Jada","Lamurde","Madagali","Maiha","Mayo-Belwa","Michika","Mubi North","Mubi South","Numan","Shelleng","Song","Toungo","Yola North","Yola South"],
+  //   "Akwa Ibom": ["Abak","Eastern Obolo","Eket","Esit Eket","Essien Udim","Etim Ekpo","Etinan","Ibeno","Ibesikpo Asutan","Ibiono Ibom","Ika","Ikono","Ikot Abasi","Ikot Ekpene","Ini","Itu","Mbo","Mkpat Enin","Nsit Atai","Nsit Ibom","Nsit Ubium","Obot Akara","Okobo","Onna","Oron","Oruk Anam","Udung Uko","Ukanafun","Uruan","Urue-Offong/Oruko","Uyo"],
+  //   "Anambra": ["Aguata","Anambra East","Anambra West","Anaocha","Awka North","Awka South","Ayamelum","Dunukofia","Ekwusigo","Idemili North","Idemili South","Ihiala","Njikoka","Nnewi North","Nnewi South","Ogbaru","Onitsha North","Onitsha South","Orumba North","Orumba South","Oyi"],
+  //   "Bauchi": ["Alkaleri","Bauchi","Bogoro","Damban","Darazo","Dass","Gamawa","Ganjuwa","Giade","Itas/Gadau","Jama’are","Katagum","Kirfi","Misau","Ningi","Shira","Tafawa Balewa","Toro","Warji","Zaki"],
+  //   "Bayelsa": ["Brass","Ekeremor","Kolokuma/Opokuma","Nembe","Ogbia","Sagbama","Southern Ijaw","Yenagoa"],
+  //   "Benue": ["Ado","Agatu","Apa","Buruku","Gboko","Guma","Gwer East","Gwer West","Katsina-Ala","Konshisha","Kwande","Logo","Makurdi","Obi","Ogbadibo","Ohimini","Oju","Okpokwu","Otukpo","Tarka","Ukum","Ushongo","Vandeikya"],
+  //   "Borno": ["Abadam","Askira/Uba","Bama","Bayo","Biu","Chibok","Damboa","Dikwa","Gubio","Guzamala","Gwoza","Hawul","Jere","Kaga","Kala/Balge","Konduga","Kukawa","Kwaya Kusar","Mafa","Magumeri","Maiduguri","Marte","Mobbar","Monguno","Ngala","Nganzai","Shani"],
+  //   "Cross River": ["Abi","Akamkpa","Akpabuyo","Bakassi","Bekwarra","Biase","Boki","Calabar Municipal","Calabar South","Etung","Ikom","Obanliku","Obubra","Obudu","Odukpani","Ogoja","Yakuur","Yala"],
+  //   "Delta": ["Aniocha North","Aniocha South","Bomadi","Burutu","Ethiope East","Ethiope West","Ika North East","Ika South","Isoko North","Isoko South","Ndokwa East","Ndokwa West","Okpe","Oshimili North","Oshimili South","Patani","Sapele","Udu","Ughelli North","Ughelli South","Ukwuani","Uvwie","Warri North","Warri South","Warri South West"],
+  //   "Ebonyi": ["Abakaliki","Afikpo North","Afikpo South","Ebonyi","Ezza North","Ezza South","Ikwo","Ishielu","Ivo","Izzi","Ohaozara","Ohaukwu","Onicha"],
+  //   "Edo": ["Akoko-Edo","Egor","Esan Central","Esan North-East","Esan South-East","Esan West","Etsako Central","Etsako East","Etsako West","Igueben","Ikpoba-Okha","Orhionmwon","Oredo","Ovia North-East","Ovia South-West","Owan East","Owan West","Uhunmwonde"],
+  //   "Ekiti": ["Ado Ekiti","Efon","Ekiti East","Ekiti South-West","Ekiti West","Emure","Gbonyin","Ido Osi","Ijero","Ikere","Ikole","Ilejemeje","Irepodun/Ifelodun","Ise/Orun","Moba","Oye"],
+  //   "Enugu": ["Aninri","Awgu","Enugu East","Enugu North","Enugu South","Ezeagu","Igbo Etiti","Igbo Eze North","Igbo Eze South","Isi Uzo","Nkanu East","Nkanu West","Nsukka","Oji River","Udenu","Udi","Uzo-Uwani"],
+  //   "Gombe": ["Akko","Balanga","Billiri","Dukku","Funakaye","Gombe","Kaltungo","Kwami","Nafada","Shongom","Yamaltu/Deba"],
+  //   "Imo": ["Aboh Mbaise","Ahiazu Mbaise","Ehime Mbano","Ezinihitte","Ideato North","Ideato South","Ihitte/Uboma","Ikeduru","Isiala Mbano","Isu","Mbaitoli","Ngor Okpala","Njaba","Nkwerre","Nwangele","Obowo","Oguta","Ohaji/Egbema","Okigwe","Onuimo","Orlu","Orsu","Oru East","Oru West","Owerri Municipal","Owerri North","Owerri West"],
+  //   "Jigawa": ["Auyo","Babura","Biriniwa","Birnin Kudu","Buji","Dutse","Gagarawa","Garki","Gumel","Guri","Gwaram","Gwiwa","Hadejia","Jahun","Kafin Hausa","Kaugama","Kazaure","Kiri Kasama","Kiyawa","Maigatari","Malam Madori","Miga","Ringim","Roni","Sule Tankarkar","Taura","Yankwashi"],
+  //   "Kaduna": ["Birnin Gwari","Chikun","Giwa","Igabi","Ikara","Jaba","Jema'a","Kachia","Kaduna North","Kaduna South","Kagarko","Kajuru","Kaura","Kauru","Kubau","Kudan","Lere","Makarfi","Sabon Gari","Sanga","Soba","Zangon Kataf","Zaria"],
+  //   "Kano": ["Ajingi","Albasu","Bagwai","Bebeji","Bichi","Bunkure","Dala","Dambatta","Dawakin Kudu","Dawakin Tofa","Doguwa","Fagge","Gabasawa","Garko","Garun Mallam","Gaya","Gezawa","Gwale","Gwarzo","Kabo","Kano Municipal","Karaye","Kibiya","Kiru","Kumbotso","Kunchi","Kura","Madobi","Makoda","Minjibir","Nasarawa","Rano","Rimin Gado","Rogo","Shanono","Sumaila","Takai","Tarauni","Tofa","Tsanyawa","Tudun Wada","Ungogo","Warawa","Wudil"],
+  //   "Katsina": ["Bakori","Batagarawa","Batsari","Baure","Bindawa","Charanchi","Dan Musa","Dandume","Danja","Daura","Dutsi","Dutsin-Ma","Faskari","Funtua","Ingawa","Jibia","Kafur","Kaita","Kankara","Kankia","Katsina","Kurfi","Kusada","Mai'Adua","Malumfashi","Mani","Mashi","Matazu","Musawa","Rimi","Sabuwa","Safana","Sandamu","Zango"],
+  //   "Kebbi": ["Aleiro","Arewa Dandi","Argungu","Augie","Bagudo","Birnin Kebbi","Bunza","Dandi","Fakai","Gwandu","Jega","Kalgo","Koko/Besse","Maiyama","Ngaski","Sakaba","Shanga","Suru","Wasagu/Danko","Yauri","Zuru"],
+  //   "Kogi": ["Adavi","Ajaokuta","Ankpa","Bassa","Dekina","Ibaji","Idah","Igalamela Odolu","Ijumu","Kabba/Bunu","Kogi","Lokoja","Mopa-Muro","Ofu","Ogori/Magongo","Okehi","Okene","Olamaboro","Omala","Yagba East","Yagba West"],
+  //   "Kwara": ["Asa","Baruten","Edu","Ekiti","Ifelodun","Ilorin East","Ilorin South","Ilorin West","Irepodun","Isin","Kaiama","Moro","Offa","Oke Ero","Oyun","Pategi"],
+  //   "Lagos": ["Agege","Ajeromi-Ifelodun","Alimosho","Amuwo-Odofin","Apapa","Badagry","Epe","Eti-Osa","Ibeju-Lekki","Ifako-Ijaiye","Ikeja","Ikorodu","Kosofe","Lagos Island","Lagos Mainland","Mushin","Ojo","Oshodi-Isolo","Shomolu","Surulere"],
+  //   "Nasarawa": ["Akwanga","Awe","Doma","Karu","Keana","Keffi","Kokona","Lafia","Nasarawa","Nasarawa Egon","Obi","Toto","Wamba"],
+  //   "Niger": ["Agaie","Agwara","Bida","Borgu","Bosso","Chanchaga","Edati","Gbako","Gurara","Katcha","Kontagora","Lapai","Lavun","Magama","Mariga","Mashegu","Mokwa","Muya","Paikoro","Rafi","Rijau","Shiroro","Suleja","Tafa","Wushishi"],
+  //   "Ogun": ["Abeokuta North","Abeokuta South","Ado-Odo/Ota","Egbado North","Egbado South","Ewekoro","Ifo","Ijebu East","Ijebu North","Ijebu North East","Ijebu Ode","Ikenne","Imeko Afon","Ipokia","Obafemi Owode","Odeda","Odogbolu","Ogun Waterside","Remo North","Shagamu"],
+  //   "Ondo": ["Akoko North-East","Akoko North-West","Akoko South-West","Akoko South-East","Akure North","Akure South","Ese Odo","Idanre","Ifedore","Ilaje","Ile Oluji/Okeigbo","Irele","Odigbo","Okitipupa","Ondo East","Ondo West","Ose","Owo"],
+  //   "Osun": ["Atakunmosa East","Atakunmosa West","Aiyedaade","Aiyedire","Boluwaduro","Boripe","Ede North","Ede South","Ife Central","Ife East","Ife North","Ife South","Egbedore","Ejigbo","Ifedayo","Ifelodun","Ila","Ilesa East","Ilesa West","Irepodun","Irewole","Isokan","Iwo","Obokun","Odo Otin","Ola Oluwa","Olorunda","Oriade","Orolu","Osogbo"],
+  //   "Oyo": ["Afijio","Akinyele","Atiba","Atisbo","Egbeda","Ibadan North","Ibadan North-East","Ibadan North-West","Ibadan South-East","Ibadan South-West","Ibarapa Central","Ibarapa East","Ibarapa North","Ido","Ifedayo","Ifelodun","Irepo","Iseyin","Itesiwaju","Iwajowa","Kajola","Lagelu","Ogbomosho North","Ogbomosho South","Ogo Oluwa","Olorunsogo","Oluyole","Ona Ara","Orelope","Ori Ire","Oyo","Oyo East","Saki East","Saki West","Surulere"],
+  //   "Plateau": ["Bokkos","Barkin Ladi","Bassa","Jos East","Jos North","Jos South","Kanam","Kanke","Langtang South","Langtang North","Mangu","Mikang","Pankshin","Qua’an Pan","Riyom","Shendam","Wase"],
+  //   "Rivers": ["Abua/Odual","Ahoada East","Ahoada West","Akuku-Toru","Andoni","Asari-Toru","Bonny","Degema","Eleme","Emuoha","Etche","Gokana","Ikwerre","Khana","Obio/Akpor","Ogba/Egbema/Ndoni","Ogu/Bolo","Okrika","Omuma","Opobo/Nkoro","Oyigbo","Port Harcourt","Tai"],
+  //   "Sokoto": ["Binji","Bodinga","Dange Shuni","Gada","Goronyo","Gudu","Gwadabawa","Illela","Isa","Kebbe","Kware","Rabah","Sabon Birni","Shagari","Silame","Sokoto North","Sokoto South","Tambuwal","Tangaza","Tureta","Wamako","Wurno","Yabo"],
+  //   "Taraba": ["Ardo Kola","Bali","Donga","Gashaka","Gassol","Ibi","Jalingo","Karim Lamido","Kumi","Lau","Sardauna","Takum","Ussa","Wukari","Yorro","Zing"],
+  //   "Yobe": ["Bade","Bursari","Damaturu","Fika","Fune","Geidam","Gujba","Gulani","Jakusko","Karasuwa","Machina","Nangere","Nguru","Potiskum","Tarmuwa","Yunusari","Yusufari"],
+  //   "Zamfara": ["Anka","Bakura","Birnin Magaji/Kiyaw","Bukkuyum","Bungudu","Gummi","Gusau","Kaura Namoda","Maradun","Maru","Shinkafi","Talata Mafara","Chafe","Zurmi"],
+  //   "Federal Capital Territory": ["Abaji","Bwari","Gwagwalada","Kuje","Kwali","Municipal Area Council"]
+  // };
+
+  // // ✅ Get dropdown elements
+  // const countryDropdown = document.getElementById("country");
+  // const stateDropdown = document.getElementById("state");
+  // const cityDropdown = document.getElementById("city");
+
+  // // ✅ Load countries (with ?fields=name fix)
+  // async function loadCountries() {
+  //   try {
+  //     const res = await fetch("https://restcountries.com/v3.1/all?fields=name");
+  //     const data = await res.json();
+  //     const countries = data.map(c => c.name.common).sort();
+
+  //     countryDropdown.innerHTML = `<option value="">Select Country</option>`;
+  //     countries.forEach(country => {
+  //       countryDropdown.innerHTML += `<option value="${country}">${country}</option>`;
+  //     });
+  //     console.log("✅ Countries loaded:", countries.length);
+  //   } catch (err) {
+  //     console.error("Error loading countries:", err);
+  //   }
+  // }
+
+  // // ✅ Load states
+  // async function loadStates(country) {
+  //   stateDropdown.innerHTML = `<option value="">Select State</option>`;
+  //   cityDropdown.innerHTML = `<option value="">Select City</option>`;
+
+  //   if (!country) return;
+
+  //   if (country === "Nigeria") {
+  //     // Use local dataset
+  //     Object.keys(nigeriaStatesAndLGAs).forEach(state => {
+  //       stateDropdown.innerHTML += `<option value="${state}">${state}</option>`;
+  //     });
+  //   } else {
+  //     // API fallback for other countries
+  //     try {
+  //       const res = await fetch("https://countriesnow.space/api/v0.1/countries/states", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({ country })
+  //       });
+  //       const result = await res.json();
+
+  //       if (result.data && result.data.states) {
+  //         result.data.states.forEach(st => {
+  //           stateDropdown.innerHTML += `<option value="${st.name}">${st.name}</option>`;
+  //         });
+  //       }
+  //       console.log("✅ States loaded from local dataset:", Object.keys(nigeriaStatesAndLGAs).length);
+  //     } catch (err) {
+  //       console.error("Error loading states:", err);
+  //     }
+  //   }
+  // }
+
+  // // ✅ Load cities
+  // async function loadCities(country, state) {
+  //   cityDropdown.innerHTML = `<option value="">Select City</option>`;
+  //   if (!state) return;
+
+  //   if (country === "Nigeria") {
+  //     nigeriaStatesAndLGAs[state]?.forEach(city => {
+  //       cityDropdown.innerHTML += `<option value="${city}">${city}</option>`;
+  //     });
+  //     console.log("✅ Cities loaded from local dataset:", nigeriaStatesAndLGAs[state]?.length || 0);
+  //   } else {
+  //     try {
+  //       const res = await fetch("https://countriesnow.space/api/v0.1/countries/state/cities", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({ country, state })
+  //       });
+  //       const result = await res.json();
+
+  //       if (result.data) {
+  //         result.data.forEach(city => {
+  //           cityDropdown.innerHTML += `<option value="${city}">${city}</option>`;
+  //         });
+  //       }
+  //     } catch (err) {
+  //       console.error("Error loading cities:", err);
+  //     }
+  //   }
+  // }
+
+  // // ✅ Event listeners
+  // countryDropdown.addEventListener("change", e => loadStates(e.target.value));
+  // stateDropdown.addEventListener("change", e => loadCities(countryDropdown.value, e.target.value));
+
+  // // ✅ Init
+  // loadCountries();
+             
     
-//     // if (!custRes.ok) {
-//     //   console.log(custRes);
-//     //   const raw = await custRes.text();
-//     //   console.error("Customer API failed:", raw);
-//     //   return Swal.fire("Error", "Failed to save customer", "error");
-//     // }
-
-//     console.log(custRes);
-
-//     const custData = await custRes.json();
-//     const customerId = custData._id;
-//     if (!customerId) return Swal.fire("Error", "No customer ID returned", "error");
-
-//     // --- 4. Save to localStorage ---
-//     localStorage.setItem("customerId", customerId);
-//     localStorage.setItem("customerSnapshot", JSON.stringify(customerSnapshot));
-
-//     // --- 5. Get Cart ---
-//     const cart = JSON.parse(localStorage.getItem("site_cart_v1") || "[]");
-//     if (!cart.length) return Swal.fire("Error", "Your cart is empty", "error");
-
-    // Option A: assume your backend re-validates product info
-    // For now, build order items directly from cart
-//     const items = cart.map((i) => {
-//       const subtotal = (i.price || 0) * (i.quantity || 1);
-//       return {
-//         productId: i.id,
-//         name: i.name,
-//         price: i.price,
-//         quantity: i.quantity,
-//         subtotal,
-//         image: i.image || "",
-//       };
-//     });
-
-//     const totalAmount = items.reduce((sum, i) => sum + i.subtotal, 0);
-
-//     // --- 6. Place Order ---
-//     if (paymentMethod === "paystack") {
-//       const orderRes = await fetch("http://localhost:3001/byc/api/orders/create", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//           customerId,
-//           customerSnapshot,
-//           items,
-//           totalAmount,
-//           paymentMethod: "paystack",
-//         }),
-//       });
-
-//       const orderData = await orderRes.json();
-//       if (!orderRes.ok || !orderData.authorizationUrl) {
-//         console.error("Paystack init error:", orderData);
-//         return Swal.fire("Error", orderData.message || "Payment failed", "error");
-//       }
-
-//       window.location.href = orderData.authorizationUrl; // redirect to Paystack
-//     } else if (paymentMethod === "bank") {
-//       const orderRes = await fetch("http://localhost:3001/byc/api/orders/create", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//           customerId,
-//           customerSnapshot,
-//           items,
-//           totalAmount,
-//           paymentMethod: "bank",
-//         }),
-//       });
-
-//       const orderData = await orderRes.json();
-//       if (!orderRes.ok) {
-//         return Swal.fire("Error", orderData.message || "Bank order failed", "error");
-//       }
-
-//       localStorage.removeItem("site_cart_v1");
-//       localStorage.removeItem("customerId");
-//       localStorage.removeItem("customerSnapshot");
-
-//       Swal.fire("Success", "Order placed successfully!", "success").then(() => {
-//         window.location.href = "order-success.html";
-//       });
-//     } else if (paymentMethod === "paypal") {
-//       Swal.fire("Info", "PayPal not integrated yet", "info");
-//     }
-//   } catch (err) {
-//     console.error("Checkout error:", err);
-//     Swal.fire("Error", "Something went wrong: " + err.message, "error");
-//   }
-// }
-
-
-
-
-
 
 
 
